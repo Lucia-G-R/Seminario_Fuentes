@@ -1,0 +1,42 @@
+AXIS-VERSION="2000";
+CHARSET="ANSI";
+DECIMALS=6;
+SHOWDECIMALS=0;
+MATRIX="C00035A_0311";
+SUBJECT-AREA="Sociedad > Salud > Estado de salud";
+SUBJECT-CODE="03021";
+DESCRIPTION="Población de 16 y más años según autovaloración del estado de salud en relación a situaciones de ansiedad o depresión, sexos o grupos de edad por años. Canarias. 2004-2009.";
+DESCRIPTIONDEFAULT=YES;
+CONTENTS="Población de 16 y más años";
+UNITS="Según indicadores";
+STUB="Sexos o grupos de edad",
+"Indicadores";
+HEADING="Autovaloración del estado de salud en relación a situaciones de ansiedad",
+"Años";
+CONTVARIABLE="Indicadores";
+VALUES("Sexos o grupos de edad")="AMBOS SEXOS",
+"Hombres",
+"Mujeres",
+"De 16 a 64 años",
+"De 65 y más años";
+VALUES("Indicadores")="Absoluto",
+"Porcentaje";
+VALUES("Autovaloración del estado de salud en relación a situaciones de ansiedad")="TOTAL","No está ansioso ni deprimido","Está moderadamente ansioso o deprimido","Está muy ansioso o deprimido","NS/NC";
+VALUES("Años")="2009","2004";
+CODES("Sexos o grupos de edad")="T","M","F","G_1_De 16 a 64 años","G_2_De 65 y más años";
+CODES("Indicadores")="Absoluto","Porcentaje";
+CODES("Autovaloración del estado de salud en relación a situaciones de ansiedad")="T_3_TOTAL","1","2","3","-9";
+CODES("Años")="2009","2004";
+PRECISION("Indicadores","Absoluto")=0;
+PRECISION("Indicadores","Porcentaje")=2;
+SOURCE="Instituto Canario de Estadística (ISTAC) y Servicio Canario de la Salud (SCS).";
+UNITS("Porcentaje")="Porcentajes";
+UNITS("Absoluto")="Personas";
+REFPERIOD("Porcentaje")="Año";
+REFPERIOD("Absoluto")="Año";
+DATA=
+1784860.000000 1616594.000000 1394989.000000 1202715.000000 315192.000000 330939.000000 70990.000000 75083.000000 3689.000000 7858.000000 100.000000 100.000000 78.160000 74.400000 17.660000 20.470000 3.980000 4.640000 0.210000 0.490000 887576.000000 
+805672.000000 743733.000000 652097.000000 125282.000000 126391.000000 15758.000000 23682.000000 2804.000000 3503.000000 100.000000 100.000000 83.790000 80.940000 14.120000 15.690000 1.780000 2.940000 0.320000 0.430000 897284.000000 
+810921.000000 651256.000000 550618.000000 189910.000000 204548.000000 55233.000000 51400.000000 885.000000 4355.000000 100.000000 100.000000 72.580000 67.900000 21.160000 25.220000 6.160000 6.340000 0.100000 0.540000 1501746.000000 
+1377660.000000 1197549.000000 1045028.000000 249105.000000 268131.000000 51781.000000 59725.000000 3311.000000 4776.000000 100.000000 100.000000 79.740000 75.860000 16.590000 19.460000 3.450000 4.340000 0.220000 0.350000 283114.000000 
+238934.000000 197440.000000 157687.000000 66086.000000 62807.000000 19209.000000 15358.000000 379.000000 3082.000000 100.000000 100.000000 69.740000 66.000000 23.340000 26.290000 6.790000 6.430000 0.130000 1.290000 ;
