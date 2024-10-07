@@ -27,7 +27,7 @@ plot(pressure)
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
 
-
+# **Descarga de archivos**
 ```{r}
 # Instalar la librería readxl si no la tienes
 #install.packages("readxl")
@@ -49,7 +49,7 @@ temp <- tempfile(fileext = ".xlsx")
 
 ```{r, eval=FALSE}
 # Descargar el archivo desde GitHub
-download.file(https://datos.gob.es/es/catalogo/a02002834-accidentes-en-jornada-de-trabajo-n-de-accidentes-segun-grado-de-lesion-y-sexo, destfile = "INPUT/DATA/Accidentes_laborales_Canarias.csv.csv" , mode = "wb")
+download.file("https://datos.gob.es/es/catalogo/a02002834-accidentes-en-jornada-de-trabajo-n-de-accidentes-segun-grado-de-lesion-y-sexo", destfile = "INPUT/DATA/Accidentes_laborales_Canarias.csv.csv" , mode = "wb")
 ```
 
 # Descargar el archivo desde GitHub
