@@ -9,9 +9,10 @@ output:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-``````{r cars}
-summary(cars)
 ```
+
+# **Introdcucción**
+Las enfermedades laborales
 
 ## Including Plots
 
