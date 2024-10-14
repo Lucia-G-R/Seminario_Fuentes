@@ -27,30 +27,44 @@ plot(pressure)
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
 
-# **Descarga de archivos**
-```{r, eval=FALSE}
+
+```{r}
 # Instalar la librería readxl si no la tienes
 #install.packages("readxl")
 library(readxl)
+```
+
+
+```{r}
 # URL cruda del archivo Excel en GitHub
 url <- "https://github.com/Lucia-G-R/Seminario_Fuentes/blob/main/INPUT/DATA/Accidentes_laborales_Canarias.csv.csv"
+```
+
+
+```{r}
 # Crear un archivo temporal para almacenar el Excel
 temp <- tempfile(fileext = ".xlsx")
+```
+
+
+```{r, eval=FALSE}
 # Descargar el archivo desde GitHub
-download.file("https://datos.gob.es/es/catalogo/a02002834-accidentes-en-jornada-de-trabajo-n-de-accidentes-segun-grado-de-lesion-y-sexo", destfile = "INPUT/DATA/Accidentes_laborales_Canarias.csv.csv" , mode = "wb")
+download.file(https://datos.gob.es/es/catalogo/a02002834-accidentes-en-jornada-de-trabajo-n-de-accidentes-segun-grado-de-lesion-y-sexo, destfile = "INPUT/DATA/Accidentes_laborales_Canarias.csv.csv" , mode = "wb")
 ```
 
 
-```{r, eval=FALSE}
-
-```
-
-
-```{r, eval=FALSE}
-
-```
+library (jsonfile)
+canarias <- fromjson (file = "INPUT/DATA/ ")
 
 
-```{r, eval=FALSE}
+# Descargar el archivo desde GitHub
+download.file(url, destfile = temp, mode = "wb")
 
-```
+# Leer el archivo Excel desde el archivo temporal
+mi_data <- read_excel(temp, sheet = 1)
+
+# Eliminar el archivo temporal después de la lectura
+unlink(temp)
+
+# Verificar los primeros datos cargados
+head(mi_data)
