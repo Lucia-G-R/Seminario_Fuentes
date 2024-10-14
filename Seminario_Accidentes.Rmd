@@ -103,22 +103,22 @@ colnames(Salud) <- c("Sexo", "Indicador","EstadoAnsiedad","Año","Obs")
 ```
 
 ```{r}
-ELIMINAR FILAS
+#ELIMINAR FILAS
 # Eliminar filas usando subset()
-mi_data4 <- subset(mi_data4, !(Sexo %in% c("De 16 a 64 años", "De 65 y más años")))
+Salud <- subset(Salud, !(Sexo %in% c("De 16 a 64 años", "De 65 y más años")))
 
-mi_data <- subset(mi_data, !(TipoTrabCod %in% c("4", "9", "_T", "3", "6", "0", "5", "1")))
+canarias <- subset(canarias, !(TipoTrabCod %in% c("4", "9", "_T", "3", "6", "0", "5", "1")))
 
-mi_data3 <- subset(mi_data3, !(TipoEnf %in% c("Cardiopartía", "Dolor de cabeza", "infecciosa", "No sabe", "problema de salud", "Problema auditivo", "dermatológico", "gástrico", "respiratorio", "Total")))
+España <- subset(España, !(TipoEnf %in% c("Cardiopartía", "Dolor de cabeza", "infecciosa", "No sabe", "problema de salud", "Problema auditivo", "dermatológico", "gástrico", "respiratorio", "Total")))
 
 # Eliminar filas usando grepl() para mi_data4
-mi_data4 <- mi_data4[!grepl("De 16 a 64 años|De 65 y más años", Sexo), ]
+Salud <- Salud[!grepl("De 16 a 64 años|De 65 y más años", Sexo), ]
 
 # Eliminar filas usando grepl() para mi_data
 mi_data <- mi_data[!grepl("4|9|_T|3|6|0|5|1", TipoTrabCod), ]
 
 # Eliminar filas usando grepl() para mi_data3
-mi_data3 <- mi_data3[!grepl("Cardiopartía|Dolor de cabeza|infecciosa|No sabe|problema de salud|Problema auditivo|dermatológico|gástrico|respiratorio|Total", TipoEnf), ]
+España <- España[!grepl("Cardiopartía|Dolor de cabeza|infecciosa|No sabe|problema de salud|Problema auditivo|dermatológico|gástrico|respiratorio|Total", TipoEnf), ]
 
 ```
 
