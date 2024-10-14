@@ -52,13 +52,45 @@ temp <- tempfile(fileext = ".xlsx")
 download.file(https://datos.gob.es/es/catalogo/a02002834-accidentes-en-jornada-de-trabajo-n-de-accidentes-segun-grado-de-lesion-y-sexo, destfile = "INPUT/DATA/Accidentes_laborales_Canarias.csv.csv" , mode = "wb")
 ```
 
+```{r}
+#CARGA JSON CANARIAS
+install.packages("rjson")
+library(rjson)
+canarias <- fromJSON(file = "INPUT/DATA/Accidentes_laborales_Canarias.json")
 
-library (jsonfile)
-canarias <- fromjson (file = "INPUT/DATA/ ")
+print(canarias)
+```
+
+```{r}
+#CARGA XLS
+install.packages("readxl")
+library(readxl)
+España <- read_excel("INPUT/DATA/Enfermedades_laborales_España.xls")
+print(España)
+```
+
+
+```{r}
+#CARGA CSV
+install.packages("readr")
+library(readr)
+Salud <- read_delim ("INPUT/DATA/Estados_de_salud_Canarias.csv.csv", delim = ",")
+print(Salud)
+```
+
+```{r}
+#CARGA XLSX
+install.packages("readxl")
+library(readxl)
+Aragon <- read_excel ("INPUT/DATA/070901-02_Por grado y sexo. Aragon.xlsx")
+print(Aragon)
+```
+
+
 
 
 # Descargar el archivo desde GitHub
-download.file(url, destfile = temp, mode = "wb")
+download.file(url, destfile = temp, mode = "wb"
 
 # Leer el archivo Excel desde el archivo temporal
 mi_data <- read_excel(temp, sheet = 1)
