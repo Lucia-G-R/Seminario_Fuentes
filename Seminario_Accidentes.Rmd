@@ -86,6 +86,55 @@ Aragon <- read_excel ("INPUT/DATA/070901-02_Por grado y sexo. Aragon.xlsx")
 print(Aragon)
 ```
 
+```{r}
+#ESTA MAL!!!!
+
+# Instalar y cargar las librerías necesarias
+install.packages("tidyverse")    # Incluye dplyr, tidyr, etc.
+install.packages("tidyjson")     # Para manejar datos JSON complejos
+install.packages("rjson")        # Para leer archivos JSON
+
+# Cargar las librerías
+library(tidyverse)
+library(tidyjson)
+library(rjson)
+
+# 1. Leer el archivo JSON
+canarias <- fromJSON(file = "INPUT/DATA/Accidentes_laborales_Canarias.json")
+
+# 2. Ver la estructura inicial del JSON
+str(canarias)  # Esto nos permite ver cómo está estructurado el JSON
+
+# 3. Convertir el JSON a formato tabular usando `spread_all()`
+canarias_df <- canarias_validos %>%
+  spread_all()   # Convierte la lista JSON a un dataframe
+
+# 4. Ver el dataframe resultante
+print(head(canarias_df))  # Muestra las primeras filas del dataframe
+
+# Si hay arrays u objetos anidados dentro del JSON:
+# 5. Entrar en un objeto anidado y aplanar arrays si existen
+canarias_anidado <- canarias %>%
+  spread_all() %>%         # Aplanar la estructura principal
+  enter_object("nombre_del_objeto") %>%  # Reemplaza con el nombre del objeto anidado si es necesario
+  gather_array() %>%       # Aplanar arrays en filas si existen
+  spread_all()             # Convertir el contenido anidado en un formato tabular
+
+# 6. Ver el dataframe con los objetos anidados expandidos (si existen)
+print(head(canarias_anidado))
+
+# 7. Guardar el dataframe en una variable final
+final_canarias_df <- canarias_anidado
+
+# 8. Verificar el tamaño de los objetos (opcional)
+lobstr::obj_size(canarias_df)
+lobstr::obj_size(final_canarias_df)
+
+# 9. Inspeccionar los tipos de datos y el contenido
+final_canarias_df %>% glimpse()  # Resumen de la estructura del dataframe
+
+```
+
 
 
 ```{r}
