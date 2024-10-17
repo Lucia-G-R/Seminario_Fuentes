@@ -101,12 +101,17 @@ library(rjson)
 
 # 1. Leer el archivo JSON
 canarias <- fromJSON(file = "INPUT/DATA/Accidentes_laborales_Canarias.json")
+print (canarias)
 
 # 2. Ver la estructura inicial del JSON
-str(canarias)  # Esto nos permite ver cómo está estructurado el JSON
+str(canarias[["name"]][["text"]][[1]][["value"]])# Esto nos permite ver cómo está estructurado el JSON
+str (canarias[["metadata"]][["rightsHolder"]][["name"]])
+spread_all(canarias[["name"]][["text"]][[1]][["value"]])
+spread_all(canarias[["metadata"]][["rightsHolder"]][["name"]])
 
 # 3. Convertir el JSON a formato tabular usando `spread_all()`
-canarias_df <- canarias_validos %>%
+canarias_df <- 
+  canarias %>%
   spread_all()   # Convierte la lista JSON a un dataframe
 
 # 4. Ver el dataframe resultante
