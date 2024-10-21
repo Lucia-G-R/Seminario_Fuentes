@@ -207,15 +207,15 @@ España <- España[!grepl("Cardiopartía|Dolor de cabeza|infecciosa|No sabe|prob
 
 
 ```{r}
-ELIMINAR COLUMNAS
+# ELIMINAR COLUMNAS
 # Supongamos que quieres mantener las columnas "Col1" y "Col2"
-mi_data <- subset(mi_data, select = c(Año, Sexo, Gravedad, TipoTrab, Obs))
+canarias <- subset(canarias, select = c(Año, Sexo, Gravedad, TipoTrab, Obs))
 
-mi_data2 <- subset(mi_data2, select = c(Año, Sexo, NumAcci, Gravedad))
+Aragon <- subset(Aragon, select = c(Año, Sexo, NumAcci, Gravedad))
 
-mi_data3 <- subset(mi_data3, select = c(TipoEnf, Indicador, Sexo, Obs))
+España <- subset(España, select = c(TipoEnf, Indicador, Sexo, Obs))
 
-mi_data4 <- subset(mi_data4, select = c(Sexo, Indicador, EstadoAnsiedad, Obs))
+Salud <- subset(Salud, select = c(Sexo, Indicador, EstadoAnsiedad, Obs))
 
 
 
