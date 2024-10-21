@@ -4,17 +4,17 @@ subtitle: "Fuentes de datos biomédicas y web semántica, Grado en Ingeniería d
 author: "Lorena Nerín y Lucía González"
 date: "`r Sys.Date()`"
 output:
-  pdf_document: default
-  html_document: 
+  pdf_document: 
+    toc: true
+  html_document:
     toc: true
     toc_float: true
 ---
 
 ```{r setup, include=FALSE}
-install.packages("knitr")
-install.packages("rmarkdown")
 knitr::opts_chunk$set(echo = TRUE)
 ```
+
 
 # **Introducción**
 Las enfermedades laborales
