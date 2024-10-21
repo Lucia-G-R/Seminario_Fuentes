@@ -49,6 +49,15 @@ España <- read_excel("INPUT/DATA/Enfermedades_laborales_España.xls")
 print(España)
 ```
 
+### **Carga de datos CSV**
+```{r}
+#CARGA CSV
+install.packages("readr")
+library(readr)
+Salud <- read_delim ("INPUT/DATA/Estados_de_salud_Canarias.csv.csv", delim = ",")
+print(Salud)
+```
+
 
 # **Resultados**
 
@@ -90,24 +99,6 @@ temp <- tempfile(fileext = ".xlsx")
 download.file(https://datos.gob.es/es/catalogo/a02002834-accidentes-en-jornada-de-trabajo-n-de-accidentes-segun-grado-de-lesion-y-sexo, destfile = "INPUT/DATA/Accidentes_laborales_Canarias.csv.csv" , mode = "wb")
 ```
 
-
-
-```{r}
-#CARGA XLS
-install.packages("readxl")
-library(readxl)
-España <- read_excel("INPUT/DATA/Enfermedades_laborales_España.xls")
-print(España)
-```
-
-
-```{r}
-#CARGA CSV
-install.packages("readr")
-library(readr)
-Salud <- read_delim ("INPUT/DATA/Estados_de_salud_Canarias.csv.csv", delim = ",")
-print(Salud)
-```
 
 ```{r}
 #CARGA XLSX
