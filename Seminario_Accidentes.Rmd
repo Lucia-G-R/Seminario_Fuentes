@@ -40,6 +40,15 @@ canarias <- fromJSON(file = "INPUT/DATA/Accidentes_laborales_Canarias.json")
 print(canarias)
 ```
 
+### **Carga de datos XLS**
+```{r}
+#CARGA XLS
+install.packages("readxl")
+library(readxl)
+España <- read_excel("INPUT/DATA/Enfermedades_laborales_España.xls")
+print(España)
+```
+
 
 # **Resultados**
 
@@ -81,14 +90,7 @@ temp <- tempfile(fileext = ".xlsx")
 download.file(https://datos.gob.es/es/catalogo/a02002834-accidentes-en-jornada-de-trabajo-n-de-accidentes-segun-grado-de-lesion-y-sexo, destfile = "INPUT/DATA/Accidentes_laborales_Canarias.csv.csv" , mode = "wb")
 ```
 
-```{r}
-#CARGA JSON CANARIAS
-install.packages("rjson")
-library(rjson)
-canarias <- fromJSON(file = "INPUT/DATA/Accidentes_laborales_Canarias.json")
 
-print(canarias)
-```
 
 ```{r}
 #CARGA XLS
