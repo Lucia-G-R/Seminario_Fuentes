@@ -14,12 +14,20 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# **Introdcucción**
+# **Introducción**
 Las enfermedades laborales
 
-## Including Plots
+# **Objetivo general**
 
-You can also embed plots, for example:
+# **Objetivo específico**
+
+# **Metodología**
+
+# **Resultados**
+
+# **Conclusiones**
+
+# **Referencias**
 
 ```{r pressure, echo=FALSE}
 plot(pressure)
