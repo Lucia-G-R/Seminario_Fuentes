@@ -29,6 +29,18 @@ Agregamos los URL de donde hemos obtenido los datos:
 - https://datos.gob.es/es/catalogo/a05003423-accidentes-de-trabajo-en-jornada-segun-tipos-de-trabajo-gravedad-trabajo-habitual-o-no-y-sexos-canarias-y-anos
 - https://datos.gob.es/es/catalogo/a02002834-accidentes-en-jornada-de-trabajo-n-de-accidentes-segun-grado-de-lesion-y-sexo
 
+## **Carga de datos**
+### **Carga de datos JSON**
+```{r}
+#CARGA JSON CANARIAS
+install.packages("rjson")
+library(rjson)
+canarias <- fromJSON(file = "INPUT/DATA/Accidentes_laborales_Canarias.json")
+
+print(canarias)
+```
+
+
 # **Resultados**
 
 # **Conclusiones**
