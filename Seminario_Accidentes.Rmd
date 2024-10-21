@@ -30,10 +30,10 @@ Evaluación del desarrollo de enfermedades laborales, respecto a la profesión y
 # **Metodología**
 ## **Materiales**
 Agregamos los URL de donde hemos obtenido los datos:
-- https://datos.gob.es/es/catalogo/ea0010587-personas-de-16-a-74-ocupadas-anos-o-que-trabajaron-anteriormente-que-hayan-tenido-alguna-enfermedadlaboral-por-tipo-de-enfermedad-y-sexo-epa-identificador-api-t22-e308-meto_05-modulo-base_2011-2020-l0-02003-px1
-- https://datos.gob.es/es/catalogo/a05003423-poblacion-de-16-y-mas-anos-segun-autovaloracion-del-estado-de-salud-en-relacion-a-situaciones-de-ansiedad-o-depresion-sexos-o-grupos-de-edad-por-anos-canarias-2004-2009
-- https://datos.gob.es/es/catalogo/a05003423-accidentes-de-trabajo-en-jornada-segun-tipos-de-trabajo-gravedad-trabajo-habitual-o-no-y-sexos-canarias-y-anos
-- https://datos.gob.es/es/catalogo/a02002834-accidentes-en-jornada-de-trabajo-n-de-accidentes-segun-grado-de-lesion-y-sexo
+- [Enfermedades laborales](https://datos.gob.es/es/catalogo/ea0010587-personas-de-16-a-74-ocupadas-anos-o-que-trabajaron-anteriormente-que-hayan-tenido-alguna-enfermedadlaboral-por-tipo-de-enfermedad-y-sexo-epa-identificador-api-t22-e308-meto_05-modulo-base_2011-2020-l0-02003-px1)
+- [Estado de salud mental](https://datos.gob.es/es/catalogo/a05003423-poblacion-de-16-y-mas-anos-segun-autovaloracion-del-estado-de-salud-en-relacion-a-situaciones-de-ansiedad-o-depresion-sexos-o-grupos-de-edad-por-anos-canarias-2004-2009)
+- [Tipos de trabajos](https://datos.gob.es/es/catalogo/a05003423-accidentes-de-trabajo-en-jornada-segun-tipos-de-trabajo-gravedad-trabajo-habitual-o-no-y-sexos-canarias-y-anos)
+- [Grado de lesión de la enfermedad laboral](https://datos.gob.es/es/catalogo/a02002834-accidentes-en-jornada-de-trabajo-n-de-accidentes-segun-grado-de-lesion-y-sexo)
 
 ## **Carga de datos**
 ### **Descargar datos**
