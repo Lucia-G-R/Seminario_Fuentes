@@ -54,9 +54,24 @@ download.file(https://datos.gob.es/es/catalogo/a02002834-accidentes-en-jornada-d
 #CARGA JSON CANARIAS
 install.packages("rjson")
 library(rjson)
+
 canarias <- fromJSON(file = "INPUT/DATA/Accidentes_laborales_Canarias.json")
 
-print(canarias)
+# Como las sublistas tienen diferentes longitudes las relleno para poder realizar un data.frame
+max_length<-max(sapply(canarias, length)) # Encontrar la longitud maxima
+
+canarias_mod<-lapply(canarias, function(x){
+  length(x)<-max_length
+  return(x) # Sublista ajustada
+})
+
+canarias_mod<-canarias_mod[sapply(canarias_mod, function(x) length(x)> 0)]
+
+# Convertir la lista de listas en data.frame
+canarias_df<-do.call(rbind, lapply(canarias_mod, as.data.frame))
+
+
+print(canarias_df)
 ```
 
 ### **Carga de datos XLS**
