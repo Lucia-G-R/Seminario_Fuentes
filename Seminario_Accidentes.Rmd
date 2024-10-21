@@ -20,8 +20,12 @@ knitr::opts_chunk$set(echo = TRUE)
 Las enfermedades laborales
 
 # **Objetivo general**
+Evaluación del desarrollo de enfermedades laborales, respecto a la profesión y el estado de salud mental.
 
 # **Objetivo específico**
+- ¿Existe relación la profesión de movimiento de tierra respecto al desarrollo de enfermedades psicológicas?
+- ¿Existe relación entre el desarrollo respecto al sexo?
+- ¿Exsite relación entre la gravedad de una enfermedad psicológica respecto al desarrollo de una enfermedad laboral?
 
 # **Metodología**
 ## **Materiales**
@@ -52,14 +56,15 @@ download.file(https://datos.gob.es/es/catalogo/a02002834-accidentes-en-jornada-d
 ### **Carga de datos JSON**
 ```{r}
 #CARGA JSON CANARIAS
-install.packages("rjson")
+# install.packages("rjson")
 library(rjson)
 library(tidyverse)
 library(tidyjson)
 
 canarias <- 
-  fromJSON(file = "INPUT/DATA/Accidentes_laborales_Canarias.json")%>%
-  spread_all()
+  fromJSON(file = "INPUT/DATA/Accidentes_laborales_Canarias.json")
+
+canarias
 
 # Como las sublistas tienen diferentes longitudes las relleno para poder realizar un data.frame
 max_length<-max(sapply(canarias, length)) # Encontrar la longitud maxima
