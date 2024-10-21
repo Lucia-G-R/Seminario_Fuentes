@@ -84,6 +84,25 @@ Aragon <- read_excel ("INPUT/DATA/070901-02_Por grado y sexo. Aragon.xlsx")
 print(Aragon)
 ```
 
+### **Cambiar nombre de las columnas**
+```{r}
+#CAMBIAR NOMBRE COLUMNAS
+install.packages("tidyverse")
+library(tidyverse)
+
+spread_all (canarias)
+colnames(canarias) <- c("Año", "Año2", "Sexo", "SexoCod", "Gravedad", "GravedadCod", "TipoTrab", "TipoTrabCod", "TrabHab", "TrabHabCod", "Obs")
+#accidentes canarias
+
+colnames(Aragon) <- c("Año", "Sexo", "NumAcci", "Gravedad", "GravedadCod", "CCAA")
+#aragon
+
+colnames(España) <- c("TipoEnf", "Indicador", "Sexo", "Obs")
+#españa
+
+colnames(Salud) <- c("Sexo", "Indicador","EstadoAnsiedad","Año","Obs")
+#estado salud canarias
+```
 
 # **Resultados**
 
@@ -162,25 +181,7 @@ final_canarias_df %>% glimpse()  # Resumen de la estructura del dataframe
 
 
 
-```{r}
-#CAMBIAR NOMBRE COLUMNAS
-install.packages("tidyverse")
-library(tidyverse)
 
-spread_all (canarias)
-colnames(canarias) <- c("Año", "Año2", "Sexo", "SexoCod", "Gravedad", "GravedadCod", "TipoTrab", "TipoTrabCod", "TrabHab", "TrabHabCod", "Obs")
-#accidentes canarias
-
-colnames(Aragon) <- c("Año", "Sexo", "NumAcci", "Gravedad", "GravedadCod", "CCAA")
-#aragon
-
-colnames(España) <- c("TipoEnf", "Indicador", "Sexo", "Obs")
-#españa
-
-colnames(Salud) <- c("Sexo", "Indicador","EstadoAnsiedad","Año","Obs")
-#estado salud canarias
-
-```
 
 ```{r}
 #ELIMINAR FILAS
