@@ -1,10 +1,13 @@
 ---
 title: "Seminario_Accidentes"
+subtitle: "Fuentes de datos biomédicas y web semántica, Grado en Ingeniería de la Salud"
 author: "Lorena Nerín y Lucía González"
 date: "`r Sys.Date()`"
 output:
   pdf_document: default
   html_document: default
+    toc: true
+    toc_float: true
 ---
 
 ```{r setup, include=FALSE}
