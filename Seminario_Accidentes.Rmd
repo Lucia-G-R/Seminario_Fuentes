@@ -55,7 +55,6 @@ download.file(https://datos.gob.es/es/catalogo/a02002834-accidentes-en-jornada-d
 
 ### **Carga de datos JSON**
 ```{r}
-<<<<<<< HEAD
 
 library(rjson)
 library(tidyverse)
@@ -63,34 +62,6 @@ library(tidyjson)
 españa <- 
   fromJSON(file = "INPUT/DATA/Enfermedades_laborales_España.json")%>%
   spread_all()
-=======
-#CARGA JSON CANARIAS
-# install.packages("rjson")
-library(rjson)
-library(tidyverse)
-library(tidyjson)
-
-canarias <- 
-  fromJSON(file = "INPUT/DATA/Accidentes_laborales_Canarias.json")
-
-canarias
-
-# Como las sublistas tienen diferentes longitudes las relleno para poder realizar un data.frame
-max_length<-max(sapply(canarias, length)) # Encontrar la longitud maxima
-
-canarias_mod<-lapply(canarias, function(x){
-  length(x)<-max_length
-  return(x) # Sublista ajustada
-})
-
-canarias_mod<-canarias_mod[sapply(canarias_mod, function(x) length(x)> 0)]
-
-# Convertir la lista de listas en data.frame
-canarias_df<-do.call(rbind, lapply(canarias_mod, as.data.frame))
-
-
-print(canarias_df)
->>>>>>> 26c6e5306fee31d460439f8e221cdca7487b6e0b
 ```
 
 
@@ -102,6 +73,7 @@ library(readxl)
 canarias <- read_excel("INPUT/DATA/Accidentes_laborales_Canarias.xls")
 print(canarias)
 ```
+
 
 ### **Carga de datos CSV**
 ```{r}
