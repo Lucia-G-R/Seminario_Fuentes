@@ -86,6 +86,19 @@ Aragon <- read_excel ("INPUT/DATA/070901-02_Por grado y sexo. Aragon.xlsx")
 print(Aragon)
 ```
 
+
+### **Convertir los datos en dataframes**
+```{r}
+canarias<-as.data.frame(canarias)
+
+Aragon<-as.data.frame(Aragon)
+
+España<-as.data.frame(España)
+
+Salud<-as.data.frame(Salud)
+```
+
+
 ### **Cambiar nombre de las columnas**
 ```{r}
 #CAMBIAR NOMBRE COLUMNAS
@@ -105,17 +118,6 @@ colnames(España) <- c("TipoEnf", "Indicador", "Sexo", "Obs")
 colnames(Salud) <- c("Sexo", "Indicador","EstadoAnsiedad","Año","Obs")
 #estado salud canarias
 ```
-### **Convertir los datos en dataframes**
-```{r}
-canarias<-as.data.frame(canarias)
-
-Aragon<-as.data.frame(Aragon)
-
-España<-as.data.frame(España)
-
-Salud<-as.data.frame(Salud)
-```
-
 
 ### **Eliminar columnas**
 Eliminamos columnas que no nos va a interesar estudiar 
