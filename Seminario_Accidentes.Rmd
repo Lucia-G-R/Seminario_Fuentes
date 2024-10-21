@@ -58,6 +58,15 @@ Salud <- read_delim ("INPUT/DATA/Estados_de_salud_Canarias.csv.csv", delim = ","
 print(Salud)
 ```
 
+### **Carga de datos XLSX**
+```{r}
+#CARGA XLSX
+install.packages("readxl")
+library(readxl)
+Aragon <- read_excel ("INPUT/DATA/070901-02_Por grado y sexo. Aragon.xlsx")
+print(Aragon)
+```
+
 
 # **Resultados**
 
@@ -100,13 +109,7 @@ download.file(https://datos.gob.es/es/catalogo/a02002834-accidentes-en-jornada-d
 ```
 
 
-```{r}
-#CARGA XLSX
-install.packages("readxl")
-library(readxl)
-Aragon <- read_excel ("INPUT/DATA/070901-02_Por grado y sexo. Aragon.xlsx")
-print(Aragon)
-```
+
 
 ```{r}
 #ESTA MAL!!!!
