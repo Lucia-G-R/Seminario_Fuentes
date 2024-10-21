@@ -105,7 +105,42 @@ colnames(España) <- c("TipoEnf", "Indicador", "Sexo", "Obs")
 colnames(Salud) <- c("Sexo", "Indicador","EstadoAnsiedad","Año","Obs")
 #estado salud canarias
 ```
+### **Convertir los datos en dataframes**
+```{r}
+canarias<-as.data.frame(canarias)
 
+Aragon<-as.data.frame(Aragon)
+
+España<-as.data.frame(España)
+
+Salud<-as.data.frame(Salud)
+```
+
+
+### **Eliminar columnas**
+Eliminamos columnas que no nos va a interesar estudiar 
+```{r}
+# ELIMINAR COLUMNAS
+install.packages("dplyr")  
+library(dplyr)
+canarias <- canarias%>% select(Año, Sexo, Gravedad, TipoTrab, Obs)
+class(canarias)
+
+Aragon <- subset(Aragon, select = c(Año, Sexo, NumAcci, Gravedad))
+
+España <- subset(España, select = c(TipoEnf, Indicador, Sexo, Obs))
+
+Salud <- subset(Salud, select = c(Sexo, Indicador, EstadoAnsiedad, Obs))
+
+
+
+# Mostrar las primeras filas después de eliminar
+head(mi_data)
+
+# Guardar el data frame en un nuevo archivo CSV
+write.csv(mi_data, "ruta/del/archivo/datos_filtrados.csv", row.names = FALSE)
+
+```
 # **Resultados**
 
 # **Conclusiones**
@@ -206,29 +241,10 @@ España <- España[!grepl("Cardiopartía|Dolor de cabeza|infecciosa|No sabe|prob
 ```
 
 
-```{r}
-# ELIMINAR COLUMNAS
-# Supongamos que quieres mantener las columnas "Col1" y "Col2"
-canarias <- subset(canarias, select = c(Año, Sexo, Gravedad, TipoTrab, Obs))
 
-Aragon <- subset(Aragon, select = c(Año, Sexo, NumAcci, Gravedad))
-
-España <- subset(España, select = c(TipoEnf, Indicador, Sexo, Obs))
-
-Salud <- subset(Salud, select = c(Sexo, Indicador, EstadoAnsiedad, Obs))
-
-
-
-# Mostrar las primeras filas después de eliminar
-head(mi_data)
-
-# Guardar el data frame en un nuevo archivo CSV
-write.csv(mi_data, "ruta/del/archivo/datos_filtrados.csv", row.names = FALSE)
-
-```
 
 ```{r}
-HACER UN DATAFRAME JUNTO
+# HACER UN DATAFRAME JUNTO
 # Unir por una columna común (ej. "ID")
 combined_data <- merge(mi_data, mi_data2, by = "Año")
 
