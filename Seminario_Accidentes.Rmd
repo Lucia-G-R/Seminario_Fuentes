@@ -17,7 +17,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 
 # **Introducción**
-Las enfermedades laborales
+Las enfermedades laborales pueden ocasionar bajas laborales, seguir
 
 # **Objetivo general**
 Evaluación del desarrollo de enfermedades laborales, respecto a la profesión y el estado de salud mental.
