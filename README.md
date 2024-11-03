@@ -1,3 +1,7 @@
+<div style="display: flex; justify-content: space-between; align-items: center;">
+  <img src="./images/escudo_ubu.png" alt="Imagen izquierda" style="width: 30%; height: auto;">
+</div>
+
 # Desarrollo de distintas enfermedades según el oficio 
 ## Autoras: Lorena Nerín Grau lng1008@alu.ubu.es - Lucía González Redondo lgr1022@alu.ubu.es
 
