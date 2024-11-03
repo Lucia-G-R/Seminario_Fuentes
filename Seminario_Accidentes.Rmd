@@ -142,7 +142,7 @@ write.csv(mi_data, "ruta/del/archivo/datos_filtrados.csv", row.names = FALSE)
 # **Conclusiones**
 
 # **Referencias**
-
+https://osha.europa.eu/es/themes/work-related-diseases
 ```{r pressure, echo=FALSE}
 plot(pressure)
 ```
