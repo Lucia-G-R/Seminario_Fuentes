@@ -16,7 +16,6 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-
 # **Introducción**
 El desarrollo de enfermedades laborales pueden ocasionar bajas laborales. Estás enfermedades se producen en el ámbito laboral según el trabajo realizado, pero queremos estudiar como el desarrollo de estas enfermedades se puede agravar por poseer una enfermedad laboral o incluso si la gravedad de la enfermedad laboral es distinta entre géneros.
 
@@ -107,7 +106,7 @@ colnames(canarias) <- c("Año", "Año2", "Sexo", "SexoCod", "Gravedad", "Graveda
 colnames(Aragon) <- c("Año", "Sexo", "NumAcci", "Gravedad", "GravedadCod", "CCAA")
 #aragon
 
-colnames(España) <- c("TipoEnf", "Indicador", "Sexo", "Obs")
+colnames(españa) <- c("TipoEnf", "Indicador", "Sexo", "Obs")
 #españa
 
 colnames(Salud) <- c("Sexo", "Indicador","EstadoAnsiedad","Año","Obs")
@@ -125,7 +124,7 @@ class(canarias)
 
 Aragon <- subset(Aragon, select = c(Año, Sexo, NumAcci, Gravedad))
 
-España <- subset(España, select = c(TipoEnf, Indicador, Sexo, Obs))
+españa <- subset(españa, select = c(TipoEnf, Indicador, Sexo, Obs))
 
 Salud <- subset(Salud, select = c(Sexo, Indicador, EstadoAnsiedad, Obs))
 
