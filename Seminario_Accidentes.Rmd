@@ -2,7 +2,7 @@
 title: "Seminario_Accidentes"
 subtitle: "Fuentes de datos biomédicas y web semántica, Grado en Ingeniería de la Salud"
 author: "Lorena Nerín y Lucía González"
-class: "3º INgeniería de la Salud"
+class: "3º Ingeniería de la Salud"
 date: "`r Sys.Date()`"
 output:
   pdf_document: 
@@ -18,7 +18,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 
 # **Introducción**
-Las enfermedades laborales pueden ocasionar bajas laborales, seguir
+El desarrollo de enfermedades laborales pueden ocasionar bajas laborales. Estás enfermedades se producen en el ámbito laboral según el trabajo realizado, pero queremos estudiar como el desarrollo de estas enfermedades se puede agravar por poseer una enfermedad laboral o incluso si la gravedad de la enfermedad laboral es distinta entre géneros.
 
 # **Objetivo general**
 Evaluación del desarrollo de enfermedades laborales, respecto a la profesión y el estado de salud mental.
