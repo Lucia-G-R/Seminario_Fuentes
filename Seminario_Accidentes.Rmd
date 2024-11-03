@@ -143,6 +143,7 @@ write.csv(mi_data, "ruta/del/archivo/datos_filtrados.csv", row.names = FALSE)
 
 # **Referencias**
 https://osha.europa.eu/es/themes/work-related-diseases
+https://www.who.int/es/news-room/fact-sheets/detail/mental-disorders
 ```{r pressure, echo=FALSE}
 plot(pressure)
 ```
