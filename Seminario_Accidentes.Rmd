@@ -165,7 +165,7 @@ colnames(españa) <- c("TipoEnf", "Indicador", "Sexo", "Obs")
 print(españa)
 #españa
 
-colnames(Salud) <- c("Sexo", "Indicador","EstadoAnsiedad","Año","Obs")
+colnames(Salud) <- c("Sexo", "Indicador","EstadoAnsiedad","Obs")
 print(Salud)
 #estado salud canarias
 ```
@@ -222,10 +222,10 @@ write.csv(mi_data, "ruta/del/archivo/datos_filtrados.csv", row.names = FALSE)
 Realizo un dataframe uniendo los datos sobre la garvedad de las enfermedades laborales en Aragón y la salud mental de los ciudadanos en Canarias.
 ```{r}
 # Unir por una columna común "Año"
-df_Salu_Arag <- merge(Aragon, Salud, by = "Año")
+df_Salu_Arag <- merge(Aragon, Salud, by = "Sexo")
 
 # Unir por columnas claves con diferentes nombres
-df_Salu_Arag <- merge(Aragon, Salud, by.x = "Año", by.y = "Año")
+df_Salu_Arag <- merge(Aragon, Salud, by.x = "Sexo", by.y = "Sexo")
 
 # Verificar el resultado
 head(df_Salu_Arag)
