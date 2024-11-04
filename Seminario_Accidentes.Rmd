@@ -1,7 +1,7 @@
 ---
 title: "Seminario_Accidentes"
 subtitle: "Fuentes de datos biomédicas y web semántica, Grado en Ingeniería de la Salud"
-author: "Lorena Nerín y Lucía González"
+author: "Lorena Nerín Grau y Lucía González Redondo"
 class: "3º Ingeniería de la Salud"
 date: "`r Sys.Date()`"
 output:
@@ -219,16 +219,16 @@ write.csv(mi_data, "ruta/del/archivo/datos_filtrados.csv", row.names = FALSE)
 ```
 
 ## **Realizar un dataframe conjunto**
+Realizo un dataframe uniendo los datos sobre la garvedad de las enfermedades laborales en Aragón y la salud mental de los ciudadanos en Canarias.
 ```{r}
-# HACER UN DATAFRAME JUNTO
-# Unir por una columna común (ej. "ID")
-combined_data <- merge(mi_data, mi_data2, by = "Año")
-
-# Verificar el resultado
-head(combined_data)
+# Unir por una columna común "Año"
+df_Salu_Arag <- merge(Aragon, Salud, by = "Año")
 
 # Unir por columnas claves con diferentes nombres
-combined_data <- merge(data1, data2, by.x = "ID_data1", by.y = "ID_data2")
+df_Salu_Arag <- merge(Aragon, Salud, by.x = "Año", by.y = "Año")
+
+# Verificar el resultado
+head(df_Salu_Arag)
 ```
 
 # **Resultados**
