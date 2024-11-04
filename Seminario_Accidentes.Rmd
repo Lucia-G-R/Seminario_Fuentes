@@ -54,7 +54,7 @@ temp <- tempfile(fileext = ".xlsx")
 download.file(https://datos.gob.es/es/catalogo/a02002834-accidentes-en-jornada-de-trabajo-n-de-accidentes-segun-grado-de-lesion-y-sexo, destfile = "INPUT/DATA/Accidentes_laborales_Canarias.csv.csv" , mode = "wb")
 ```
 
-### **Carag de librerías y paquetes**
+### **Carga de librerías y paquetes**
 ```{r}
 # Librerías necesarias para JSON 
 
@@ -170,8 +170,30 @@ print(Salud)
 #estado salud canarias
 ```
 
-### **Eliminar columnas**
-Eliminamos columnas que no nos va a interesar estudiar. 
+## **Eliminar filas**
+Eliminamos las filas que no nos va a interesar estudiar.
+```{r}
+#ELIMINAR FILAS
+# Eliminar filas usando subset()
+Salud <- subset(Salud, !(Sexo %in% c("De 16 a 64 años", "De 65 y más años")))
+
+canarias <- subset(canarias, !(TipoTrabCod %in% c("4", "9", "_T", "3", "6", "0", "5", "1")))
+
+España <- subset(España, !(TipoEnf %in% c("Cardiopartía", "Dolor de cabeza", "infecciosa", "No sabe", "problema de salud", "Problema auditivo", "dermatológico", "gástrico", "respiratorio", "Total")))
+
+# Eliminar filas usando grepl() para mi_data4
+Salud <- Salud[!grepl("De 16 a 64 años|De 65 y más años", Sexo), ]
+
+# Eliminar filas usando grepl() para mi_data
+mi_data <- mi_data[!grepl("4|9|_T|3|6|0|5|1", TipoTrabCod), ]
+
+# Eliminar filas usando grepl() para mi_data3
+España <- España[!grepl("Cardiopartía|Dolor de cabeza|infecciosa|No sabe|problema de salud|Problema auditivo|dermatológico|gástrico|respiratorio|Total", TipoEnf), ]
+
+```
+
+## **Eliminar columnas**
+Eliminamos las columnas que no nos va a interesar estudiar. 
 ```{r}
 # ELIMINAR COLUMNAS
 install.packages("dplyr")  
@@ -195,6 +217,20 @@ head(mi_data)
 write.csv(mi_data, "ruta/del/archivo/datos_filtrados.csv", row.names = FALSE)
 
 ```
+
+## **Realizar un dataframe conjunto**
+```{r}
+# HACER UN DATAFRAME JUNTO
+# Unir por una columna común (ej. "ID")
+combined_data <- merge(mi_data, mi_data2, by = "Año")
+
+# Verificar el resultado
+head(combined_data)
+
+# Unir por columnas claves con diferentes nombres
+combined_data <- merge(data1, data2, by.x = "ID_data1", by.y = "ID_data2")
+```
+
 # **Resultados**
 
 # **Conclusiones**
@@ -210,42 +246,6 @@ plot(pressure)
 
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
-
-
-```{r}
-#ELIMINAR FILAS
-# Eliminar filas usando subset()
-Salud <- subset(Salud, !(Sexo %in% c("De 16 a 64 años", "De 65 y más años")))
-
-canarias <- subset(canarias, !(TipoTrabCod %in% c("4", "9", "_T", "3", "6", "0", "5", "1")))
-
-España <- subset(España, !(TipoEnf %in% c("Cardiopartía", "Dolor de cabeza", "infecciosa", "No sabe", "problema de salud", "Problema auditivo", "dermatológico", "gástrico", "respiratorio", "Total")))
-
-# Eliminar filas usando grepl() para mi_data4
-Salud <- Salud[!grepl("De 16 a 64 años|De 65 y más años", Sexo), ]
-
-# Eliminar filas usando grepl() para mi_data
-mi_data <- mi_data[!grepl("4|9|_T|3|6|0|5|1", TipoTrabCod), ]
-
-# Eliminar filas usando grepl() para mi_data3
-España <- España[!grepl("Cardiopartía|Dolor de cabeza|infecciosa|No sabe|problema de salud|Problema auditivo|dermatológico|gástrico|respiratorio|Total", TipoEnf), ]
-
-```
-
-
-
-
-```{r}
-# HACER UN DATAFRAME JUNTO
-# Unir por una columna común (ej. "ID")
-combined_data <- merge(mi_data, mi_data2, by = "Año")
-
-# Verificar el resultado
-head(combined_data)
-
-# Unir por columnas claves con diferentes nombres
-combined_data <- merge(data1, data2, by.x = "ID_data1", by.y = "ID_data2")
-```
 
 
 
