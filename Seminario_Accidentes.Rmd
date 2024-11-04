@@ -114,18 +114,20 @@ print(canarias)
 
 
 ### **Carga de datos CSV**
+Queremos extraer los datos sobre la salud mental en los habitantes de Canarias. 
+Como es un archivo con extensión .csv, utilizamos read_delim e indicamos que el delimitador es ;
 ```{r}
 #CARGA CSV
 install.packages("readr")
 library(readr)
 
 # Cargamos los archivos con extensión .csv
-Salud <- read_delim ("INPUT/DATA/Estados_de_salud_Canarias.csv.csv", delim = "")
+Salud <- read_delim ("INPUT/DATA/Estados_de_salud_Canarias.csv.csv", delim = ";")
 print(Salud)
 ```
 
 ### **Carga de datos XLSX**
-Queremos extraer los datos sobre la salud mental en los habitantes de Aragón. 
+Queremos extraer los datos sobre la gravedad de las enfermedades laborales producidas en Aragón. 
 Como es un archivo con extensión .xlsx, utilizamos read_excel.
 ```{r}
 #CARGA XLSX
