@@ -115,9 +115,8 @@ print(canarias)
 
 ### **Carga de datos CSV**
 Queremos extraer los datos sobre la salud mental en los habitantes de Canarias. 
-Como es un archivo con extensión .csv, utilizamos read_delim e indicamos que el delimitador es ;
+Como es un archivo con extensión .csv, utilizamos read_delim e indicamos que el delimitador es
 ```{r}
-#CARGA CSV
 install.packages("readr")
 library(readr)
 
@@ -130,9 +129,10 @@ print(Salud)
 Queremos extraer los datos sobre la gravedad de las enfermedades laborales producidas en Aragón. 
 Como es un archivo con extensión .xlsx, utilizamos read_excel.
 ```{r}
-#CARGA XLSX
 install.packages("readxl")
 library(readxl)
+
+# Cargamos los archivos con extensión .xlsx
 Aragon <- read_excel ("INPUT/DATA/070901-02_Por grado y sexo. Aragon.xlsx")
 print(Aragon)
 ```
@@ -140,12 +140,12 @@ print(Aragon)
 ### **Cambiar nombre de las columnas**
 Vamos a cambiar los nombres de las distintas columnas de los datos extraídos.
 ```{r}
-#CAMBIAR NOMBRE COLUMNAS
 install.packages("tidyverse")
 library(tidyverse)
 
 spread_all (canarias)
 colnames(canarias) <- c("Año", "Año2", "Sexo", "SexoCod", "Gravedad", "GravedadCod", "TipoTrab", "TipoTrabCod", "TrabHab", "TrabHabCod", "Obs")
+print(canarias)
 #accidentes canarias
 
 colnames(Aragon) <- c("Año", "Sexo", "NumAcci", "Gravedad", "GravedadCod", "CCAA")
@@ -162,13 +162,14 @@ print(Salud)
 ```
 
 ### **Eliminar columnas**
-Eliminamos columnas que no nos va a interesar estudiar 
+Eliminamos columnas que no nos va a interesar estudiar. 
 ```{r}
 # ELIMINAR COLUMNAS
 install.packages("dplyr")  
 library(dplyr)
 canarias <- canarias%>% select(Año, Sexo, Gravedad, TipoTrab, Obs)
 class(canarias)
+print(canarias)
 
 Aragon <- subset(Aragon, select = c(Año, Sexo, NumAcci, Gravedad))
 
