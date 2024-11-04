@@ -125,6 +125,8 @@ print(Salud)
 ```
 
 ### **Carga de datos XLSX**
+Queremos extraer los datos sobre la salud mental en los habitantes de Aragón. 
+Como es un archivo con extensión .xlsx, utilizamos read_excel.
 ```{r}
 #CARGA XLSX
 install.packages("readxl")
@@ -134,6 +136,7 @@ print(Aragon)
 ```
 
 ### **Cambiar nombre de las columnas**
+Vamos a cambiar los nombres de las distintas columnas de los datos extraídos.
 ```{r}
 #CAMBIAR NOMBRE COLUMNAS
 install.packages("tidyverse")
