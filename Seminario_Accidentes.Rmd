@@ -120,7 +120,7 @@ install.packages("readr")
 library(readr)
 
 # Cargamos los archivos con extensión .csv
-Salud <- read_delim ("INPUT/DATA/Estados_de_salud_Canarias.csv.csv", delim = ",")
+Salud <- read_delim ("INPUT/DATA/Estados_de_salud_Canarias.csv.csv", delim = "")
 print(Salud)
 ```
 
@@ -147,9 +147,11 @@ colnames(canarias) <- c("Año", "Año2", "Sexo", "SexoCod", "Gravedad", "Graveda
 #accidentes canarias
 
 colnames(Aragon) <- c("Año", "Sexo", "NumAcci", "Gravedad", "GravedadCod", "CCAA")
+print(Aragon)
 #aragon
 
 colnames(españa) <- c("TipoEnf", "Indicador", "Sexo", "Obs")
+print(españa)
 #españa
 
 colnames(Salud) <- c("Sexo", "Indicador","EstadoAnsiedad","Año","Obs")
