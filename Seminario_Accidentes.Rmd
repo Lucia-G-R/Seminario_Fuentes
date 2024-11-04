@@ -100,10 +100,14 @@ print(españa)
 
 
 ### **Carga de datos XLS**
+Queremos extraer los datos sobre los accidentes laborales que suceden en Canarias. 
+Como es un archivo con extensión .xls, utilizamos read_excel.
 ```{r}
 #CARGA XLS
 install.packages("readxl")
 library(readxl)
+
+# Cargamos los archivos con extensión .xls
 canarias <- read_excel("INPUT/DATA/Accidentes_laborales_Canarias.xls")
 print(canarias)
 ```
@@ -114,6 +118,8 @@ print(canarias)
 #CARGA CSV
 install.packages("readr")
 library(readr)
+
+# Cargamos los archivos con extensión .csv
 Salud <- read_delim ("INPUT/DATA/Estados_de_salud_Canarias.csv.csv", delim = ",")
 print(Salud)
 ```
