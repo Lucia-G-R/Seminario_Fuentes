@@ -55,13 +55,21 @@ download.file(https://datos.gob.es/es/catalogo/a02002834-accidentes-en-jornada-d
 
 
 ### **Carga de datos JSON**
+Queremos extraer los datos sobre las enfermedades laborales que suceden en España, como es un archivo con extensión .JSON con listas anidadas sin etiquetar.
 ```{r}
 library(rjson)
 library(tidyverse)
 library(tidyjson)
-españa <- 
-  fromJSON(file = "INPUT/DATA/Enfermedades_laborales_España.json")%>%
-  spread_all()
+españa <- fromJSON(file = "INPUT/DATA/Enfermedades_laborales_España.json")
+
+str(españa)
+
+# Convertir la lista JSON en un data frame
+españa_df <- españa %>%
+  as_tibble() %>%
+  spread_all() 
+
+print(españa_df)
 ```
 
 
