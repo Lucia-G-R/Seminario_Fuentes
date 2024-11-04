@@ -55,19 +55,25 @@ download.file(https://datos.gob.es/es/catalogo/a02002834-accidentes-en-jornada-d
 
 
 ### **Carga de datos JSON**
-Queremos extraer los datos sobre las enfermedades laborales que suceden en España, como es un archivo con extensión .JSON con listas anidadas sin etiquetar.
+Queremos extraer los datos sobre las enfermedades laborales que suceden en España. 
+Como es un archivo con extensión .JSON con listas anidadas sin etiquetar, no podemos utilizar directamente un tibbe para ello, utilizaremos tidyjson.
 ```{r}
 library(rjson)
 library(tidyverse)
 library(tidyjson)
+
+# Cargamos el archivo JSON
 españa <- fromJSON(file = "INPUT/DATA/Enfermedades_laborales_España.json")
 
+# Observamos la estructura, nos damos cuenta que posee listas anidadas
 str(españa)
 
-# Convertir la lista JSON en un data frame
+# Convertimos la lista JSON en un data frame
 españa_df <- españa %>%
-  as_tibble() %>%
-  spread_all() 
+  as_tbl_json() %>%    # Manejamos las estructuras anidadas
+  enter_object() %>%   # Entra a los niveles de los objetos dentro del JSON
+  gather_array() %>%   # Convierte listas en un formato tabular
+  spread_all()         # Expande todas las columnas al formato tabular
 
 print(españa_df)
 ```
