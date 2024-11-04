@@ -127,6 +127,11 @@ canarias <- read_excel("INPUT/DATA/Accidentes_laborales_Canarias.xls")
 print(canarias)
 ```
 
+```{r}
+# Cargamos los archivos con extensión .xls
+españa <- read_excel("INPUT/DATA/Enfermedades_laborales_España.xls")
+print(españa)
+```
 
 ### **Carga de datos CSV**
 Queremos extraer los datos sobre la salud mental en los habitantes de Canarias. 
