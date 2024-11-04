@@ -151,6 +151,24 @@ Aragon <- read_excel ("INPUT/DATA/070901-02_Por grado y sexo. Aragon.xlsx")
 print(Aragon)
 ```
 
+## **Eliminar columnas**
+Eliminamos las columnas que no nos va a interesar estudiar. 
+```{r}
+install.packages("dplyr")  
+library(dplyr)
+
+canarias <- canarias%>% 
+            select(Año, Sexo, Gravedad, TipoTrab, Obs)
+class(canarias)
+print(canarias)
+
+Aragon <- subset(Aragon, select = c(Año, Sexo, NumAcci, Gravedad))
+
+españa <- subset(españa, select = c(TipoEnf, Indicador, Sexo, Obs))
+
+Salud <- subset(Salud, select = c(Sexo, Indicador, EstadoAnsiedad, Obs))
+```
+
 ### **Cambiar nombre de las columnas**
 Vamos a cambiar los nombres de las distintas columnas de los datos extraídos.
 ```{r}
@@ -203,7 +221,8 @@ Eliminamos las columnas que no nos va a interesar estudiar.
 # ELIMINAR COLUMNAS
 install.packages("dplyr")  
 library(dplyr)
-canarias <- canarias%>% select(Año, Sexo, Gravedad, TipoTrab, Obs)
+canarias <- canarias%>% 
+            select(Año, Sexo, Gravedad, TipoTrab, Obs)
 class(canarias)
 print(canarias)
 
