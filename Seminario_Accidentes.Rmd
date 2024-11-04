@@ -37,6 +37,7 @@ Agregamos los URL de donde hemos obtenido los datos:
 
 ## **Carga de datos**
 ### **Descargar datos**
+Podemos descargar los datos de Canarias en formato .csv de la página web de datos del gobierno de España, desde R mediante este código:
 ```{r, eval=FALSE}
 # Instalar la librería readxl si no la tienes
 #install.packages("readxl")
@@ -55,7 +56,6 @@ download.file(https://datos.gob.es/es/catalogo/a02002834-accidentes-en-jornada-d
 
 ### **Carga de datos JSON**
 ```{r}
-
 library(rjson)
 library(tidyverse)
 library(tidyjson)
