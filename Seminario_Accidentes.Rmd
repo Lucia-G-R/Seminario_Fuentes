@@ -77,6 +77,7 @@ library(readxl)
 Queremos extraer los datos sobre las enfermedades laborales que suceden en España. 
 Como es un archivo con extensión .JSON con listas anidadas sin etiquetar, no podemos utilizar directamente un tibbe para ello, utilizaremos tidyjson.
 ```{r}
+#ESTE NO CUENTA!!!
 library(rjson)
 library(tidyverse)
 library(tidyjson)
@@ -97,7 +98,7 @@ españa_df <- españa %>%
 print(españa_df)
 ```
 ```{r}
-
+#ESTE ES EL QUE CUENTA
 library(tidyverse)
 library(jsonlite)
 
