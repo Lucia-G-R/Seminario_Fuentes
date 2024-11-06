@@ -77,7 +77,6 @@ library(readxl)
 Queremos extraer los datos sobre las enfermedades laborales que suceden en España. 
 Como es un archivo con extensión .JSON con listas anidadas sin etiquetar, no podemos utilizar directamente un tibbe para ello, utilizaremos tidyjson.
 ```{r}
-#ESTE NO CUENTA!!!
 library(rjson)
 library(tidyverse)
 library(tidyjson)
@@ -89,7 +88,8 @@ españa <- fromJSON(file = "INPUT/DATA/Enfermedades_laborales_España.json")
 str(españa)
 
 # Convertimos la lista JSON en un data frame
-españa_df <- españa %>%
+españa_df <- 
+  españa %>%
   as_tbl_json() %>%    # Manejamos las estructuras anidadas
   enter_object() %>%   # Entra a los niveles de los objetos dentro del JSON
   gather_array() %>%   # Convierte listas en un formato tabular
