@@ -81,34 +81,18 @@ library(rjson)
 library(tidyverse)
 library(tidyjson)
 
-# Cargamos el archivo JSON
-espana <- fromJSON("INPUT/DATA/Enfermedades_laborales_España.json")
+# Cargamos el archivo JSON, pero está en formato de lista.
+españa <- fromJSON(file = "INPUT/DATA/Enfermedades_laborales_España.json")
 
 # Observamos la estructura, nos damos cuenta que posee listas anidadas
-str(espana)
+str(españa)
 
 # Convertimos la lista JSON en un data frame
-españa_df <- 
+#españa_df <- 
   españa %>%
-  as_tbl_json() %>%    # Manejamos las estructuras anidadas
-  enter_object(MetaData) %>%   # Entra a los niveles de los objetos dentro del JSON
+  enter_object(Data) %>%   # Entra a los niveles de los objetos dentro del JSON
   gather_array() %>%   # Convierte listas en un formato tabular
   spread_all()         # Expande todas las columnas al formato tabular
-
-#españa_df <- 
-  espana %>%
-  spread_all() %>% 
-  #select(region = regionname, funding = totalamt) %>%
-  enter_object(Data) %>% 
-  gather_array() %>% 
-  spread_all() %>% 
-  #rename(sector = Name, percent = Percent) %>%
-  #group_by(region, sector) %>%
-  #summarize(funding = mean(percent, na.rm = TRUE))
-
-
-
-
 
 print(españa_df)
 ```
