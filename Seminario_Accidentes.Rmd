@@ -88,7 +88,7 @@ españa <- fromJSON(file = "INPUT/DATA/Enfermedades_laborales_España.json")
 str(españa)
 
 # Convertimos la lista JSON en un data frame
-#españa_df <- 
+españa_df <- 
   españa %>%
   enter_object(Data) %>%   # Entra a los niveles de los objetos dentro del JSON
   gather_array() %>%   # Convierte listas en un formato tabular
@@ -96,27 +96,6 @@ str(españa)
 
 print(españa_df)
 ```
-```{r}
-#ESTE ES EL QUE CUENTA
-library(tidyverse)
-library(jsonlite)
-
-# Cargamos el archivo JSON
-españa <- fromJSON("INPUT/DATA/Enfermedades_laborales_España.json", flatten = TRUE)
-
-# Observamos la estructura, nos damos cuenta que posee listas anidadas
-str(españa)
-
-# Convertimos la lista JSON en un data frame
-#españa_df <- españa %>%
-  #as_tbl_json() %>%    # Manejamos las estructuras anidadas
-  #enter_object() %>%   # Entra a los niveles de los objetos dentro del JSON
-  #gather_array() %>%   # Convierte listas en un formato tabular
-  #spread_all()         # Expande todas las columnas al formato tabular
-
-print(españa)
-```
-
 
 ### **Carga de datos XLS**
 Queremos extraer los datos sobre los accidentes laborales que suceden en Canarias. 
