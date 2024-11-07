@@ -36,6 +36,9 @@ Agregamos los URL de donde hemos obtenido los datos:
 - [Tipos de trabajos](https://datos.gob.es/es/catalogo/a05003423-accidentes-de-trabajo-en-jornada-segun-tipos-de-trabajo-gravedad-trabajo-habitual-o-no-y-sexos-canarias-y-anos)
 - [Grado de lesión de la enfermedad laboral](https://datos.gob.es/es/catalogo/a02002834-accidentes-en-jornada-de-trabajo-n-de-accidentes-segun-grado-de-lesion-y-sexo)
 
+Agregamos el URL del repositorio:
+- [Repositorio](https://github.com/Lucia-G-R/Seminario_Fuentes.git)
+
 ## **Carga de datos**
 ### **Descargar datos**
 Podemos descargar los datos de Canarias en formato .csv de la página web de datos del gobierno de España, desde R mediante este código:
