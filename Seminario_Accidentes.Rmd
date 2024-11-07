@@ -61,17 +61,16 @@ download.file(https://datos.gob.es/es/catalogo/a02002834-accidentes-en-jornada-d
 ```{r}
 # Librerías necesarias para JSON 
 
-
 # Librerías y paquetes necesarias para xls
-install.packages("readxl")
+#install.packages("readxl")
 library(readxl)
 
 # Librerías y paquetes necesarias para csv
-install.packages("readr")
+#install.packages("readr")
 library(readr)
 
 # Librerías necesarias para xlsx
-install.packages("readxl")
+#install.packages("readxl")
 library(readxl)
 ```
 
@@ -135,7 +134,8 @@ print(Aragon)
 
 ## **Eliminar columnas**
 Eliminamos las columnas que no nos va a interesar estudiar. 
-```{r}
+error = TRUE para renderizar. Instalación de pquetes parte superior
+```{r, error=TRUE} 
 install.packages("dplyr")  
 library(dplyr)
 
