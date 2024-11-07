@@ -57,21 +57,24 @@ temp <- tempfile(fileext = ".xlsx")
 download.file(https://datos.gob.es/es/catalogo/a02002834-accidentes-en-jornada-de-trabajo-n-de-accidentes-segun-grado-de-lesion-y-sexo, destfile = "INPUT/DATA/Accidentes_laborales_Canarias.csv.csv" , mode = "wb")
 ```
 
-### **Carga de librerías y paquetes**
+### **Carga de paquetes**
 ```{r}
-# Librerías necesarias para JSON 
+# Paquetes necesarios para JSON 
 
-# Librerías y paquetes necesarias para xls
+# Paquetes necesarios para xls
 #install.packages("readxl")
-library(readxl)
 
-# Librerías y paquetes necesarias para csv
+# Paquetes necesarios para csv
 #install.packages("readr")
-library(readr)
 
-# Librerías necesarias para xlsx
+# Paquetes necesarios para xlsx
 #install.packages("readxl")
-library(readxl)
+
+# Paquete necesario para la manipulación de dataframes
+#install.packages("dplyr") 
+
+# Paquete necesario para transformar las filas y columnas
+#install.packages("tidyverse")
 ```
 
 
@@ -104,12 +107,14 @@ Queremos extraer los datos sobre los accidentes laborales que suceden en Canaria
 Como es un archivo con extensión .xls, utilizamos read_excel.
 ```{r}
 # Cargamos los archivos con extensión .xls
+library(readxl)
 canarias <- read_excel("INPUT/DATA/Accidentes_laborales_Canarias.xls")
 print(canarias)
 ```
 
 ```{r}
 # Cargamos los archivos con extensión .xls
+library(readxl)
 españa <- read_excel("INPUT/DATA/Enfermedades_laborales_España.xls")
 print(españa)
 ```
@@ -119,6 +124,7 @@ Queremos extraer los datos sobre la salud mental en los habitantes de Canarias.
 Como es un archivo con extensión .csv, utilizamos read_delim e indicamos que el delimitador es
 ```{r}
 # Cargamos los archivos con extensión .csv
+library(readr)
 Salud <- read_delim ("INPUT/DATA/Estados_de_salud_Canarias.csv.csv", delim = ";")
 print(Salud)
 ```
@@ -128,6 +134,7 @@ Queremos extraer los datos sobre la gravedad de las enfermedades laborales produ
 Como es un archivo con extensión .xlsx, utilizamos read_excel.
 ```{r}
 # Cargamos los archivos con extensión .xlsx
+library(readxl)
 Aragon <- read_excel ("INPUT/DATA/070901-02_Por grado y sexo. Aragon.xlsx")
 print(Aragon)
 ```
@@ -136,7 +143,6 @@ print(Aragon)
 Eliminamos las columnas que no nos va a interesar estudiar. 
 error = TRUE para renderizar. Instalación de pquetes parte superior
 ```{r, error=TRUE} 
-install.packages("dplyr")  
 library(dplyr)
 
 canarias <- canarias%>% 
@@ -154,7 +160,6 @@ Salud <- subset(Salud, select = c(Sexo, Indicador, EstadoAnsiedad, Obs))
 ### **Cambiar nombre de las columnas**
 Vamos a cambiar los nombres de las distintas columnas de los datos extraídos.
 ```{r}
-install.packages("tidyverse")
 library(tidyverse)
 
 spread_all (canarias)
@@ -201,7 +206,6 @@ España <- España[!grepl("Cardiopartía|Dolor de cabeza|infecciosa|No sabe|prob
 Eliminamos las columnas que no nos va a interesar estudiar. 
 ```{r}
 # ELIMINAR COLUMNAS
-install.packages("dplyr")  
 library(dplyr)
 canarias <- canarias%>% 
             select(Año, Sexo, Gravedad, TipoTrab, Obs)
