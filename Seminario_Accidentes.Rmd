@@ -88,8 +88,6 @@ Paquete necesario para transformar las filas y columnas
 #install.packages("tidyverse")
 ```
 
-
-
 ### **Carga de datos JSON**
 Queremos extraer los datos sobre las enfermedades laborales que suceden en España. 
 Como es un archivo con extensión .JSON con listas anidadas sin etiquetar, no podemos utilizar directamente un tibbe para ello, utilizaremos tidyjson.
@@ -99,19 +97,20 @@ library(tidyverse)
 library(tidyjson)
 
 # Cargamos el archivo JSON, pero está en formato de lista.
-españa <- fromJSON(file = "INPUT/DATA/Enfermedades_laborales_España.json")
+espana <- fromJSON(file = "INPUT/DATA/Enfermedades_laborales_España.json")
 
 # Observamos la estructura, nos damos cuenta que posee listas anidadas
-str(españa)
+str(espana)
 
 # Convertimos la lista JSON en un data frame
-españa_df <- 
-  españa %>%
+spread_all(espana) # Esta función distribuye cualquier objeto JSON que sea escalar en nuevas columnas
+espana_df <- 
+  espana %>%
   enter_object(Data) %>%   # Entra a los niveles de los objetos dentro del JSON
   gather_array() %>%   # Convierte listas en un formato tabular
-  spread_all()         # Expande todas las columnas al formato tabular
+          # Expande todas las columnas al formato tabular
 
-print(españa_df)
+print(espana)
 ```
 
 ### **Carga de datos XLS**
