@@ -60,7 +60,7 @@ download.file(https://datos.gob.es/es/catalogo/a02002834-accidentes-en-jornada-d
 Paquetes necesarios para JSON
 ```{r}
 # Paquetes necesarios para JSON 
-
+#install.packages("tidyjson")
 ```
 Paquetes necesarios para xls
 ```{r}
@@ -104,6 +104,7 @@ str(espana)
 
 # Convertimos la lista JSON en un data frame
 spread_all(espana) # Esta función distribuye cualquier objeto JSON que sea escalar en nuevas columnas
+enter_object()
 espana_df <- 
   espana %>%
   enter_object(Data) %>%   # Entra a los niveles de los objetos dentro del JSON
