@@ -57,24 +57,37 @@ download.file(https://datos.gob.es/es/catalogo/a02002834-accidentes-en-jornada-d
 ```
 
 ### **Carga de paquetes**
+Paquetes necesarios para JSON
 ```{r}
 # Paquetes necesarios para JSON 
 
+```
+Paquetes necesarios para xls
+```{r}
 # Paquetes necesarios para xls
 #install.packages("readxl")
-
+```
+Paquetes necesarios para csv
+```{r}
 # Paquetes necesarios para csv
 #install.packages("readr")
-
+```
+Paquetes necesarios para xlsx
+```{r}
 # Paquetes necesarios para xlsx
 #install.packages("readxl")
-
+```
+Paquete necesario para la manipulación de dataframes
+```{r}
 # Paquete necesario para la manipulación de dataframes
 #install.packages("dplyr") 
-
+```
+Paquete necesario para transformar las filas y columnas
+```{r}
 # Paquete necesario para transformar las filas y columnas
 #install.packages("tidyverse")
 ```
+
 
 
 ### **Carga de datos JSON**
