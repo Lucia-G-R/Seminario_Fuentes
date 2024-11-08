@@ -123,26 +123,37 @@ Data_df<-
 nombre <- espana_json$Nombre
 
 # HASTA AQUÍ DA BIEN
-# Unimos MetaData_df y Data_df usando "T3_Variable" como clave
+# Unimos MetaData_df y Data_df usando "..JSON". Extraemos la columna "..JSON" como identificador 
+# Expandimos la columna "..JSON" con prefijo para evitar conflictos de nombres
+MetaData_df <- 
+  MetaData_df %>%
+  unnest_wider(..JSON, names_sep = "_json")
+
+Data_df <- 
+  Data_df %>%
+  unnest_wider(..JSON, names_sep = "_json")
+
+# Creamos un identificador único para cada fila
+MetaData_df <- 
+  MetaData_df %>%
+  mutate(id = row_number())
+
+Data_df <- 
+  Data_df %>%
+  mutate(id = row_number())
+
+# Hacemos la unión de los df por la columna id que hemos creado con la variable lista "..JSON"
 espana_df <- 
   MetaData_df %>%
-  left_join(Data_df, by = "T3_Variable")
-
-# Añadimos una columna con el nombre del dataset
-espana_df <- espana_df %>%
-  mutate(Nombre_Dataset = nombre)
-
-espana_df<-
-  espana_json%>%
-  select(document.id)%>%
-  left_join(MetaData_df, by = "..JSON")%>%
-  left_join(Data_df, by = "..JSON")
+  left_join(Data_df, by = "id") %>% # Unimos con Data_df usando 'id'
+  mutate(Nombre = espana_json$Nombre) # Agregamos la columna "Nombre" del espana_json
 
 attributes(MetaData_df)  
 attributes(Data_df)
 print(MetaData_df)
 print(Data_df)
 print(espana_json)
+print(espana_df)
 ```
 
 ### **Carga de datos XLS**
