@@ -95,23 +95,24 @@ Como es un archivo con extensión .JSON con listas anidadas sin etiquetar, no po
 library(rjson)
 library(tidyverse)
 library(tidyjson)
+library(dplyr)
 
 # Cargamos el archivo JSON, pero está en formato de lista.
-espana <- fromJSON(file = "INPUT/DATA/Enfermedades_laborales_España.json")
+espana_json <- fromJSON(file = "INPUT/DATA/Enfermedades_laborales_España.json")
 
 # Observamos la estructura, nos damos cuenta que posee listas anidadas
 str(espana)
 
 # Convertimos la lista JSON en un data frame
 spread_all(espana) # Esta función distribuye cualquier objeto JSON que sea escalar en nuevas columnas
-enter_object()
-espana_df <- 
-  espana %>%
-  enter_object(Data) %>%   # Entra a los niveles de los objetos dentro del JSON
-  gather_array() %>%   # Convierte listas en un formato tabular
-          # Expande todas las columnas al formato tabular
+espana_df<-
+  espana_json%>%
+  enter_object("MetaData")%>%
+  gather_array() %>% 
+  spread_all()%>%
+  select(T3_Variable, Nombre, Codigo)
 
-print(espana)
+print(espana_json)
 ```
 
 ### **Carga de datos XLS**
