@@ -219,7 +219,6 @@ Cambiamos los nombres de las columnas del conjunto de datos sobre la salud menta
 library(tidyverse)
 
 attributes(Salud_df)
-
 Salud <- rename(.data = Salud_df, Sexo = `sexos_grupos_edad`, EstadoAnsiedad = `autovaloracion_estado_salud_relacion_situaciones_ansiedad`, Años = `anios`, Obs = `poblacion_16_mas_anios`)
 
 print(Salud)
@@ -285,14 +284,10 @@ Espana <- Espana[!grepl("Cardiopartía|Dolor de cabeza|infecciosa|No sabe|proble
 ## **Realizar un dataframe conjunto**
 Realizamos un dataframe uniendo los datos sobre la gravedad de las enfermedades laborales en Aragón y la salud mental de los ciudadanos en Canarias.
 ```{r}
-# Unir por una columna común "Año"
+# Unimos por una columna común "Sexo"
 df_Salu_Arag <- merge(Aragon, Salud, by = "Sexo")
 
-# Unir por columnas claves con diferentes nombres
-df_Salu_Arag <- merge(Aragon, Salud, by.x = "Sexo", by.y = "Sexo")
-
-# Verificar el resultado
-head(df_Salu_Arag)
+print(df_Salu_Arag)
 ```
 
 # **Resultados**
