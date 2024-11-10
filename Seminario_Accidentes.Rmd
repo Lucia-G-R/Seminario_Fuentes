@@ -50,10 +50,10 @@ library(readxl)
 url <- "https://github.com/Lucia-G-R/Seminario_Fuentes/blob/main/INPUT/DATA/Accidentes_laborales_Canarias.csv.csv"
 
 # Creamos un archivo temporal para almacenar el Excel
-temp <- tempfile(fileext = ".xlsx")
+temp <- tempfile(fileext = ".csv")
 
 # Descargamos el archivo desde GitHub
-download.file(https://datos.gob.es/es/catalogo/a02002834-accidentes-en-jornada-de-trabajo-n-de-accidentes-segun-grado-de-lesion-y-sexo, destfile = "INPUT/DATA/Accidentes_laborales_Canarias.csv.csv" , mode = "wb")
+download.file(https://datos.gob.es/es/catalogo/a05003423-accidentes-de-trabajo-en-jornada-segun-tipos-de-trabajo-gravedad-trabajo-habitual-o-no-y-sexos-canarias-y-anos, destfile = temp, mode = "wb")
 ```
 
 ### **Carga de paquetes**
