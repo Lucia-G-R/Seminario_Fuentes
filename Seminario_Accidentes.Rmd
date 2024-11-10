@@ -18,7 +18,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 # **Introducción**
-El desarrollo de enfermedades laborales pueden ocasionar bajas laborales. Estás enfermedades se producen en el ámbito laboral según el trabajo realizado, pero queremos estudiar como el desarrollo de estas enfermedades se puede agravar por poseer una enfermedad laboral o incluso si la gravedad de la enfermedad laboral es distinta entre géneros.
+El desarrollo de enfermedades laborales pueden ocasionar bajas laborales. Estás enfermedades se producen en el ámbito laboral según el trabajo realizado, pero queremos estudiar como el desarrollo de estas enfermedades se puede agravar por poseer una enfermedad mental, incluso si la gravedad de la enfermedad laboral es distinta entre géneros o debido a la profesión realizada.
 
 # **Objetivo general**
 Evaluación del desarrollo de enfermedades laborales, respecto a la profesión y el estado de salud mental.
