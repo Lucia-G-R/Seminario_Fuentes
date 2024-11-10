@@ -119,10 +119,6 @@ Data_df<-
   spread_all()%>%
   select(Valor) # Seleccionamos la variable que posee 
 
-# Extraemos la variable "Nombre" del JSON que es un caracter
-nombre <- espana_json$Nombre
-
-# HASTA AQUÍ DA BIEN
 # Unimos MetaData_df y Data_df usando "..JSON". Extraemos la columna "..JSON" como identificador 
 # Expandimos la columna "..JSON" con prefijo para evitar conflictos de nombres
 MetaData_df <- 
@@ -189,33 +185,15 @@ class(Aragon_df)
 print(Aragon)
 ```
 
-## **Eliminar columnas**
-Eliminamos las columnas que no nos va a interesar estudiar. 
-error = TRUE para renderizar. Instalación de pquetes parte superior
-```{r, error=TRUE} 
-library(dplyr)
-
-canarias <- canarias%>% 
-            select(Año, Sexo, Gravedad, TipoTrab, Obs)
-class(canarias)
-print(canarias)
-class(espana_df)
-
-Aragon <- subset(Aragon, select = c(Año, Sexo, NumAcci, Gravedad))
-
-espana <- subset(españa, select = c(TipoEnf, Indicador, Sexo, Obs))
-
-Salud <- subset(Salud, select = c(Sexo, Indicador, EstadoAnsiedad, Obs))
-```
-
 ### **Cambiar nombre de las columnas**
 Vamos a cambiar los nombres de las distintas columnas de los datos extraídos.
 ```{r}
 library(tidyverse)
 
-spread_all (canarias)
-colnames(canarias) <- c("Año", "Año2", "Sexo", "SexoCod", "Gravedad", "GravedadCod", "TipoTrab", "TipoTrabCod", "TrabHab", "TrabHabCod", "Obs")
-print(canarias)
+attributes(canarias_df)
+rename(.data = canarias_df, Año = TIME_PERIOD)
+       # "Año2", "Sexo", "SexoCod", "Gravedad", "GravedadCod", "TipoTrab", "TipoTrabCod", "TrabHab", #"TrabHabCod", "Obs")
+print(canarias_df)
 #accidentes canarias
 
 colnames(Aragon) <- c("Año", "Sexo", "NumAcci", "Gravedad", "GravedadCod", "CCAA")
@@ -229,6 +207,29 @@ print(españa)
 colnames(Salud) <- c("Sexo", "Indicador","EstadoAnsiedad","Obs")
 print(Salud)
 #estado salud canarias
+```
+
+## **Eliminar columnas**
+Eliminamos las columnas que no nos va a interesar estudiar para ello, seleccionamos las columnas que nos interesan. 
+error = TRUE para renderizar. Instalación de pquetes parte superior
+```{r, error=TRUE} 
+library(dplyr)
+
+canarias <- 
+  canarias_df%>% 
+  select(Año, Sexo, Gravedad, TipoTrab, Obs)
+
+Aragon <- 
+  Aragon_df%>%
+  select(Año, Sexo, NumAcci, Gravedad)
+
+espana <- 
+  espana_df%>%
+  select(TipoEnf, Indicador, Sexo, Obs)
+
+Salud <-
+  Salud_df%>%
+  select(Sexo, Indicador, EstadoAnsiedad, Obs)
 ```
 
 ## **Eliminar filas**
