@@ -220,17 +220,25 @@ library(tidyverse)
 
 attributes(Salud_df)
 
-Salud <- rename(.data = Salud_df, TipoEnf = `T3_Variable`, Indicador = `Codigo`, Variable = `..JSON_jsonT3_Variable`, Nombre = `..JSON_jsonNombre`, Codigo = `..JSON_jsonCodigo`, jsonValor = `..JSON_jsonValor`)
-colnames(Salud) <- c("Sexo", "Indicador","EstadoAnsiedad","Obs")
+Salud <- rename(.data = Salud_df, Sexo = `sexos_grupos_edad`, EstadoAnsiedad = `autovaloracion_estado_salud_relacion_situaciones_ansiedad`, Años = `anios`, Obs = `poblacion_16_mas_anios`)
+
 print(Salud)
-#estado salud canarias
 ```
 
 ## **Eliminar los valores nulos**
-Eliminamos los valores nulos del conjunto de datos sobre los accidentes laborales que suceden en Canarias.
+Eliminamos los valores nulos del conjunto de datos sobre los accidentes laborales que suceden en Canarias. Con select observamos las columnas que poseen valores nulos..
 ```{r}
-(canarias, na.rm = TRUE)
+library(dplyr)
+
+canarias %>%
+select(where(~ all(is.na(.))))
 ```
+Para poder eliminar las columnas que poseen datos con argumentos nulos utilizamos la función  filter que nos devolverá solo las columnas con valores de interés.
+```{r}
+canarias <- Filter(function(x) !all(is.na(x)), canarias_df)
+print(canarias)
+```
+
 
 ## **Eliminar columnas**
 Eliminamos las columnas que no nos va a interesar estudiar para ello, seleccionamos las columnas que nos interesan. 
