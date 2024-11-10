@@ -193,6 +193,7 @@ library(tidyverse)
 
 attributes(canarias_df)
 canarias <- rename(.data = canarias_df, Año = `TIME_PERIOD#es`, Año2 = `TIME_PERIOD_CODE`, Sexo = `SEXO#es`, SexoCod = `SEXO_CODE`, Gravedad = `ACCIDENTE_GRAVEDAD#es`, GravedadCod = `ACCIDENTE_GRAVEDAD_CODE`, TipoTrab = `TIPO_TRABAJO#es`, TipoTrabCod = `TIPO_TRABAJO_CODE`, TrabHabitual = `TRABAJO_HABITUAL#es`, TrabHabCod = `TRABAJO_HABITUAL_CODE`, Obs = `OBS_VALUE`, ConfeciObs = `CONFIDENCIALIDAD_OBSERVACION#es`, Notasobs = `NOTAS_OBSERVACION#es`, Estadosobs = `ESTADO_OBSERVACION#es`)
+
 print(canarias)
 ```
 Cambiamos los nombres de las columnas del conjunto de datos sobre la gravedad de las enfermedades laborales producidas en Aragón. 
@@ -200,18 +201,26 @@ Cambiamos los nombres de las columnas del conjunto de datos sobre la gravedad de
 library(tidyverse)
 
 attributes(Aragon_df)
-colnames(Aragon) <- c("Año", "Sexo", "NumAcci", "Gravedad", "GravedadCod", "CCAA")
+Aragon <- rename(.data = Aragon_df, NumAcci = `Nº Accidentes`, Gravedad = `Grupo Grado Código...4`, GravedadCod = `Grupo Grado Código...5`)
+
 print(Aragon)
-#aragon
 ```
 Cambiamos los nombres de las columnas del conjunto de datos sobre las enfermedades laborales que suceden en España. 
 ```{r}
-colnames(españa) <- c("TipoEnf", "Indicador", "Sexo", "Obs")
-print(españa)
-#españa
+library(tidyverse)
+
+attributes(espana_df)
+Espana <- rename(.data = espana_df, TipoEnf = `T3_Variable`, Indicador = `Codigo`, Variable = `..JSON_jsonT3_Variable`, Nombre = `..JSON_jsonNombre`, Codigo = `..JSON_jsonCodigo`, jsonValor = `..JSON_jsonValor`)
+
+print(Espana)
 ```
 Cambiamos los nombres de las columnas del conjunto de datos sobre la salud mental en los habitantes de Canarias.
 ```{r}
+library(tidyverse)
+
+attributes(Salud_df)
+
+Salud <- rename(.data = Salud_df, TipoEnf = `T3_Variable`, Indicador = `Codigo`, Variable = `..JSON_jsonT3_Variable`, Nombre = `..JSON_jsonNombre`, Codigo = `..JSON_jsonCodigo`, jsonValor = `..JSON_jsonValor`)
 colnames(Salud) <- c("Sexo", "Indicador","EstadoAnsiedad","Obs")
 print(Salud)
 #estado salud canarias
