@@ -42,7 +42,7 @@ Agregamos el URL del repositorio:
 ## **Carga de datos**
 ### **Descargar datos**
 Podemos descargar los datos de Canarias en formato .csv de la página web de datos del gobierno de España, desde R mediante este código:
-```{r, eval=FALSE}
+```{r, eval=FALSE, error = TRUE}
 #install.packages("readxl")
 library(readxl)
 
@@ -235,44 +235,41 @@ select(where(~ all(is.na(.))))
 ```
 Para poder eliminar las columnas que poseen datos con argumentos nulos utilizamos la función  filter que nos devolverá solo las columnas con valores de interés.
 ```{r}
-canarias <- Filter(function(x) !all(is.na(x)), canarias_df)
+canarias <- Filter(function(x) !all(is.na(x)), canarias)
 print(canarias)
 ```
 
-
 ## **Eliminar columnas**
 Eliminamos las columnas que no nos va a interesar estudiar para ello, seleccionamos las columnas que nos interesan. 
-error = TRUE para renderizar. Instalación de pquetes parte superior
-```{r, error=TRUE} 
+En el único conjunto de datos que no vamos a eliminar columnas es en los datos sobre la salud mental en los habitantes de Canarias.
+```{r} 
 library(dplyr)
 
 canarias <- 
-  canarias_df%>% 
+  canarias%>% 
   select(Año, Sexo, Gravedad, TipoTrab, Obs)
 
+
 Aragon <- 
-  Aragon_df%>%
+  Aragon%>%
   select(Año, Sexo, NumAcci, Gravedad)
 
-espana <- 
-  espana_df%>%
-  select(TipoEnf, Indicador, Sexo, Obs)
 
-Salud <-
-  Salud_df%>%
-  select(Sexo, Indicador, EstadoAnsiedad, Obs)
+Espana <- 
+  Espana%>%
+  select(TipoEnf, Nombre, id, Valor)
 ```
 
 ## **Eliminar filas**
 Eliminamos las filas que no nos va a interesar estudiar.
-```{r}
+```{r, error = TRUE}
 #ELIMINAR FILAS
 # Eliminar filas usando subset()
 Salud <- subset(Salud, !(Sexo %in% c("De 16 a 64 años", "De 65 y más años")))
 
 canarias <- subset(canarias, !(TipoTrabCod %in% c("4", "9", "_T", "3", "6", "0", "5", "1")))
 
-España <- subset(España, !(TipoEnf %in% c("Cardiopartía", "Dolor de cabeza", "infecciosa", "No sabe", "problema de salud", "Problema auditivo", "dermatológico", "gástrico", "respiratorio", "Total")))
+Espana <- subset(Espana, !(TipoEnf %in% c("Cardiopartía", "Dolor de cabeza", "infecciosa", "No sabe", "problema de salud", "Problema auditivo", "dermatológico", "gástrico", "respiratorio", "Total")))
 
 # Eliminar filas usando grepl() para mi_data4
 Salud <- Salud[!grepl("De 16 a 64 años|De 65 y más años", Sexo), ]
@@ -281,38 +278,12 @@ Salud <- Salud[!grepl("De 16 a 64 años|De 65 y más años", Sexo), ]
 mi_data <- mi_data[!grepl("4|9|_T|3|6|0|5|1", TipoTrabCod), ]
 
 # Eliminar filas usando grepl() para mi_data3
-España <- España[!grepl("Cardiopartía|Dolor de cabeza|infecciosa|No sabe|problema de salud|Problema auditivo|dermatológico|gástrico|respiratorio|Total", TipoEnf), ]
-
-```
-
-## **Eliminar columnas**
-Eliminamos las columnas que no nos va a interesar estudiar. 
-```{r}
-# ELIMINAR COLUMNAS
-library(dplyr)
-canarias <- canarias%>% 
-            select(Año, Sexo, Gravedad, TipoTrab, Obs)
-class(canarias)
-print(canarias)
-
-Aragon <- subset(Aragon, select = c(Año, Sexo, NumAcci, Gravedad))
-
-españa <- subset(españa, select = c(TipoEnf, Indicador, Sexo, Obs))
-
-Salud <- subset(Salud, select = c(Sexo, Indicador, EstadoAnsiedad, Obs))
-
-
-
-# Mostrar las primeras filas después de eliminar
-head(mi_data)
-
-# Guardar el data frame en un nuevo archivo CSV
-write.csv(mi_data, "ruta/del/archivo/datos_filtrados.csv", row.names = FALSE)
+Espana <- Espana[!grepl("Cardiopartía|Dolor de cabeza|infecciosa|No sabe|problema de salud|Problema auditivo|dermatológico|gástrico|respiratorio|Total", TipoEnf), ]
 
 ```
 
 ## **Realizar un dataframe conjunto**
-Realizo un dataframe uniendo los datos sobre la garvedad de las enfermedades laborales en Aragón y la salud mental de los ciudadanos en Canarias.
+Realizamos un dataframe uniendo los datos sobre la gravedad de las enfermedades laborales en Aragón y la salud mental de los ciudadanos en Canarias.
 ```{r}
 # Unir por una columna común "Año"
 df_Salu_Arag <- merge(Aragon, Salud, by = "Sexo")
@@ -335,22 +306,4 @@ https://www.who.int/es/news-room/fact-sheets/detail/mental-disorders
 plot(pressure)
 ```
 
-
-
-
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
-
-
-
-
-# Descargar el archivo desde GitHub
-download.file(url, destfile = temp, mode = "wb"
-
-# Leer el archivo Excel desde el archivo temporal
-mi_data <- read_excel(temp, sheet = 1)
-
-# Eliminar el archivo temporal después de la lectura
-unlink(temp)
-
-# Verificar los primeros datos cargados
-head(mi_data)
