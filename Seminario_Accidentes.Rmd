@@ -25,12 +25,12 @@ Evaluación del desarrollo de enfermedades laborales, respecto a la profesión y
 
 # **Objetivo específico**
 - ¿Existe relación la profesión de movimiento de tierra respecto al desarrollo de enfermedades psicológicas?
-- ¿Existe relación entre el desarrollo respecto al sexo?
+- ¿Existe relación entre el desarrollo de enfermedades laborales respecto al sexo?
 - ¿Exsite relación entre la gravedad de una enfermedad psicológica respecto al desarrollo de una enfermedad laboral?
 
 # **Metodología**
 ## **Materiales**
-Agregamos los URL de donde hemos obtenido los datos:
+Agregamos los URL del lugar de obtención de los datos:
 - [Enfermedades laborales](https://datos.gob.es/es/catalogo/ea0010587-personas-de-16-a-74-ocupadas-anos-o-que-trabajaron-anteriormente-que-hayan-tenido-alguna-enfermedadlaboral-por-tipo-de-enfermedad-y-sexo-epa-identificador-api-t22-e308-meto_05-modulo-base_2011-2020-l0-02003-px1)
 - [Estado de salud mental](https://datos.gob.es/es/catalogo/a05003423-poblacion-de-16-y-mas-anos-segun-autovaloracion-del-estado-de-salud-en-relacion-a-situaciones-de-ansiedad-o-depresion-sexos-o-grupos-de-edad-por-anos-canarias-2004-2009)
 - [Tipos de trabajos](https://datos.gob.es/es/catalogo/a05003423-accidentes-de-trabajo-en-jornada-segun-tipos-de-trabajo-gravedad-trabajo-habitual-o-no-y-sexos-canarias-y-anos)
@@ -101,7 +101,7 @@ library(dplyr)
 espana_json <- fromJSON(file = "INPUT/DATA/Enfermedades_laborales_España.json")
 
 # Observamos la estructura, nos damos cuenta que posee listas anidadas
-str(espana)
+str(espana_json)
 
 # Convertimos la lista de la varable MetaData en un dataframe
 MetaData_df<-
@@ -162,24 +162,19 @@ Como es un archivo con extensión .xls, utilizamos read_excel.
 ```{r}
 # Cargamos los archivos con extensión .xls
 library(readxl)
-canarias <- read_excel("INPUT/DATA/Accidentes_laborales_Canarias.xls")
+canarias_df <- read_excel("INPUT/DATA/Accidentes_laborales_Canarias.xls")
+class(canarias_df)
 print(canarias)
-```
-
-```{r}
-# Cargamos los archivos con extensión .xls
-library(readxl)
-españa <- read_excel("INPUT/DATA/Enfermedades_laborales_España.xls")
-print(españa)
 ```
 
 ### **Carga de datos CSV**
 Queremos extraer los datos sobre la salud mental en los habitantes de Canarias. 
-Como es un archivo con extensión .csv, utilizamos read_delim e indicamos que el delimitador es
+Como es un archivo con extensión .csv, utilizamos read_delim e indicamos que el delimitador es ;
 ```{r}
 # Cargamos los archivos con extensión .csv
 library(readr)
-Salud <- read_delim ("INPUT/DATA/Estados_de_salud_Canarias.csv.csv", delim = ";")
+Salud_df <- read_delim ("INPUT/DATA/Estados_de_salud_Canarias.csv.csv", delim = ";")
+class(Salud_df)
 print(Salud)
 ```
 
@@ -189,7 +184,8 @@ Como es un archivo con extensión .xlsx, utilizamos read_excel.
 ```{r}
 # Cargamos los archivos con extensión .xlsx
 library(readxl)
-Aragon <- read_excel ("INPUT/DATA/070901-02_Por grado y sexo. Aragon.xlsx")
+Aragon_df <- read_excel ("INPUT/DATA/070901-02_Por grado y sexo. Aragon.xlsx")
+class(Aragon_df)
 print(Aragon)
 ```
 
@@ -203,10 +199,11 @@ canarias <- canarias%>%
             select(Año, Sexo, Gravedad, TipoTrab, Obs)
 class(canarias)
 print(canarias)
+class(espana_df)
 
 Aragon <- subset(Aragon, select = c(Año, Sexo, NumAcci, Gravedad))
 
-españa <- subset(españa, select = c(TipoEnf, Indicador, Sexo, Obs))
+espana <- subset(españa, select = c(TipoEnf, Indicador, Sexo, Obs))
 
 Salud <- subset(Salud, select = c(Sexo, Indicador, EstadoAnsiedad, Obs))
 ```
