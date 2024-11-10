@@ -187,26 +187,40 @@ print(Aragon)
 
 ### **Cambiar nombre de las columnas**
 Vamos a cambiar los nombres de las distintas columnas de los datos extraídos.
+Cambiamos los nombres de las columnas del conjunto de datos sobre los accidentes laborales que suceden en Canarias.
 ```{r}
 library(tidyverse)
 
 attributes(canarias_df)
-rename(.data = canarias_df, Año = TIME_PERIOD)
-       # "Año2", "Sexo", "SexoCod", "Gravedad", "GravedadCod", "TipoTrab", "TipoTrabCod", "TrabHab", #"TrabHabCod", "Obs")
-print(canarias_df)
-#accidentes canarias
+canarias <- rename(.data = canarias_df, Año = `TIME_PERIOD#es`, Año2 = `TIME_PERIOD_CODE`, Sexo = `SEXO#es`, SexoCod = `SEXO_CODE`, Gravedad = `ACCIDENTE_GRAVEDAD#es`, GravedadCod = `ACCIDENTE_GRAVEDAD_CODE`, TipoTrab = `TIPO_TRABAJO#es`, TipoTrabCod = `TIPO_TRABAJO_CODE`, TrabHabitual = `TRABAJO_HABITUAL#es`, TrabHabCod = `TRABAJO_HABITUAL_CODE`, Obs = `OBS_VALUE`, ConfeciObs = `CONFIDENCIALIDAD_OBSERVACION#es`, Notasobs = `NOTAS_OBSERVACION#es`, Estadosobs = `ESTADO_OBSERVACION#es`)
+print(canarias)
+```
+Cambiamos los nombres de las columnas del conjunto de datos sobre la gravedad de las enfermedades laborales producidas en Aragón. 
+```{r}
+library(tidyverse)
 
+attributes(Aragon_df)
 colnames(Aragon) <- c("Año", "Sexo", "NumAcci", "Gravedad", "GravedadCod", "CCAA")
 print(Aragon)
 #aragon
-
+```
+Cambiamos los nombres de las columnas del conjunto de datos sobre las enfermedades laborales que suceden en España. 
+```{r}
 colnames(españa) <- c("TipoEnf", "Indicador", "Sexo", "Obs")
 print(españa)
 #españa
-
+```
+Cambiamos los nombres de las columnas del conjunto de datos sobre la salud mental en los habitantes de Canarias.
+```{r}
 colnames(Salud) <- c("Sexo", "Indicador","EstadoAnsiedad","Obs")
 print(Salud)
 #estado salud canarias
+```
+
+## **Eliminar los valores nulos**
+Eliminamos los valores nulos del conjunto de datos sobre los accidentes laborales que suceden en Canarias.
+```{r}
+(canarias, na.rm = TRUE)
 ```
 
 ## **Eliminar columnas**
