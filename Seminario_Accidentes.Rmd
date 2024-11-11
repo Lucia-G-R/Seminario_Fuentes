@@ -1,5 +1,5 @@
 ---
-title: "Seminario_Accidentes"
+title: "Desarrollo de distintas enfermedades según el oficio"
 subtitle: "Fuentes de datos biomédicas y web semántica, Grado en Ingeniería de la Salud"
 author: "Lorena Nerín Grau y Lucía González Redondo"
 class: "3º Ingeniería de la Salud"
@@ -97,7 +97,7 @@ Paquete para mostrar tablas formeatedas
 ### **Carga de datos JSON**
 Queremos extraer los datos sobre las enfermedades laborales que suceden en España. 
 Como es un archivo con extensión .JSON con listas anidadas sin etiquetar, no podemos utilizar directamente un tibbe para ello, utilizaremos tidyjson.
-```{r} 
+```{r, warning=FALSE} 
 library(rjson)
 library(tidyverse)
 library(tidyjson)
@@ -162,11 +162,14 @@ espana_df <-
 datatable(espana_df)
 ```
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 01f90aff286bc15c9ae7aba7893f9787877331d2
 ### **Carga de datos XLS**
 Queremos extraer los datos sobre los accidentes laborales que suceden en Canarias. 
 Como es un archivo con extensión .xls, utilizamos read_excel.
-```{r}
+```{r, warning=FALSE}
 # Cargamos los archivos con extensión .xls
 library(readxl)
 library(DT)
@@ -181,7 +184,7 @@ datatable(canarias_df)
 ### **Carga de datos CSV**
 Queremos extraer los datos sobre la salud mental en los habitantes de Canarias. 
 Como es un archivo con extensión .csv, utilizamos read_delim e indicamos que el delimitador es ;
-```{r}
+```{r, warning=FALSE}
 # Cargamos los archivos con extensión .csv
 library(readr)
 library((DT))
@@ -196,7 +199,7 @@ datatable(Salud_df)
 ### **Carga de datos XLSX**
 Queremos extraer los datos sobre la gravedad de las enfermedades laborales producidas en Aragón. 
 Como es un archivo con extensión .xlsx, utilizamos read_excel.
-```{r}
+```{r, warning=FALSE}
 # Cargamos los archivos con extensión .xlsx
 library(readxl)
 library(DT)
@@ -211,7 +214,7 @@ datatable(Aragon_df)
 ## **Cambiar nombre de las columnas**
 Vamos a cambiar los nombres de las distintas columnas de los datos extraídos.
 Cambiamos los nombres de las columnas del conjunto de datos sobre los accidentes laborales que suceden en Canarias.
-```{r}
+```{r, warning=FALSE}
 library(tidyverse)
 library(DT)
 
@@ -222,7 +225,7 @@ canarias <- rename(.data = canarias_df, Año = `TIME_PERIOD#es`, Año2 = `TIME_P
 datatable(canarias)
 ```
 Cambiamos los nombres de las columnas del conjunto de datos sobre la gravedad de las enfermedades laborales producidas en Aragón. 
-```{r}
+```{r, warning=FALSE}
 library(tidyverse)
 library(DT)
 
@@ -234,7 +237,7 @@ datatable(Aragon)
 ```
 
 Cambiamos los nombres de las columnas del conjunto de datos sobre las enfermedades laborales que suceden en España. 
-```{r}
+```{r, warning=FALSE}
 library(tidyverse)
 library(DT)
 
@@ -245,7 +248,7 @@ Espana <- rename(.data = espana_df, TipoEnf = `T3_Variable`, Indicador = `Codigo
 datatable(Espana)
 ```
 Cambiamos los nombres de las columnas del conjunto de datos sobre la salud mental en los habitantes de Canarias.
-```{r}
+```{r, warning=FALSE}
 library(tidyverse)
 library(DT)
 
@@ -258,14 +261,14 @@ datatable(Salud)
 
 ## **Eliminar los valores nulos**
 Eliminamos los valores nulos del conjunto de datos sobre los accidentes laborales que suceden en Canarias. Con select observamos las columnas que poseen valores nulos..
-```{r}
+```{r, warning=FALSE}
 library(dplyr)
 
 canarias %>%
 select(where(~ all(is.na(.))))
 ```
 Para poder eliminar las columnas que poseen datos con argumentos nulos utilizamos la función  filter que nos devolverá solo las columnas con valores de interés.
-```{r}
+```{r, warning=FALSE}
 canarias <- Filter(function(x) !all(is.na(x)), canarias)
 #print(canarias)
 ```
@@ -273,7 +276,7 @@ canarias <- Filter(function(x) !all(is.na(x)), canarias)
 ## **Eliminar columnas**
 Eliminamos las columnas que no nos va a interesar estudiar para ello, seleccionamos las columnas que nos interesan. 
 En el único conjunto de datos que no vamos a eliminar columnas es en los datos sobre la salud mental en los habitantes de Canarias.
-```{r} 
+```{r, warning=FALSE} 
 library(dplyr)
 
 canarias <- 
@@ -293,7 +296,7 @@ Espana <-
 
 ## **Eliminar filas**
 Eliminamos las filas que no nos va a interesar estudiar.
-```{r, error = TRUE}
+```{r, error = TRUE, warning=FALSE}
 #ELIMINAR FILAS
 
 Salud <- subset(Salud, !Sexo %in% c("De 16 a 64 a\xf1os", "De 65 y m\xe1s a\xf1os"))
@@ -305,14 +308,14 @@ Espana <- subset (Espana, !TipoEnf %in% c ("Cardiopartía|Dolor de cabeza|infecc
 
 ## **Realizar un dataframe conjunto**
 Realizamos un dataframe uniendo los datos sobre la gravedad de las enfermedades laborales en Aragón y la salud mental de los ciudadanos en Canarias.
-```{r}
+```{r, warning=FALSE}
 # Unimos por una columna común "Sexo"
 df_Salu_Arag <- merge(Aragon, Salud, by = "Sexo")
 
 print(df_Salu_Arag)
 ```
 Realizamos un dataframe uniendo los datos sobre los accidentes laborales que suceden en Canarias y los datos sobre las enfermedades laborales que suceden en España. Como tenemos dos nombres de columnas diferentes aunque recoge el mismo tipo de valores.
-```{r, error = TRUE}
+```{r, error = TRUE, warning=FALSE}
 # Unimos por una columna diferente en canarias estrá la columna Obs y en Espana estará la columna Valor
 df_cana_Esp <- merge(canarias, Espana, by = c(Obs = Valor))
 
@@ -321,8 +324,13 @@ print(df_cana_Esp)
 
 ## **Pivotar**
 Vamos a transponer la estructura de nuestra tabla ordenada Espana desde largo a ancho.
-```{r, error = TRUE}
+```{r, error = TRUE, warning=FALSE}
 pivot_wider(data = Espana, names_from = "TipoEnf")
+```
+
+## **Gráfico**
+```{r pressure, echo=FALSE, warning=FALSE}
+plot(pressure)
 ```
 
 # **Resultados**
@@ -332,8 +340,6 @@ pivot_wider(data = Espana, names_from = "TipoEnf")
 # **Referencias**
 https://osha.europa.eu/es/themes/work-related-diseases
 https://www.who.int/es/news-room/fact-sheets/detail/mental-disorders
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
+
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
