@@ -87,10 +87,9 @@ Paquete necesario para transformar las filas y columnas
 # Paquete necesario para transformar las filas y columnas
 #install.packages("tidyverse")
 ```
-
-Paquete para mostrar tablas formeatedas
+Paquete para mostrar las tablas formatedas
 ```{r}
-#Paquete para mostrar tablas formeatedas
+#Paquete para mostrar tablas formatedas
 #install.packages("DT")
 ```
 
@@ -162,10 +161,6 @@ espana_df <-
 datatable(espana_df)
 ```
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 01f90aff286bc15c9ae7aba7893f9787877331d2
 ### **Carga de datos XLS**
 Queremos extraer los datos sobre los accidentes laborales que suceden en Canarias. 
 Como es un archivo con extensión .xls, utilizamos read_excel.
