@@ -194,7 +194,7 @@ Aragon_df <- read_excel ("INPUT/DATA/070901-02_Por grado y sexo. Aragon.xlsx")
 print(Aragon_df)
 ```
 
-### **Cambiar nombre de las columnas**
+## **Cambiar nombre de las columnas**
 Vamos a cambiar los nombres de las distintas columnas de los datos extraídos.
 Cambiamos los nombres de las columnas del conjunto de datos sobre los accidentes laborales que suceden en Canarias.
 ```{r}
@@ -280,7 +280,6 @@ Salud <- subset(Salud, !Sexo %in% c("De 16 a 64 a\xf1os", "De 65 y m\xe1s a\xf1o
 Espana <- subset (Espana, !TipoEnf %in% c ("Cardiopartía|Dolor de cabeza|infecciosa|No sabe|problema de salud|Problemaauditivo|dermatológico|gástrico|respiratorio|Total"))
 ```
 
-
 ## **Realizar un dataframe conjunto**
 Realizamos un dataframe uniendo los datos sobre la gravedad de las enfermedades laborales en Aragón y la salud mental de los ciudadanos en Canarias.
 ```{r}
@@ -288,6 +287,19 @@ Realizamos un dataframe uniendo los datos sobre la gravedad de las enfermedades 
 df_Salu_Arag <- merge(Aragon, Salud, by = "Sexo")
 
 print(df_Salu_Arag)
+```
+Realizamos un dataframe uniendo los datos sobre los accidentes laborales que suceden en Canarias y los datos sobre las enfermedades laborales que suceden en España. Como tenemos dos nombres de columnas diferentes aunque recoge el mismo tipo de valores.
+```{r, error = TRUE}
+# Unimos por una columna diferente en canarias estrá la columna Obs y en Espana estará la columna Valor
+df_cana_Esp <- merge(canarias, Espana, by = c(Obs = Valor))
+
+print(df_cana_Esp)
+```
+
+## **Pivotar**
+Vamos a transponer la estructura de nuestra tabla ordenada Espana desde largo a ancho.
+```{r, error = TRUE}
+pivot_wider(data = Espana, names_from = "TipoEnf")
 ```
 
 # **Resultados**
