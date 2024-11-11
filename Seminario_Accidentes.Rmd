@@ -88,6 +88,12 @@ Paquete necesario para transformar las filas y columnas
 #install.packages("tidyverse")
 ```
 
+Paquete para mostrar tablas formeatedas
+```{r}
+#Paquete para mostrar tablas formeatedas
+#install.packages("DT")
+```
+
 ### **Carga de datos JSON**
 Queremos extraer los datos sobre las enfermedades laborales que suceden en España. 
 Como es un archivo con extensión .JSON con listas anidadas sin etiquetar, no podemos utilizar directamente un tibbe para ello, utilizaremos tidyjson.
@@ -96,12 +102,13 @@ library(rjson)
 library(tidyverse)
 library(tidyjson)
 library(dplyr)
+library(DT)
 
 # Cargamos el archivo JSON, pero está en formato de lista.
 espana_json <- fromJSON(file = "INPUT/DATA/Enfermedades_laborales_España.json")
 
 # Observamos la estructura, nos damos cuenta que posee listas anidadas
-str(espana_json)
+#str(espana_json)
 
 # Convertimos la lista de la varable MetaData en un dataframe
 MetaData_df<-
@@ -149,10 +156,11 @@ espana_df <-
 #print(MetaData_df)
 #print(Data_df)
 #print(espana_json)
-print(espana_df)
+#print(espana_df)
+
+
+datatable(espana_df)
 ```
-
-
 
 
 ### **Carga de datos XLS**
@@ -161,11 +169,13 @@ Como es un archivo con extensión .xls, utilizamos read_excel.
 ```{r}
 # Cargamos los archivos con extensión .xls
 library(readxl)
+library(DT)
 
 canarias_df <- read_excel("INPUT/DATA/Accidentes_laborales_Canarias.xls")
 #class(canarias_df)
 
-print(canarias_df)
+#print(canarias_df)
+datatable(canarias_df)
 ```
 
 ### **Carga de datos CSV**
@@ -174,11 +184,13 @@ Como es un archivo con extensión .csv, utilizamos read_delim e indicamos que el
 ```{r}
 # Cargamos los archivos con extensión .csv
 library(readr)
+library((DT))
 
 Salud_df <- read_delim ("INPUT/DATA/Estados_de_salud_Canarias.csv.csv", delim = ";")
 #class(Salud_df)
 
-print(Salud_df)
+#print(Salud_df)
+datatable(Salud_df)
 ```
 
 ### **Carga de datos XLSX**
@@ -187,11 +199,13 @@ Como es un archivo con extensión .xlsx, utilizamos read_excel.
 ```{r}
 # Cargamos los archivos con extensión .xlsx
 library(readxl)
+library(DT)
 
 Aragon_df <- read_excel ("INPUT/DATA/070901-02_Por grado y sexo. Aragon.xlsx")
 #class(Aragon_df)
 
 print(Aragon_df)
+datatable(Aragon_df)
 ```
 
 ## **Cambiar nombre de las columnas**
@@ -199,38 +213,47 @@ Vamos a cambiar los nombres de las distintas columnas de los datos extraídos.
 Cambiamos los nombres de las columnas del conjunto de datos sobre los accidentes laborales que suceden en Canarias.
 ```{r}
 library(tidyverse)
+library(DT)
 
 #attributes(canarias_df)
 canarias <- rename(.data = canarias_df, Año = `TIME_PERIOD#es`, Año2 = `TIME_PERIOD_CODE`, Sexo = `SEXO#es`, SexoCod = `SEXO_CODE`, Gravedad = `ACCIDENTE_GRAVEDAD#es`, GravedadCod = `ACCIDENTE_GRAVEDAD_CODE`, TipoTrab = `TIPO_TRABAJO#es`, TipoTrabCod = `TIPO_TRABAJO_CODE`, TrabHabitual = `TRABAJO_HABITUAL#es`, TrabHabCod = `TRABAJO_HABITUAL_CODE`, Obs = `OBS_VALUE`, ConfeciObs = `CONFIDENCIALIDAD_OBSERVACION#es`, Notasobs = `NOTAS_OBSERVACION#es`, Estadosobs = `ESTADO_OBSERVACION#es`)
 
-print(canarias)
+#print(canarias)
+datatable(canarias)
 ```
 Cambiamos los nombres de las columnas del conjunto de datos sobre la gravedad de las enfermedades laborales producidas en Aragón. 
 ```{r}
 library(tidyverse)
+library(DT)
 
 #attributes(Aragon_df)
 Aragon <- rename(.data = Aragon_df, NumAcci = `Nº Accidentes`, Gravedad = `Grupo Grado Código...4`, GravedadCod = `Grupo Grado Código...5`)
 
-print(Aragon)
+#print(Aragon)
+datatable(Aragon)
 ```
+
 Cambiamos los nombres de las columnas del conjunto de datos sobre las enfermedades laborales que suceden en España. 
 ```{r}
 library(tidyverse)
+library(DT)
 
 #attributes(espana_df)
 Espana <- rename(.data = espana_df, TipoEnf = `T3_Variable`, Indicador = `Codigo`, Variable = `..JSON_jsonT3_Variable`, Nombre = `..JSON_jsonNombre`, Codigo = `..JSON_jsonCodigo`, jsonValor = `..JSON_jsonValor`)
 
-print(Espana)
+#print(Espana)
+datatable(Espana)
 ```
 Cambiamos los nombres de las columnas del conjunto de datos sobre la salud mental en los habitantes de Canarias.
 ```{r}
 library(tidyverse)
+library(DT)
 
 #attributes(Salud_df)
 Salud <- rename(.data = Salud_df, Sexo = `sexos_grupos_edad`, EstadoAnsiedad = `autovaloracion_estado_salud_relacion_situaciones_ansiedad`, Años = `anios`, Obs = `poblacion_16_mas_anios`)
 
-print(Salud)
+#print(Salud)
+datatable(Salud)
 ```
 
 ## **Eliminar los valores nulos**
@@ -244,7 +267,7 @@ select(where(~ all(is.na(.))))
 Para poder eliminar las columnas que poseen datos con argumentos nulos utilizamos la función  filter que nos devolverá solo las columnas con valores de interés.
 ```{r}
 canarias <- Filter(function(x) !all(is.na(x)), canarias)
-print(canarias)
+#print(canarias)
 ```
 
 ## **Eliminar columnas**

@@ -3273,8 +3273,9 @@ print(Aragon_df)</code></pre>
 ## # ℹ abbreviated name: ¹​`Grupo Grado Código...5`
 ## # ℹ 1 more variable: CCAA &lt;chr&gt;</code></pre>
 </div>
-<div id="cambiar-nombre-de-las-columnas" class="section level3">
-<h3><strong>Cambiar nombre de las columnas</strong></h3>
+</div>
+<div id="cambiar-nombre-de-las-columnas" class="section level2">
+<h2><strong>Cambiar nombre de las columnas</strong></h2>
 <p>Vamos a cambiar los nombres de las distintas columnas de los datos
 extraídos. Cambiamos los nombres de las columnas del conjunto de datos
 sobre los accidentes laborales que suceden en Canarias.</p>
@@ -3366,7 +3367,6 @@ print(Salud)</code></pre>
 ##  9 Ambos sexos Absoluto    &quot;No sabe/No contesta&quot;                     2009 3.69e3
 ## 10 Ambos sexos Absoluto    &quot;No sabe/No contesta&quot;                     2004 7.86e3
 ## # ℹ 90 more rows</code></pre>
-</div>
 </div>
 <div id="eliminar-los-valores-nulos" class="section level2">
 <h2><strong>Eliminar los valores nulos</strong></h2>
@@ -8296,6 +8296,24 @@ print(df_Salu_Arag)</code></pre>
 ## 2418           Est\xe1 muy ansioso o deprimido 2004    634
 ## 2419                       No sabe/No contesta 2009     10
 ## 2420                       No sabe/No contesta 2004     54</code></pre>
+<p>Realizamos un dataframe uniendo los datos sobre los accidentes
+laborales que suceden en Canarias y los datos sobre las enfermedades
+laborales que suceden en España. Como tenemos dos nombres de columnas
+diferentes aunque recoge el mismo tipo de valores.</p>
+<pre class="r"><code># Unimos por una columna diferente en canarias estrá la columna Obs y en Espana estará la columna Valor
+df_cana_Esp &lt;- merge(canarias, Espana, by = c(Obs = Valor))</code></pre>
+<pre><code>## Error in eval(expr, envir, enclos): objeto &#39;Valor&#39; no encontrado</code></pre>
+<pre class="r"><code>print(df_cana_Esp)</code></pre>
+<pre><code>## Error in eval(expr, envir, enclos): objeto &#39;df_cana_Esp&#39; no encontrado</code></pre>
+</div>
+<div id="pivotar" class="section level2">
+<h2><strong>Pivotar</strong></h2>
+<p>Vamos a transponer la estructura de nuestra tabla ordenada Espana
+desde largo a ancho.</p>
+<pre class="r"><code>pivot_wider(data = Espana, names_from = &quot;TipoEnf&quot;)</code></pre>
+<pre><code>## Error in `pivot_wider()`:
+## ! Can&#39;t select columns that don&#39;t exist.
+## ✖ Column `value` doesn&#39;t exist.</code></pre>
 </div>
 </div>
 <div id="resultados" class="section level1">
