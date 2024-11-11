@@ -304,17 +304,21 @@ Espana <- subset (Espana, !TipoEnf %in% c ("Cardiopartía|Dolor de cabeza|infecc
 ## **Realizar un dataframe conjunto**
 Realizamos un dataframe uniendo los datos sobre la gravedad de las enfermedades laborales en Aragón y la salud mental de los ciudadanos en Canarias.
 ```{r, warning=FALSE}
+library(DT)
+
 # Unimos por una columna común "Sexo"
 df_Salu_Arag <- merge(Aragon, Salud, by = "Sexo")
 
-print(df_Salu_Arag)
+datatable(df_Salu_Arag)
 ```
 Realizamos un dataframe uniendo los datos sobre los accidentes laborales que suceden en Canarias y los datos sobre las enfermedades laborales que suceden en España. Como tenemos dos nombres de columnas diferentes aunque recoge el mismo tipo de valores.
 ```{r, error = TRUE, warning=FALSE}
+library(DT)
+
 # Unimos por una columna diferente en canarias estrá la columna Obs y en Espana estará la columna Valor
 df_cana_Esp <- merge(canarias, Espana, by = c(Obs = Valor))
 
-print(df_cana_Esp)
+datatable(df_cana_Esp)
 ```
 
 ## **Pivotar**
