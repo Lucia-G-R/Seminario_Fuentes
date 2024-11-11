@@ -187,7 +187,7 @@ Como es un archivo con extensión .csv, utilizamos read_delim e indicamos que el
 ```{r, warning=FALSE}
 # Cargamos los archivos con extensión .csv
 library(readr)
-library((DT))
+library(DT)
 
 Salud_df <- read_delim ("INPUT/DATA/Estados_de_salud_Canarias.csv.csv", delim = ";")
 #class(Salud_df)
