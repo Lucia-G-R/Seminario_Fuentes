@@ -91,7 +91,7 @@ Paquete necesario para transformar las filas y columnas
 ### **Carga de datos JSON**
 Queremos extraer los datos sobre las enfermedades laborales que suceden en España. 
 Como es un archivo con extensión .JSON con listas anidadas sin etiquetar, no podemos utilizar directamente un tibbe para ello, utilizaremos tidyjson.
-```{r}
+```{r}{r, error = TRUE}
 library(rjson)
 library(tidyverse)
 library(tidyjson)
@@ -146,10 +146,14 @@ espana_df <-
 
 attributes(MetaData_df)  
 attributes(Data_df)
-print(MetaData_df)
-print(Data_df)
-print(espana_json)
-print(espana_df)
+#print
+(MetaData_df)
+#print
+(Data_df)
+#print
+(espana_json)
+#print
+(espana_df)
 ```
 
 ### **Carga de datos XLS**
@@ -162,7 +166,7 @@ library(readxl)
 canarias_df <- read_excel("INPUT/DATA/Accidentes_laborales_Canarias.xls")
 class(canarias_df)
 
-print(canarias)
+print(canarias_df)
 ```
 
 ### **Carga de datos CSV**
@@ -175,7 +179,7 @@ library(readr)
 Salud_df <- read_delim ("INPUT/DATA/Estados_de_salud_Canarias.csv.csv", delim = ";")
 class(Salud_df)
 
-print(Salud)
+print(Salud_df)
 ```
 
 ### **Carga de datos XLSX**
@@ -188,7 +192,7 @@ library(readxl)
 Aragon_df <- read_excel ("INPUT/DATA/070901-02_Por grado y sexo. Aragon.xlsx")
 class(Aragon_df)
 
-print(Aragon)
+print(Aragon_df)
 ```
 
 ### **Cambiar nombre de las columnas**
@@ -269,20 +273,11 @@ Espana <-
 Eliminamos las filas que no nos va a interesar estudiar.
 ```{r, error = TRUE}
 #ELIMINAR FILAS
-# Eliminar filas usando subset()
-Salud <- subset(Salud, !(Sexo %in% c("De 16 a 64 años", "De 65 y más años")))
 
-canarias <- subset(canarias, !(TipoTrabCod %in% c("4", "9", "_T", "3", "6", "0", "5", "1")))
-
-Espana <- subset(Espana, !(TipoEnf %in% c("Cardiopartía", "Dolor de cabeza", "infecciosa", "No sabe", "problema de salud", "Problema auditivo", "dermatológico", "gástrico", "respiratorio", "Total")))
-
-# Eliminar filas usando grepl() para mi_data4
 Salud <- Salud[!grepl("De 16 a 64 años|De 65 y más años", Sexo), ]
 
-# Eliminar filas usando grepl() para mi_data
-mi_data <- mi_data[!grepl("4|9|_T|3|6|0|5|1", TipoTrabCod), ]
+canarias <- canarias[!grepl("4|9|_T|3|6|0|5|1", TipoTrabCod), ]
 
-# Eliminar filas usando grepl() para mi_data3
 Espana <- Espana[!grepl("Cardiopartía|Dolor de cabeza|infecciosa|No sabe|problema de salud|Problema auditivo|dermatológico|gástrico|respiratorio|Total", TipoEnf), ]
 
 ```
