@@ -91,7 +91,7 @@ Paquete necesario para transformar las filas y columnas
 ### **Carga de datos JSON**
 Queremos extraer los datos sobre las enfermedades laborales que suceden en España. 
 Como es un archivo con extensión .JSON con listas anidadas sin etiquetar, no podemos utilizar directamente un tibbe para ello, utilizaremos tidyjson.
-```{r}
+```{r} 
 library(rjson)
 library(tidyverse)
 library(tidyjson)
@@ -144,17 +144,16 @@ espana_df <-
   left_join(Data_df, by = "id") %>% # Unimos con Data_df usando 'id'
   mutate(Nombre = espana_json$Nombre) # Agregamos la columna "Nombre" del espana_json
 
-attributes(MetaData_df)  
-attributes(Data_df)
-#print
-(MetaData_df)
-#print
-(Data_df)
-#print
-(espana_json)
-#print
-(espana_df)
+#attributes(MetaData_df)  
+#attributes(Data_df)
+#print(MetaData_df)
+#print(Data_df)
+#print(espana_json)
+print(espana_df)
 ```
+
+
+
 
 ### **Carga de datos XLS**
 Queremos extraer los datos sobre los accidentes laborales que suceden en Canarias. 
@@ -164,7 +163,7 @@ Como es un archivo con extensión .xls, utilizamos read_excel.
 library(readxl)
 
 canarias_df <- read_excel("INPUT/DATA/Accidentes_laborales_Canarias.xls")
-class(canarias_df)
+#class(canarias_df)
 
 print(canarias_df)
 ```
@@ -177,7 +176,7 @@ Como es un archivo con extensión .csv, utilizamos read_delim e indicamos que el
 library(readr)
 
 Salud_df <- read_delim ("INPUT/DATA/Estados_de_salud_Canarias.csv.csv", delim = ";")
-class(Salud_df)
+#class(Salud_df)
 
 print(Salud_df)
 ```
@@ -190,7 +189,7 @@ Como es un archivo con extensión .xlsx, utilizamos read_excel.
 library(readxl)
 
 Aragon_df <- read_excel ("INPUT/DATA/070901-02_Por grado y sexo. Aragon.xlsx")
-class(Aragon_df)
+#class(Aragon_df)
 
 print(Aragon_df)
 ```
@@ -201,7 +200,7 @@ Cambiamos los nombres de las columnas del conjunto de datos sobre los accidentes
 ```{r}
 library(tidyverse)
 
-attributes(canarias_df)
+#attributes(canarias_df)
 canarias <- rename(.data = canarias_df, Año = `TIME_PERIOD#es`, Año2 = `TIME_PERIOD_CODE`, Sexo = `SEXO#es`, SexoCod = `SEXO_CODE`, Gravedad = `ACCIDENTE_GRAVEDAD#es`, GravedadCod = `ACCIDENTE_GRAVEDAD_CODE`, TipoTrab = `TIPO_TRABAJO#es`, TipoTrabCod = `TIPO_TRABAJO_CODE`, TrabHabitual = `TRABAJO_HABITUAL#es`, TrabHabCod = `TRABAJO_HABITUAL_CODE`, Obs = `OBS_VALUE`, ConfeciObs = `CONFIDENCIALIDAD_OBSERVACION#es`, Notasobs = `NOTAS_OBSERVACION#es`, Estadosobs = `ESTADO_OBSERVACION#es`)
 
 print(canarias)
@@ -210,7 +209,7 @@ Cambiamos los nombres de las columnas del conjunto de datos sobre la gravedad de
 ```{r}
 library(tidyverse)
 
-attributes(Aragon_df)
+#attributes(Aragon_df)
 Aragon <- rename(.data = Aragon_df, NumAcci = `Nº Accidentes`, Gravedad = `Grupo Grado Código...4`, GravedadCod = `Grupo Grado Código...5`)
 
 print(Aragon)
@@ -219,7 +218,7 @@ Cambiamos los nombres de las columnas del conjunto de datos sobre las enfermedad
 ```{r}
 library(tidyverse)
 
-attributes(espana_df)
+#attributes(espana_df)
 Espana <- rename(.data = espana_df, TipoEnf = `T3_Variable`, Indicador = `Codigo`, Variable = `..JSON_jsonT3_Variable`, Nombre = `..JSON_jsonNombre`, Codigo = `..JSON_jsonCodigo`, jsonValor = `..JSON_jsonValor`)
 
 print(Espana)
@@ -228,7 +227,7 @@ Cambiamos los nombres de las columnas del conjunto de datos sobre la salud menta
 ```{r}
 library(tidyverse)
 
-attributes(Salud_df)
+#attributes(Salud_df)
 Salud <- rename(.data = Salud_df, Sexo = `sexos_grupos_edad`, EstadoAnsiedad = `autovaloracion_estado_salud_relacion_situaciones_ansiedad`, Años = `anios`, Obs = `poblacion_16_mas_anios`)
 
 print(Salud)
