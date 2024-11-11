@@ -162,7 +162,7 @@ library(readxl)
 canarias_df <- read_excel("INPUT/DATA/Accidentes_laborales_Canarias.xls")
 class(canarias_df)
 
-print(canarias)
+print(canarias_df)
 ```
 
 ### **Carga de datos CSV**
@@ -175,7 +175,7 @@ library(readr)
 Salud_df <- read_delim ("INPUT/DATA/Estados_de_salud_Canarias.csv.csv", delim = ";")
 class(Salud_df)
 
-print(Salud)
+print(Salud_df)
 ```
 
 ### **Carga de datos XLSX**
@@ -188,7 +188,7 @@ library(readxl)
 Aragon_df <- read_excel ("INPUT/DATA/070901-02_Por grado y sexo. Aragon.xlsx")
 class(Aragon_df)
 
-print(Aragon)
+print(Aragon_df)
 ```
 
 ### **Cambiar nombre de las columnas**
