@@ -39,6 +39,7 @@ Agregamos los URL del lugar de obtención de los datos:
 Agregamos el URL del repositorio:
 - [Repositorio](https://github.com/Lucia-G-R/Seminario_Fuentes.git)
 
+
 ```{r}
 install.packages("png")
 library(png)
@@ -344,6 +345,8 @@ plot(pressure)
 # **Resultados**
 
 # **Conclusiones**
+añadir los dos url de los articulos
+
 
 # **Referencias**
 https://osha.europa.eu/es/themes/work-related-diseases
