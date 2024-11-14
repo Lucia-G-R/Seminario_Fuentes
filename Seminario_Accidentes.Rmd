@@ -348,6 +348,7 @@ plot(pressure)
 
 # **Conclusiones**
 añadir los dos url de los articulos
+https://www.omniamachinery.com/es/2022/05/mental-health-in-construction/
 
 
 # **Referencias**
