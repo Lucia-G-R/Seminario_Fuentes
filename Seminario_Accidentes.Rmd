@@ -353,7 +353,10 @@ https://www.omniamachinery.com/es/2022/05/mental-health-in-construction/
 
 # **Referencias**
 https://osha.europa.eu/es/themes/work-related-diseases
+
+url articulos
 https://www.who.int/es/news-room/fact-sheets/detail/mental-disorders
+https://www.redalyc.org/journal/170/17049838011/html/#:~:text=Fundamentos%3A%20Seg%C3%BAn%20las%20estad%C3%ADsticas%20oficiales,participaci%C3%B3n%20en%20el%20mundo%20laboral.
 
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
