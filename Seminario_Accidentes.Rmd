@@ -283,6 +283,8 @@ datatable(canarias)
 ```
 En segundo lugar, eiminamos las columnas del conjunto de datos de Aragon. Nos vamos a quedar solo con las columnas Año, Sexo, NumAcci y Gravedad.
 ```{r, warning=FALSE} 
+library(dplyr)
+
 Aragon <- 
   Aragon%>%
   select(Año, Sexo, NumAcci, Gravedad)
@@ -290,6 +292,8 @@ datatable(Aragon)
 ```
 En tercer lugar, eiminamos las columnas del conjunto de datos de Espana. Nos vamos a quedar solo con las columnas TipoEnf, Nombre, id y Valor.
 ```{r, warning=FALSE} 
+library(dplyr)
+
 Espana <- 
   Espana%>%
   select(TipoEnf, Nombre, id, Valor)
@@ -298,7 +302,7 @@ datatable(Espana)
 
 ## **Eliminar filas**
 Eliminamos las filas que no nos va a interesar estudiar.
-```{r, error = TRUE, warning=FALSE}
+```{r, warning=FALSE}
 #ELIMINAR FILAS
 
 Salud <- subset(Salud, !Sexo %in% c("De 16 a 64 a\xf1os", "De 65 y m\xe1s a\xf1os"))
@@ -323,7 +327,7 @@ Realizamos un dataframe uniendo los datos sobre los accidentes laborales que suc
 library(DT)
 
 # Unimos por una columna diferente en canarias estará la columna Obs y en Espana estará la columna Valor
-df_cana_Esp <- merge(canarias, Espana, by.x = "Obs", by.y = "Valor")
+df_cana_Esp <- inner_join(canarias, Espana, by = c(Obs = Valor))
 
 datatable(df_cana_Esp)
 ```
