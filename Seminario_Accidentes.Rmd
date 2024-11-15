@@ -1,5 +1,5 @@
 ---
-title: "Desarrollo de distintas enfermedades según el oficio"
+title: "Desarrollo de distintas enfermedades según el oficio" <img src='images/imagen.png' align="right" height="120" />
 subtitle: "Fuentes de datos biomédicas y web semántica, Grado en Ingeniería de la Salud"
 author: "Lorena Nerín Grau y Lucía González Redondo"
 class: "3º Ingeniería de la Salud"
@@ -38,18 +38,6 @@ Agregamos los URL del lugar de obtención de los datos:
 
 Agregamos el URL del repositorio:
 - [Repositorio](https://github.com/Lucia-G-R/Seminario_Fuentes.git)
-
-
-```{r, error = TRUE}
-#install.packages("png", repos = "https://cran.rstudio.com")
-
-install.packages("png")
-library(png)
-
-img <- readPNG("C:\\Users\\Usuario\\Desktop\\imagen.png")
-
-#print(img)
-```
 
 ## **Carga de datos**
 ### **Descargar datos**
