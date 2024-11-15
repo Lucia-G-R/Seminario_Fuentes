@@ -344,10 +344,11 @@ datatable(df_cana_Esp)
 
 ## **Pivotar**
 Vamos a transponer la estructura de nuestra tabla ordenada Espana desde largo a ancho.
-```{r, error = TRUE, warning=FALSE}
+```{r, warning=FALSE}
 colnames(Espana)
 head(Espana)
-pivot_wider(data = Espana, names_from = "TipoEnf")
+
+pivot_wider(data = Espana, names_from = "Nombre", values_from = "Valor")
 ```
 
 ## **Gráfico**
