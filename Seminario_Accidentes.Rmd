@@ -266,28 +266,34 @@ select(where(~ all(is.na(.))))
 Para poder eliminar las columnas que poseen datos con argumentos nulos utilizamos la función  filter que nos devolverá solo las columnas con valores de interés.
 ```{r, warning=FALSE}
 canarias <- Filter(function(x) !all(is.na(x)), canarias)
-#print(canarias)
+datatable(canarias)
 ```
 
 ## **Eliminar columnas**
 Eliminamos las columnas que no nos va a interesar estudiar para ello, seleccionamos las columnas que nos interesan. 
 En el único conjunto de datos que no vamos a eliminar columnas es en los datos sobre la salud mental en los habitantes de Canarias.
+Primero vamos a eliminar las columnas del conjunto de datos de canarias. Nos vamos a quedar solo con las columnas Año, Sexo, Gravedad, TipoTrab y Obs.
 ```{r, warning=FALSE} 
 library(dplyr)
 
 canarias <- 
   canarias%>% 
   select(Año, Sexo, Gravedad, TipoTrab, Obs)
-
-
+datatable(canarias)
+```
+En segundo lugar, eiminamos las columnas del conjunto de datos de Aragon. Nos vamos a quedar solo con las columnas Año, Sexo, NumAcci y Gravedad.
+```{r, warning=FALSE} 
 Aragon <- 
   Aragon%>%
   select(Año, Sexo, NumAcci, Gravedad)
-
-
+datatable(Aragon)
+```
+En tercer lugar, eiminamos las columnas del conjunto de datos de Espana. Nos vamos a quedar solo con las columnas TipoEnf, Nombre, id y Valor.
+```{r, warning=FALSE} 
 Espana <- 
   Espana%>%
   select(TipoEnf, Nombre, id, Valor)
+datatable(Espana)
 ```
 
 ## **Eliminar filas**
