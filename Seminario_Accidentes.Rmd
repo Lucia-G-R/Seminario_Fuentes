@@ -345,15 +345,32 @@ datatable(df_cana_Esp)
 ## **Pivotar**
 Vamos a transponer la estructura de nuestra tabla ordenada Espana desde largo a ancho.
 ```{r, warning=FALSE}
-colnames(Espana)
-head(Espana)
+Long_Espana <- pivot_wider(data = Espana, names_from = "Nombre", values_from = "Valor")
 
-pivot_wider(data = Espana, names_from = "Nombre", values_from = "Valor")
+datatable(Long_Espana)
+```
+Elimino los valores nulos que están presentes tras pivotar el conjunto de datos de España
+```{r}
+library(dplyr)
+library(DT)
+
+Espana_piv <-
+  Long_Espana %>%
+  select(where(~ all(is.na(.))))
+
+datatable(Espana_piv)
 ```
 
 ## **Gráfico**
-```{r pressure, echo=FALSE, warning=FALSE}
-plot(pressure)
+Añadimos un gráfico de barras para observar el número de accidentes laborales sucedidos durante los difrentes años en Aragón. Para ello, utilizaremos el atributo de Año y NumAcci del conjunto de datos sobre los accidentes laborales en Aragón.
+```{r, warning=FALSE}
+library(tidyverse)
+
+ggplot(data = Aragon, aes(x = Año, y = NumAcci)) +
+  geom_bar(stat = "identity", fill = "darkturquoise") +
+  xlab("Año del suceso") +
+  ylab("Número de accidentes laborales") +
+  ggtitle(label = "Número de accidentes según el año del suceso")
 ```
 
 # **Resultados**
