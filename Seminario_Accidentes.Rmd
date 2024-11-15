@@ -322,12 +322,15 @@ df_Salu_Arag <- merge(Aragon, Salud, by = "Sexo")
 
 datatable(df_Salu_Arag)
 ```
-Realizamos un dataframe uniendo los datos sobre los accidentes laborales que suceden en Canarias y los datos sobre las enfermedades laborales que suceden en España. Como tenemos dos nombres de columnas diferentes aunque recoge el mismo tipo de valores.
+Realizamos un dataframe uniendo los datos sobre los accidentes laborales que suceden en Canarias y los datos sobre las enfermedades laborales que suceden en España. Como tenemos dos nombres de columnas diferentes aunque recoge el mismo tipo de valores vamos a utilizar un inner_join buscando coincidencias exactas entre el atributo Obs del conjunto de datos Espana y el atributo Valor del conjunto de datos canarias.
 ```{r, error = TRUE}
 library(DT)
 
 # Unimos por una columna diferente en canarias estará la columna Obs y en Espana estará la columna Valor
-df_cana_Esp <- inner_join(canarias, Espana, by = c(Obs = Valor))
+canarias$Obs <- as.character(canarias$Obs)
+Espana$Valor <- as.character(Espana$Valor)
+df_cana_Esp <- canarias %>%
+  inner_join(Espana, by = c("Obs" = "Valor"))
 
 datatable(df_cana_Esp)
 ```
