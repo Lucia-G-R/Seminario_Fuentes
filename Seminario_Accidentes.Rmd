@@ -324,7 +324,7 @@ datatable(df_Salu_Arag)
 ```
 Realizamos un dataframe uniendo los datos sobre los accidentes laborales que suceden en Canarias y los datos sobre las enfermedades laborales que suceden en España. Como tenemos dos nombres de columnas diferentes aunque recoge el mismo tipo de valores vamos a utilizar un inner_join buscando coincidencias exactas entre el atributo Obs del conjunto de datos Espana y el atributo Valor del conjunto de datos canarias.
 Como existen valores iguales en ambos atributos eliminamos duplicados.
-```{r, error = TRUE}
+```{r,  warning=FALSE}
 library(DT)
 
 canarias_dis <-
@@ -350,7 +350,7 @@ Long_Espana <- pivot_wider(data = Espana, names_from = "Nombre", values_from = "
 datatable(Long_Espana)
 ```
 Elimino los valores nulos que están presentes tras pivotar el conjunto de datos de España
-```{r}
+```{r,  warning=FALSE}
 library(dplyr)
 library(DT)
 
