@@ -183,12 +183,12 @@ Como es un archivo con extensión .csv, utilizamos read_delim e indicamos que el
 # Cargamos los archivos con extensión .csv
 library(readr)
 library(DT)
+library(utf8)
 
 Salud_df <- read_delim ("INPUT/DATA/Estados_de_salud_Canarias.csv.csv", delim = ";")
 #class(Salud_df)
 
-print(Salud_df)
-#datatable(Salud_df)
+datatable(Salud_df)
 ```
 
 ### **Carga de datos XLSX**
@@ -341,6 +341,7 @@ https://www.omniamachinery.com/es/2022/05/mental-health-in-construction/
 
 # **Referencias**
 https://osha.europa.eu/es/themes/work-related-diseases
+https://stackoverflow.com/search?q=input+string+1+is+invalid+UTF-8
 
 url articulos
 https://www.who.int/es/news-room/fact-sheets/detail/mental-disorders
