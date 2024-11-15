@@ -179,13 +179,13 @@ datatable(canarias_df)
 ### **Carga de datos CSV**
 Queremos extraer los datos sobre la salud mental en los habitantes de Canarias. 
 Como es un archivo con extensión .csv, utilizamos read_delim e indicamos que el delimitador es ;
+Como al imprimirlo en formato tabla con la función datatable nos da un error con el formato, es decir, indica que hay un problema con la codificación del archivo CSV. En este caso, el error me indica que los archivos están codificados en UTF-8, pero revisando la tabla incluye caracteres como acentos.
 ```{r, warning=FALSE}
 # Cargamos los archivos con extensión .csv
 library(readr)
 library(DT)
-library(utf8)
 
-Salud_df <- read_delim ("INPUT/DATA/Estados_de_salud_Canarias.csv.csv", delim = ";")
+Salud_df <- read_delim ("INPUT/DATA/Estados_de_salud_Canarias.csv.csv", delim = ";", locale = locale(encoding = "ISO-8859-1"))
 #class(Salud_df)
 
 datatable(Salud_df)
