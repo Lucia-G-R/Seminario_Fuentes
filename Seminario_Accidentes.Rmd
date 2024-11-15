@@ -42,7 +42,7 @@ Agregamos el URL del repositorio:
 ## **Carga de datos**
 ### **Descargar datos**
 Podemos descargar los datos de Canarias en formato .csv de la página web de datos del gobierno de España, desde R mediante este código:
-```{r, eval=FALSE, error = TRUE}
+```{r, eval=FALSE, error=TRUE}
 #install.packages("readxl")
 library(readxl)
 
