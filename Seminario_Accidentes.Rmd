@@ -322,8 +322,10 @@ df_Salu_Arag <- merge(Aragon, Salud, by = "Sexo")
 
 datatable(df_Salu_Arag)
 ```
+
 Realizamos un dataframe uniendo los datos sobre los accidentes laborales que suceden en Canarias y los datos sobre las enfermedades laborales que suceden en España. Como tenemos dos nombres de columnas diferentes aunque recoge el mismo tipo de valores vamos a utilizar un inner_join buscando coincidencias exactas entre el atributo Obs del conjunto de datos Espana y el atributo Valor del conjunto de datos canarias.
 Como existen valores iguales en ambos atributos eliminamos duplicados.
+
 ```{r,  warning=FALSE}
 library(DT)
 
@@ -342,6 +344,28 @@ df_cana_Esp <-
 datatable(df_cana_Esp)
 ```
 
+##**Función**
+```{r}
+hombres <- sum(df_cana_Esp$Sexo == "Hombres")
+mujeres <- sum(df_cana_Esp$Sexo == "Mujeres")
+
+
+print(hombres)
+numero <- 0
+
+for (i in 1:nrow(df_cana_Esp)) {
+  if (df_cana_Esp$Sexo[i] == "Hombres" && df_cana_Esp$Nombre[i] == "Problema óseo, articular o muscular que afecta principalmente a las caderas, las piernas o los pies") 
+  {
+  numero <- numero + 1
+  } 
+}
+ 
+
+print(paste("El número de casos es:", numero))
+```
+
+
+
 ## **Pivotar**
 Vamos a transponer la estructura de nuestra tabla ordenada Espana desde largo a ancho.
 ```{r, warning=FALSE}
@@ -349,6 +373,7 @@ Long_Espana <- pivot_wider(data = Espana, names_from = "Nombre", values_from = "
 
 datatable(Long_Espana)
 ```
+
 Elimino los valores nulos que están presentes tras pivotar el conjunto de datos de España
 ```{r,  warning=FALSE}
 library(dplyr)
