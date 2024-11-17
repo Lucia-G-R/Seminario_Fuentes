@@ -453,5 +453,8 @@ Bibliografia imagenes:
 imagen oseo I1
 https://www.bing.com/images/search?view=detailV2&ccid=HIZKeiyE&id=8A29147F9411B08DEB7C49034609DD195464A548&thid=OIP.HIZKeiyEroiF0yAK1ajaLwHaD3&mediaurl=https%3a%2f%2fwww.comunidadmielomamultiple.com%2fwp-content%2fuploads%2fcemmp-dano-oseo.webp&cdnurl=https%3a%2f%2fth.bing.com%2fth%2fid%2fR.1c864a7a2c84ae8885d3200ad5a8da2f%3frik%3dSKVkVBndCUYDSQ%26pid%3dImgRaw%26r%3d0&exph=627&expw=1200&q=imagen+da%c3%b1o+oseo&FORM=IRPRST&ck=52479B4305056814AD24AB193C144909&selectedIndex=7&itb=0&ajaxhist=0&ajaxserp=0
 
+imagen muscular I2
+https://www.bing.com/images/search?view=detailV2&ccid=aV2FcEIh&id=D6AACCBEBEF450E1CBDF67C21D16BF507DF9DA43&thid=OIP.aV2FcEIhl45rkm4m6VFzRgHaD5&mediaurl=https%3a%2f%2frealidadfitness.com%2fwp-content%2fuploads%2f2019%2f05%2fentrenamiento-da%c3%b1o-muscular-1024x538.jpg&cdnurl=https%3a%2f%2fth.bing.com%2fth%2fid%2fR.695d85704221978e6b926e26e9517346%3frik%3dQ9r5fVC%252fFh3CZw%26pid%3dImgRaw%26r%3d0&exph=538&expw=1024&q=imagen+da%c3%b1o+muscular&FORM=IRPRST&ck=99E22962D1608D4D57756ACE0E6D4FE9&selectedIndex=1&itb=0&ajaxhist=0&ajaxserp=0
+
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
