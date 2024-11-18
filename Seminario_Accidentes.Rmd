@@ -441,26 +441,19 @@ https://www.omniamachinery.com/es/2022/05/mental-health-in-construction/
 
 
 # **Referencias**
-*Enfermedades relacionadas con el trabajo*. (2024, 9 diciembre). Safety And Health At Work EU-OSHA. https://osha.europa.eu/es/themes/work-related-diseases
+*Enfermedades relacionadas con el trabajo.* (2024, 9 diciembre). Safety And Health At Work EU-OSHA. https://osha.europa.eu/es/themes/work-related-diseases
 
-https://osha.europa.eu/es/themes/work-related-diseases
-https://stackoverflow.com/search?q=input+string+1+is+invalid+UTF-8
+*Human verification.* (s. f.). Stack Overflow. https://stackoverflow.com/search?q=input+string+1+is+invalid+UTF-8
 
-url articulos
-https://www.who.int/es/news-room/fact-sheets/detail/mental-disorders
-https://www.redalyc.org/journal/170/17049838011/html/#:~:text=Fundamentos%3A%20Seg%C3%BAn%20las%20estad%C3%ADsticas%20oficiales,participaci%C3%B3n%20en%20el%20mundo%20laboral.
+World Health Organization: WHO. (2022b, junio 8). *Trastornos mentales*. https://www.who.int/es/news-room/fact-sheets/detail/mental-disorders
 
+Gómez, M. G., López, R. C., Ortiz, Z. H., & Soria, F. S. (s. f.). *Reconocimiento de enfermedades profesionales según sexo, ocupación y actividad de la empresa en España (1999-2009).* https://www.redalyc.org/journal/170/17049838011/html/#:~:text=Fundamentos%3A%20Seg%C3%BAn%20las%20estad%C3%ADsticas%20oficiales,participaci%C3%B3n%20en%20el%20mundo%20laboral.
 
+*imagen daño oseo - Bing. (s. f.).* Bing. https://www.bing.com/images/search?view=detailV2&ccid=HIZKeiyE&id=8A29147F9411B08DEB7C49034609DD195464A548&thid=OIP.HIZKeiyEroiF0yAK1ajaLwHaD3&mediaurl=https%3a%2f%2fwww.comunidadmielomamultiple.com%2fwp-content%2fuploads%2fcemmp-dano-oseo.webp&cdnurl=https%3a%2f%2fth.bing.com%2fth%2fid%2fR.1c864a7a2c84ae8885d3200ad5a8da2f%3frik%3dSKVkVBndCUYDSQ%26pid%3dImgRaw%26r%3d0&exph=627&expw=1200&q=imagen+da%c3%b1o+oseo&FORM=IRPRST&ck=52479B4305056814AD24AB193C144909&selectedIndex=7&itb=0&ajaxhist=0&ajaxserp=0
 
-Bibliografia imagenes:
-imagen oseo I1
-https://www.bing.com/images/search?view=detailV2&ccid=HIZKeiyE&id=8A29147F9411B08DEB7C49034609DD195464A548&thid=OIP.HIZKeiyEroiF0yAK1ajaLwHaD3&mediaurl=https%3a%2f%2fwww.comunidadmielomamultiple.com%2fwp-content%2fuploads%2fcemmp-dano-oseo.webp&cdnurl=https%3a%2f%2fth.bing.com%2fth%2fid%2fR.1c864a7a2c84ae8885d3200ad5a8da2f%3frik%3dSKVkVBndCUYDSQ%26pid%3dImgRaw%26r%3d0&exph=627&expw=1200&q=imagen+da%c3%b1o+oseo&FORM=IRPRST&ck=52479B4305056814AD24AB193C144909&selectedIndex=7&itb=0&ajaxhist=0&ajaxserp=0
+*imagen daño muscular - Bing. (s. f.).* Bing. https://www.bing.com/images/search?view=detailV2&ccid=aV2FcEIh&id=D6AACCBEBEF450E1CBDF67C21D16BF507DF9DA43&thid=OIP.aV2FcEIhl45rkm4m6VFzRgHaD5&mediaurl=https%3a%2f%2frealidadfitness.com%2fwp-content%2fuploads%2f2019%2f05%2fentrenamiento-da%c3%b1o-muscular-1024x538.jpg&cdnurl=https%3a%2f%2fth.bing.com%2fth%2fid%2fR.695d85704221978e6b926e26e9517346%3frik%3dQ9r5fVC%252fFh3CZw%26pid%3dImgRaw%26r%3d0&exph=538&expw=1024&q=imagen+da%c3%b1o+muscular&FORM=IRPRST&ck=99E22962D1608D4D57756ACE0E6D4FE9&selectedIndex=1&itb=0&ajaxhist=0&ajaxserp=0
 
-imagen muscular I2
-https://www.bing.com/images/search?view=detailV2&ccid=aV2FcEIh&id=D6AACCBEBEF450E1CBDF67C21D16BF507DF9DA43&thid=OIP.aV2FcEIhl45rkm4m6VFzRgHaD5&mediaurl=https%3a%2f%2frealidadfitness.com%2fwp-content%2fuploads%2f2019%2f05%2fentrenamiento-da%c3%b1o-muscular-1024x538.jpg&cdnurl=https%3a%2f%2fth.bing.com%2fth%2fid%2fR.695d85704221978e6b926e26e9517346%3frik%3dQ9r5fVC%252fFh3CZw%26pid%3dImgRaw%26r%3d0&exph=538&expw=1024&q=imagen+da%c3%b1o+muscular&FORM=IRPRST&ck=99E22962D1608D4D57756ACE0E6D4FE9&selectedIndex=1&itb=0&ajaxhist=0&ajaxserp=0
-
-imagen articular I3
-https://www.bing.com/images/search?view=detailV2&ccid=KaDQGmnp&id=2E3760EF62FCCC59509810F95B6010E199FCE071&thid=OIP.KaDQGmnpM8DYGR0vUebPSAHaEM&mediaurl=https%3a%2f%2fvitalclinic.es%2fwp-content%2fuploads%2f2019%2f11%2fartrosis-reumatoide.jpg&cdnurl=https%3a%2f%2fth.bing.com%2fth%2fid%2fR.29a0d01a69e933c0d8191d2f51e6cf48%3frik%3dceD8meEQYFv5EA%26pid%3dImgRaw%26r%3d0&exph=680&expw=1200&q=imagen+da%c3%b1o+articular&FORM=IRPRST&ck=62865A1BF4CB8E9BA729F41897ADACED&selectedIndex=2&itb=0&ajaxhist=0&ajaxserp=0
+*imagen daño articular - Bing. (s. f.).* Bing. https://www.bing.com/images/search?view=detailV2&ccid=KaDQGmnp&id=2E3760EF62FCCC59509810F95B6010E199FCE071&thid=OIP.KaDQGmnpM8DYGR0vUebPSAHaEM&mediaurl=https%3a%2f%2fvitalclinic.es%2fwp-content%2fuploads%2f2019%2f11%2fartrosis-reumatoide.jpg&cdnurl=https%3a%2f%2fth.bing.com%2fth%2fid%2fR.29a0d01a69e933c0d8191d2f51e6cf48%3frik%3dceD8meEQYFv5EA%26pid%3dImgRaw%26r%3d0&exph=680&expw=1200&q=imagen+da%c3%b1o+articular&FORM=IRPRST&ck=62865A1BF4CB8E9BA729F41897ADACED&selectedIndex=2&itb=0&ajaxhist=0&ajaxserp=0
 
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
