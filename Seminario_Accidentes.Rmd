@@ -1,5 +1,5 @@
 ---
-title: "Desarrollo de distintas enfermedades según el oficio" <img src='images/imagen.png' align="right" height="120" />
+title: "Desarrollo de distintas enfermedades según el oficio" 
 subtitle: "Fuentes de datos biomédicas y web semántica, Grado en Ingeniería de la Salud"
 author: "Lorena Nerín Grau y Lucía González Redondo"
 class: "3º Ingeniería de la Salud"
@@ -12,6 +12,7 @@ output:
   pdf_document: 
     toc: true
 ---
+<img src='images/imagen.png' align="right" height="120" />
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
