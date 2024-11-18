@@ -222,8 +222,8 @@ select(where(~ all(is.na(.))))
 ```
 Para poder eliminar las columnas que poseen datos con argumentos nulos utilizamos la función  filter que nos devolverá solo las columnas con valores de interés.
 ```{r,warning=FALSE}
-canarias <- filter(canarias_df, is.na(`CONFIDENCIALIDAD_OBSERVACION`))
-datatable(canarias_df)
+canarias <- filter(canarias_df, !is.na(`CONFIDENCIALIDAD_OBSERVACION#es`))
+datatable(canarias)
 ```
 
 ## **Cambiar nombre de las columnas**
