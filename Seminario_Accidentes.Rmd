@@ -269,8 +269,13 @@ canarias %>%
 select(where(~ all(is.na(.))))
 ```
 Para poder eliminar las columnas que poseen datos con argumentos nulos utilizamos la función  filter que nos devolverá solo las columnas con valores de interés.
-```{r, warning=FALSE}
-canarias <- Filter(function(x) !all(is.na(x)), canarias)
+```{r, warning=FALSE} 
+canarias <- Filter(function(x) !all(is.na(x)), canarias) # ESTE CÓDIGO NO
+datatable(canarias)
+```
+
+```{r,warning=FALSE}
+canarias <- filter(canarias, na.rm = FALSE)
 datatable(canarias)
 ```
 
@@ -424,23 +429,12 @@ print (sum(Cantidad2))
 
 ```
 
-
 ## **Pivotar**
 Vamos a transponer la estructura de nuestra tabla ordenada Espana desde largo a ancho.
 ```{r, warning=FALSE}
 Long_Espana <- pivot_wider(data = Espana, names_from = "Nombre", values_from = "Valor")
 
 datatable(Long_Espana)
-```
-
-Elimino los valores nulos que están presentes tras pivotar el conjunto de datos de España
-```{r,  warning=FALSE}
-library(dplyr)
-library(DT)
-
-Espana_piv <- Filter(function(x) !all(is.na(x)), Long_Espana)
-
-datatable(Espana_piv)
 ```
 
 ## **Gráfico**
