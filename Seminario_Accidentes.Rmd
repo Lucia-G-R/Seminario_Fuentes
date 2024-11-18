@@ -358,7 +358,7 @@ print (mujeres)
 ```
 
 Sumatorio de casos en los que muestra la cantidad de personas (según el sexo) que tienen el tipo de enfermedad
-```{r}
+```{r, error = TRUE}
 
 cat("¿Quieres saber cuantos hombres (1), mujeres (2) o total (3) tienen problemas óseos?")
 
@@ -423,7 +423,7 @@ datatable(Espana_piv)
 
 ## **Gráfico**
 Añadimos un gráfico de barras para observar el número de accidentes laborales sucedidos durante los difrentes años en Aragón. Para ello, utilizaremos el atributo de Año y NumAcci del conjunto de datos sobre los accidentes laborales en Aragón.
-```{r, warning=FALSE}
+```{r, warning=FALSE, error = TRUE}
 library(tidyverse)
 
 ggplot(data = Aragon, aes(x = Año, y = NumAcci)) +
