@@ -212,6 +212,20 @@ print(Aragon_df)
 datatable(Aragon_df)
 ```
 
+## **Eliminar los valores nulos**
+Eliminamos los valores nulos del conjunto de datos sobre los accidentes laborales que suceden en Canarias. Con select observamos las columnas que poseen valores nulos..
+```{r, warning=FALSE}
+library(dplyr)
+
+canarias_df %>%
+select(where(~ all(is.na(.))))
+```
+Para poder eliminar las columnas que poseen datos con argumentos nulos utilizamos la función  filter que nos devolverá solo las columnas con valores de interés.
+```{r,warning=FALSE}
+canarias <- filter(canarias_df, is.na(`CONFIDENCIALIDAD_OBSERVACION`))
+datatable(canarias_df)
+```
+
 ## **Cambiar nombre de las columnas**
 Vamos a cambiar los nombres de las distintas columnas de los datos extraídos.
 Cambiamos los nombres de las columnas del conjunto de datos sobre los accidentes laborales que suceden en Canarias.
@@ -222,7 +236,6 @@ library(DT)
 #attributes(canarias_df)
 canarias <- rename(.data = canarias_df, Año = `TIME_PERIOD#es`, Año2 = `TIME_PERIOD_CODE`, Sexo = `SEXO#es`, SexoCod = `SEXO_CODE`, Gravedad = `ACCIDENTE_GRAVEDAD#es`, GravedadCod = `ACCIDENTE_GRAVEDAD_CODE`, TipoTrab = `TIPO_TRABAJO#es`, TipoTrabCod = `TIPO_TRABAJO_CODE`, TrabHabitual = `TRABAJO_HABITUAL#es`, TrabHabCod = `TRABAJO_HABITUAL_CODE`, Obs = `OBS_VALUE`, ConfeciObs = `CONFIDENCIALIDAD_OBSERVACION#es`, Notasobs = `NOTAS_OBSERVACION#es`, Estadosobs = `ESTADO_OBSERVACION#es`)
 
-#print(canarias)
 datatable(canarias)
 ```
 Cambiamos los nombres de las columnas del conjunto de datos sobre la gravedad de las enfermedades laborales producidas en Aragón. 
@@ -260,22 +273,9 @@ Salud <- rename(.data = Salud_df, Sexo = `sexos_grupos_edad`, EstadoAnsiedad = `
 datatable(Salud)
 ```
 
-## **Eliminar los valores nulos**
-Eliminamos los valores nulos del conjunto de datos sobre los accidentes laborales que suceden en Canarias. Con select observamos las columnas que poseen valores nulos..
-```{r, warning=FALSE}
-library(dplyr)
 
-canarias %>%
-select(where(~ all(is.na(.))))
-```
-Para poder eliminar las columnas que poseen datos con argumentos nulos utilizamos la función  filter que nos devolverá solo las columnas con valores de interés.
 ```{r, warning=FALSE} 
 canarias <- Filter(function(x) !all(is.na(x)), canarias) # ESTE CÓDIGO NO
-datatable(canarias)
-```
-
-```{r,warning=FALSE}
-canarias <- filter(canarias, na.rm = FALSE)
 datatable(canarias)
 ```
 
