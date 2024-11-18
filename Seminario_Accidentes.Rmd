@@ -366,6 +366,8 @@ Sumatorio de casos en los que muestra la cantidad de personas (según el sexo) q
 
 cat("¿Quieres saber cuantos hombres (1), mujeres (2) o total (3) tienen problemas óseos?")
 
+
+
 condicion <- as.integer(readline(prompt = "Ingresa el número de la condición (1, 2 o 3): "))
 
 numero <- 0
@@ -373,21 +375,27 @@ numero <- 0
 if (condicion == 1){
   for (i in 1:nrow(df_cana_Esp)) {
     if (df_cana_Esp$Sexo[i] == "Hombres" && df_cana_Esp$Nombre[i] == "Problema óseo, articular o muscular que afecta principalmente a las caderas, las piernas o los pies")
-    {numero <- numero + 1} 
+      {numero <- numero + 1
+    } 
   }
 } else if (condicion == 2){
   for (i in 1:nrow(df_cana_Esp)) {
   if (df_cana_Esp$Sexo[i] == "Mujeres" && df_cana_Esp$Nombre[i] == "Problema óseo, articular o muscular que afecta principalmente a las caderas, las piernas o los pies")
-  {numero <- numero + 1} 
+    {numero <- numero + 1
+    } 
   }
 } else if (condicion == 3) {
   for (i in 1:nrow(df_cana_Esp)) {
   if (df_cana_Esp$Sexo[i] == "Total" && df_cana_Esp$Nombre[i] == "Problema óseo, articular o muscular que afecta principalmente al cuello, los hombros, los brazos o l") 
-  {numero <- numero + 1} 
-  } else ("Ingresa una de estas opciones: 1, 2 o 3\n")
-}
+  {numero <- numero + 1
+    } 
+  }
+  }else {
+    cat("Ingresa una de estas opciones: 1, 2 o 3\n")
+    } 
 
-cat("El número de casos es:", numero, "\n")
+
+cat("\n El número de casos es:", numero, "\n")
 ```
 
 Imágenes que muestran los daños que ocurren en los distintos casos: 
