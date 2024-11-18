@@ -295,13 +295,13 @@ Aragon <-
   select(Año, Sexo, NumAcci, Gravedad)
 datatable(Aragon)
 ```
-En tercer lugar, eiminamos las columnas del conjunto de datos de Espana. Nos vamos a quedar solo con las columnas TipoEnf, Nombre, id y Valor.
+En tercer lugar, eiminamos las columnas del conjunto de datos de Espana. Nos vamos a quedar solo con las columnas Nombre, id y Valor.
 ```{r, warning=FALSE} 
 library(dplyr)
 
 Espana <- 
   Espana%>%
-  select(TipoEnf, Nombre, id, Valor)
+  select(Nombre, id, Valor)
 datatable(Espana)
 ```
 
@@ -425,9 +425,7 @@ Elimino los valores nulos que están presentes tras pivotar el conjunto de datos
 library(dplyr)
 library(DT)
 
-Espana_piv <-
-  Long_Espana %>%
-  select(where(~ all(is.na(.))))
+Espana_piv <- Filter(function(x) !all(is.na(x)), Long_Espana)
 
 datatable(Espana_piv)
 ```
