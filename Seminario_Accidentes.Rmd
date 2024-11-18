@@ -12,7 +12,7 @@ output:
   pdf_document: 
     toc: true
 ---
-<img src='images/imagen.png' align="right" height="120" />
+<img src='images/imagen.png' align="right" height="80" />
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -386,7 +386,14 @@ if (condicion == 1){
 cat("El número de casos es:", numero, "\n")
 ```
 
-Imágenes que muestran los daños que ocurren en los distintos casos:  <img src='images/I1.jpg' align="right" height="120" /> <img src='images/I2.jpg' align="right" height="120" /> <img src='images/I3.jpg' align="right" height="120" />
+Imágenes que muestran los daños que ocurren en los distintos casos: 
+
+<img src='images/I1.jpg' align="center" height="120" />
+
+<img src='images/I2.jpg' align="center" height="120" />
+
+<img src='images/I3.jpg' align="center" height="120" />
+
 
 Función que determina la cantidad de personas que tienen una enfermedad segun el sexo y la enfermedad
 ```{r}
