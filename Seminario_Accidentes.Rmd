@@ -345,7 +345,7 @@ df_cana_Esp <-
 datatable(df_cana_Esp)
 ```
 
-##**Función**
+## **Función**
 Cantidad de hombres y mujeres del dataframe
 
 ```{r}
