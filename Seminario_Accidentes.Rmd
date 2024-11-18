@@ -40,23 +40,6 @@ Agregamos los URL del lugar de obtención de los datos:
 Agregamos el URL del repositorio:
 - [Repositorio](https://github.com/Lucia-G-R/Seminario_Fuentes.git)
 
-## **Carga de datos**
-### **Descargar datos**
-Podemos descargar los datos de Canarias en formato .csv de la página web de datos del gobierno de España, desde R mediante este código:
-```{r, eval=FALSE}
-#install.packages("readxl")
-library(readxl)
-
-# URL del archivo Excel en GitHub
-url <- "https://github.com/Lucia-G-R/Seminario_Fuentes/blob/main/INPUT/DATA/Enfermedades_laborales_Espa%C3%B1a.csv.csv"
-
-# Creamos un archivo temporal para almacenar el Excel
-temp <- tempfile(fileext = ".csv")
-
-# Descargamos el archivo desde GitHub
-download.file("https://datos.gob.es/es/catalogo/a05003423-poblacion-de-16-y-mas-anos-segun-autovaloracion-del-estado-de-salud-en-relacion-a-situaciones-de-ansiedad-o-depresion-sexos-o-grupos-de-edad-por-anos-canarias-2004-2009", destfile = temp, mode = "wb")
-```
-
 ### **Carga de paquetes**
 Paquetes necesarios para JSON
 ```{r}
@@ -92,6 +75,23 @@ Paquete para mostrar las tablas formatedas
 ```{r}
 #Paquete para mostrar tablas formatedas
 #install.packages("DT")
+```
+
+## **Carga de datos**
+### **Descargar datos**
+Podemos descargar los datos de Canarias en formato .csv de la página web de datos del gobierno de España, desde R mediante este código:
+```{r, eval=FALSE}
+#install.packages("readxl")
+library(readxl)
+
+# URL del archivo Excel en GitHub
+url <- "https://github.com/Lucia-G-R/Seminario_Fuentes/blob/main/INPUT/DATA/Enfermedades_laborales_Espa%C3%B1a.csv.csv"
+
+# Creamos un archivo temporal para almacenar el Excel
+temp <- tempfile(fileext = ".csv")
+
+# Descargamos el archivo desde GitHub
+download.file("https://datos.gob.es/es/catalogo/a05003423-poblacion-de-16-y-mas-anos-segun-autovaloracion-del-estado-de-salud-en-relacion-a-situaciones-de-ansiedad-o-depresion-sexos-o-grupos-de-edad-por-anos-canarias-2004-2009", destfile = temp, mode = "wb")
 ```
 
 ### **Carga de datos JSON**
