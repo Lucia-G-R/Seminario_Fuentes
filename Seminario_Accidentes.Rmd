@@ -454,6 +454,3 @@ Gómez, M. G., López, R. C., Ortiz, Z. H., & Soria, F. S. (s. f.). *Reconocimie
 *imagen daño muscular - Bing. (s. f.).* Bing. https://www.bing.com/images/search?view=detailV2&ccid=aV2FcEIh&id=D6AACCBEBEF450E1CBDF67C21D16BF507DF9DA43&thid=OIP.aV2FcEIhl45rkm4m6VFzRgHaD5&mediaurl=https%3a%2f%2frealidadfitness.com%2fwp-content%2fuploads%2f2019%2f05%2fentrenamiento-da%c3%b1o-muscular-1024x538.jpg&cdnurl=https%3a%2f%2fth.bing.com%2fth%2fid%2fR.695d85704221978e6b926e26e9517346%3frik%3dQ9r5fVC%252fFh3CZw%26pid%3dImgRaw%26r%3d0&exph=538&expw=1024&q=imagen+da%c3%b1o+muscular&FORM=IRPRST&ck=99E22962D1608D4D57756ACE0E6D4FE9&selectedIndex=1&itb=0&ajaxhist=0&ajaxserp=0
 
 *imagen daño articular - Bing. (s. f.).* Bing. https://www.bing.com/images/search?view=detailV2&ccid=KaDQGmnp&id=2E3760EF62FCCC59509810F95B6010E199FCE071&thid=OIP.KaDQGmnpM8DYGR0vUebPSAHaEM&mediaurl=https%3a%2f%2fvitalclinic.es%2fwp-content%2fuploads%2f2019%2f11%2fartrosis-reumatoide.jpg&cdnurl=https%3a%2f%2fth.bing.com%2fth%2fid%2fR.29a0d01a69e933c0d8191d2f51e6cf48%3frik%3dceD8meEQYFv5EA%26pid%3dImgRaw%26r%3d0&exph=680&expw=1200&q=imagen+da%c3%b1o+articular&FORM=IRPRST&ck=62865A1BF4CB8E9BA729F41897ADACED&selectedIndex=2&itb=0&ajaxhist=0&ajaxserp=0
-
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
