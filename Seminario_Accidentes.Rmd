@@ -301,7 +301,7 @@ datatable(Espana)
 
 ## **Eliminar filas**
 Eliminamos las filas que no nos va a interesar estudiar.
-```{r, warning=FALSE}
+```{r, warning=FALSE, error = TRUE}
 #ELIMINAR FILAS
 
 Salud <- subset(Salud, !Sexo %in% c("De 16 a 64 a\xf1os", "De 65 y m\xe1s a\xf1os"))
@@ -441,6 +441,8 @@ https://www.omniamachinery.com/es/2022/05/mental-health-in-construction/
 
 
 # **Referencias**
+*Enfermedades relacionadas con el trabajo*. (2024, 9 diciembre). Safety And Health At Work EU-OSHA. https://osha.europa.eu/es/themes/work-related-diseases
+
 https://osha.europa.eu/es/themes/work-related-diseases
 https://stackoverflow.com/search?q=input+string+1+is+invalid+UTF-8
 
