@@ -442,10 +442,11 @@ ggplot(data = Aragon, aes(x = Año, y = NumAcci)) +
   ggtitle(label = "Número de accidentes según el año del suceso")
 ```
 
-## **Faceta**
+## **Facetas**
 ```{r, warning=FALSE}
+colnames(Salud)
 ggplot(data = Salud, aes(x = Obs, y = EstadoAnsiedad)) +
-  geom_point(aes(colour = factor(Años))) +
+  geom_point(aes(colour = factor(Años), shape=factor(Sexo))) +
   xlab("Observaciones") +
   ylab("Tipos de estados de ansiedad") +
   ggtitle(label = "Observaciones del estado de ansiedad según el año")
