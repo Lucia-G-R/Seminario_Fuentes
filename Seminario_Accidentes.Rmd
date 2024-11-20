@@ -446,7 +446,7 @@ ggplot(data = Aragon, aes(x = Año, y = NumAcci)) +
 ```
 
 ## **Faceta**
-```{r}
+```{r, warning=FALSE}
 ggplot(data = mpg, aes(x = displ, y = hwy)) +
   geom_point(aes(colour = factor(cyl), shape = drv))
 ```
