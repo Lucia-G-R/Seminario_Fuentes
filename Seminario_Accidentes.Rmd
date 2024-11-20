@@ -53,37 +53,37 @@ Agregamos el URL del repositorio:
 
 ### **Carga de paquetes**
 Paquetes necesarios para JSON
-```{r}
+```{r, warning=FALSE}
 # Paquetes necesarios para JSON 
 #install.packages("tidyjson")
 ```
 Paquetes necesarios para xls
-```{r}
+```{r, warning=FALSE}
 # Paquetes necesarios para xls
 #install.packages("readxl")
 ```
 Paquetes necesarios para csv
-```{r}
+```{r, warning=FALSE}
 # Paquetes necesarios para csv
 #install.packages("readr")
 ```
 Paquetes necesarios para xlsx
-```{r}
+```{r, warning=FALSE}
 # Paquetes necesarios para xlsx
 #install.packages("readxl")
 ```
 Paquete necesario para la manipulación de dataframes
-```{r}
+```{r, warning=FALSE}
 # Paquete necesario para la manipulación de dataframes
 #install.packages("dplyr") 
 ```
 Paquete necesario para transformar las filas y columnas
-```{r}
+```{r, warning=FALSE}
 # Paquete necesario para transformar las filas y columnas
 #install.packages("tidyverse")
 ```
 Paquete para mostrar las tablas formatedas
-```{r}
+```{r, warning=FALSE}
 #Paquete para mostrar tablas formatedas
 #install.packages("DT")
 ```
@@ -91,7 +91,7 @@ Paquete para mostrar las tablas formatedas
 ## **Carga de datos**
 ### **Descargar datos**
 Podemos descargar los datos de Canarias en formato .csv de la página web de datos del gobierno de España, desde R mediante este código:
-```{r, eval=FALSE}
+```{r, eval=FALSE, warning=FALSE}
 #install.packages("readxl")
 library(readxl)
 
@@ -350,7 +350,7 @@ datatable(df_cana_Esp)
 ## **Función**
 Cantidad de hombres y mujeres del dataframe
 
-```{r}
+```{r, warning=FALSE}
 hombres <- sum(df_cana_Esp$Sexo == "Hombres")
 mujeres <- sum(df_cana_Esp$Sexo == "Mujeres")
 
@@ -360,7 +360,7 @@ print (mujeres)
 ```
 
 Sumatorio de casos en los que muestra la cantidad de personas (según el sexo) que tienen el tipo de enfermedad
-```{r, error = TRUE}
+```{r, error = TRUE, warning=FALSE}
 
 cat("¿Quieres saber cuantos hombres (1), mujeres (2) o total (3) tienen problemas óseos?")
 
@@ -411,7 +411,7 @@ Imágenes que muestran los daños que ocurren en los distintos casos:
 
 
 Función que determina la cantidad de personas que tienen una enfermedad segun el sexo y la enfermedad
-```{r}
+```{r, warning=FALSE}
 Cantidad1 <- df_cana_Esp$Obs[df_cana_Esp$Sexo == "Hombres" & df_cana_Esp$Nombre == "Problema óseo, articular o muscular que afecta principalmente a las caderas, las piernas o los pies"]
 
 print(Cantidad1)
@@ -428,6 +428,11 @@ Vamos a transponer la estructura de nuestra tabla ordenada Espana desde largo a 
 Long_Espana <- pivot_wider(data = Espana, names_from = "Nombre", values_from = "Valor")
 
 datatable(Long_Espana)
+```
+
+## **Añdir valores**
+```{r, warning=FALSE}
+
 ```
 
 ## **Gráfico**
