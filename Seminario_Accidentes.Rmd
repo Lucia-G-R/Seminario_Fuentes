@@ -431,6 +431,7 @@ datatable(Long_Espana)
 ```
 
 ## **Añdir valores**
+Utilizamos mutate
 ```{r, warning=FALSE}
 
 ```
