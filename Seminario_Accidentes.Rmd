@@ -445,7 +445,10 @@ ggplot(data = Aragon, aes(x = Año, y = NumAcci)) +
 ## **Faceta**
 ```{r, warning=FALSE}
 ggplot(data = Salud, aes(x = Obs, y = EstadoAnsiedad)) +
-  geom_point(aes(colour = factor(Años), shape = drv))
+  geom_point(aes(colour = factor(Años)))
+  xlab("Observaciones") +
+  ylab("Estado de ansiedad") +
+  ggtitle(label = "Observaciones del estado de ansiedad según el año")
 ```
 
 # **Resultados**
