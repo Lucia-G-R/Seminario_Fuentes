@@ -397,10 +397,6 @@ cat("\nEl número de casos es:", numero, "\n")
 
 ```
 
-
-
-
-
 Imágenes que muestran los daños que ocurren en los distintos casos: 
 
 <img src='images/I1.jpg' align="center" height="120" />
@@ -408,7 +404,6 @@ Imágenes que muestran los daños que ocurren en los distintos casos:
 <img src='images/I2.jpg' align="center" height="120" />
 
 <img src='images/I3.jpg' align="center" height="120" />
-
 
 Función que determina la cantidad de personas que tienen una enfermedad segun el sexo y la enfermedad
 ```{r, warning=FALSE}
@@ -463,7 +458,6 @@ ggplot(data = Salud, aes(x = Obs, y = EstadoAnsiedad)) +
 # **Conclusiones**
 añadir los dos url de los articulos
 https://www.omniamachinery.com/es/2022/05/mental-health-in-construction/
-
 
 # **Referencias**
 *Enfermedades relacionadas con el trabajo.* (2024, 9 diciembre). Safety And Health At Work EU-OSHA. https://osha.europa.eu/es/themes/work-related-diseases
