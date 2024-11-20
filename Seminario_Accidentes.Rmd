@@ -313,9 +313,6 @@ Eliminamos las filas que no nos va a interesar estudiar.
 
 Salud <- subset(Salud, !Sexo %in% c("De 16 a 64 a\xf1os", "De 65 y m\xe1s a\xf1os"))
 
-#canarias <- subset(canarias, !TipoTrabCod %in% c("4|9|_T|3|6|0|5|1"))
-
-Espana <- subset (Espana, !TipoEnf %in% c ("Cardiopartía|Dolor de cabeza|infecciosa|No sabe|problema de salud|Problemaauditivo|dermatológico|gástrico|respiratorio|Total"))
 ```
 
 ## **Realizar un dataframe conjunto**
