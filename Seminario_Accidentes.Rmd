@@ -445,6 +445,12 @@ ggplot(data = Aragon, aes(x = Año, y = NumAcci)) +
   ggtitle(label = "Número de accidentes según el año del suceso")
 ```
 
+## **Faceta**
+```{r}
+ggplot(data = mpg, aes(x = displ, y = hwy)) +
+  geom_point(aes(colour = factor(cyl), shape = drv))
+```
+
 # **Resultados**
 
 # **Conclusiones**
