@@ -431,9 +431,6 @@ datatable(Long_Espana)
 
 ## **Añdir valores**
 Utilizamos mutate
-```{r, warning=FALSE}
-
-```
 
 ## **Gráfico**
 Añadimos un gráfico de barras para observar el número de accidentes laborales sucedidos durante los difrentes años en Aragón. Para ello, utilizaremos el atributo de Año y NumAcci del conjunto de datos sobre los accidentes laborales en Aragón.
@@ -450,7 +447,9 @@ ggplot(data = Aragon, aes(x = Año, y = NumAcci)) +
 
 ## **Facetas**
 ```{r, warning=FALSE}
-colnames(Salud)
+library(tidyverse)
+library(ggplot2)
+
 ggplot(data = Salud, aes(x = Obs, y = EstadoAnsiedad)) +
   geom_point(aes(colour = factor(Años), shape=factor(Sexo))) +
   xlab("Observaciones") +
