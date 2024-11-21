@@ -87,6 +87,10 @@ Paquete para mostrar las tablas formatedas
 #Paquete para mostrar tablas formatedas
 #install.packages("DT")
 ```
+Paquete necesario para la implementación de gráficos
+```{r}
+#install.packages("ggplot2")
+```
 
 ## **Carga de datos**
 ### **Descargar datos**
@@ -434,18 +438,25 @@ Utilizamos mutate
 ## **Gráfico**
 Añadimos un gráfico de barras para observar el número de accidentes laborales sucedidos durante los difrentes años en Aragón. Para ello, utilizaremos el atributo de Año y NumAcci del conjunto de datos sobre los accidentes laborales en Aragón.
 ```{r, warning=FALSE}
-Aragon <- Aragon %>%
-  mutate(Año = as.factor(Año))
+library(ggplot2)
+
+datos_prueba <- data.frame(
+  Año = c(2020, 2021, 2022),
+  NumAcci = c(100, 200, 150)
+)
+
+ggplot(datos_prueba, aes(x = Año, y = NumAcci)) +
+  geom_col(fill = "darkturquoise")
 ```
 
 ```{r, warning=FALSE}
-library(tidyverse)
+#library(tidyverse)
 
-ggplot(data = Aragon, aes(x = Año, y = NumAcci)) +
-  geom_bar(stat = "identity", fill = "darkturquoise") +
-  xlab("Año del suceso") +
-  ylab("Número de accidentes laborales") +
-  ggtitle(label = "Número de accidentes según el año del suceso")
+#ggplot(data = Aragon, aes(x = Año, y = NumAcci)) +
+#  geom_bar(stat = "identity", fill = "darkturquoise") +
+#  xlab("Año del suceso") +
+#  ylab("Número de accidentes laborales") +
+#  ggtitle(label = "Número de accidentes según el año del suceso")
 ```
 
 ## **Facetas**
