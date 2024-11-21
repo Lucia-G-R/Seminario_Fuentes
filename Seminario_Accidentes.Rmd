@@ -428,8 +428,25 @@ Long_Espana <- pivot_wider(data = Espana, names_from = "Nombre", values_from = "
 datatable(Long_Espana)
 ```
 
-## **Añdir valores**
-Utilizamos mutate
+## **Añdir columnas**
+Utilizamos mutate para sacar el porcentaje que representa cada observación respecto al conjunto de observaciones del conjunto de datos de canarias.
+Con options(scipen=999) evitamos la notación científica.
+```{r, warning=FALSE}
+library(dplyr)
+library(DT)
+
+options(scipen = 999)
+datatable(mutate(.data = canarias, Porcentaje_Obs = (Obs / sum(Obs)) * 100))
+```
+HACERLO BIEN??
+```{r, warning=FALSE}
+library(dplyr)
+library(DT)
+
+options(scipen = 999)
+datatable(mutate(.data = Espana, Porcentaje_Valor = (Valor / sum(Valor)) * 100))
+```
+
 
 ## **Gráfico**
 Añadimos un gráfico de barras para observar el número de accidentes laborales sucedidos durante los difrentes años en Aragón. Para ello, utilizaremos el atributo de Año y NumAcci del conjunto de datos sobre los accidentes laborales en Aragón.
