@@ -434,6 +434,11 @@ Utilizamos mutate
 ## **Gráfico**
 Añadimos un gráfico de barras para observar el número de accidentes laborales sucedidos durante los difrentes años en Aragón. Para ello, utilizaremos el atributo de Año y NumAcci del conjunto de datos sobre los accidentes laborales en Aragón.
 ```{r, warning=FALSE}
+Aragon <- Aragon %>%
+  mutate(Año = as.factor(Año))
+```
+
+```{r, warning=FALSE}
 library(tidyverse)
 
 ggplot(data = Aragon, aes(x = Año, y = NumAcci)) +
