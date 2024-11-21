@@ -364,7 +364,7 @@ print (mujeres)
 ```
 
 Sumatorio de casos en los que muestra la cantidad de personas (según el sexo) que tienen el tipo de enfermedad
-```{r, error = TRUE, warning=FALSE}
+```{r, warning=FALSE}
 
 cat("¿Quieres saber cuantos hombres (1), mujeres (2) o total (3) tienen problemas óseos?")
 
@@ -418,7 +418,6 @@ print(Cantidad1)
 Cantidad2 <- df_cana_Esp$Obs[df_cana_Esp$Sexo == "Total" & df_cana_Esp$Nombre == "Problema óseo, articular o muscular que afecta principalmente al cuello, los hombros, los brazos o l"]
   
 print (sum(Cantidad2))
-
 ```
 
 ## **Pivotar**
