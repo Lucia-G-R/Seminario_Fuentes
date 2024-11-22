@@ -438,7 +438,8 @@ library(DT)
 options(scipen = 999)
 datatable(mutate(.data = canarias, Porcentaje_Obs = (Obs / sum(Obs)) * 100))
 ```
-
+Observamos que existen valore nulos en la variable Valor del dataframe de España, por lo que para poder utilizar el mutate necesitamos eliminar aquellos valores vacíos. 
+En primer lugar, 
 ```{r, warning=FALSE}
 library(dplyr)
 library(DT)
