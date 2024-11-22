@@ -438,14 +438,16 @@ library(DT)
 options(scipen = 999)
 datatable(mutate(.data = canarias, Porcentaje_Obs = (Obs / sum(Obs)) * 100))
 ```
-HACERLO BIEN??
+
 ```{r, warning=FALSE}
 library(dplyr)
 library(DT)
 
+Espana <- 
+  Espana %>%
+  filter(!is.na(Valor))
+
 options(scipen = 999)
-print(Espana$Valor)
-sum(Espana$Valor)
 datatable(mutate(.data = Espana, Porcentaje_Valor = (Valor / sum(Valor)) * 100))
 ```
 
