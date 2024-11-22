@@ -444,6 +444,8 @@ library(dplyr)
 library(DT)
 
 options(scipen = 999)
+print(Espana$Valor)
+sum(Espana$Valor)
 datatable(mutate(.data = Espana, Porcentaje_Valor = (Valor / sum(Valor)) * 100))
 ```
 
