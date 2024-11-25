@@ -30,7 +30,7 @@ Evaluación del desarrollo de enfermedades laborales, respecto a la profesión y
 - ¿Exsite relación entre la gravedad de una enfermedad psicológica respecto al desarrollo de una enfermedad laboral?
 
 
-# **Relacion con otros articulos y estudios**
+# **Relacion con otros artículos y estudios**
 Uno de ellos tambien estudia la incidencia de enfermedades segun la economia y el sexo de los encuestados.
 Segun el sexo hay diferencias significativas donde los hombres tienen mayor numero de enfermedades, ya que son estos los que ocupan los trabajos fisicos exigentes. En cuanto al tipo de trabajo el sector de la mineria, construcción y agricultura resultan los que mas enfermedades se tienen.
 
@@ -356,7 +356,7 @@ library("DT")
 datatable(slice_max(.data = canarias, order_by = Año))
 ```
 ### **Arrange**
-Ordena las filas de manera descendente según los niveles de gravedad de accidentes del conjunto de datos de Aragón
+Ordena las filas de manera descendente según los niveles de gravedad de accidentes del conjunto de datos de Aragón.
 ```{r, warning=FALSE}
 library("DT")
 
