@@ -322,7 +322,6 @@ datatable(Long_Espana)
 ### **Eliminar filas**
 Eliminamos las filas que no nos va a interesar estudiar.
 ```{r, warning=FALSE, error = TRUE}
-#ELIMINAR FILAS
 
 Salud <- subset(Salud, !Sexo %in% c("De 16 a 64 a\xf1os", "De 65 y m\xe1s a\xf1os"))
 
@@ -356,6 +355,14 @@ library("DT")
 
 datatable(slice_max(.data = canarias, order_by = Año))
 ```
+### **Arrange**
+Ordena las filas de manera descendente según los niveles de gravedad de accidentes del conjunto de datos de Aragón
+```{r, warning=FALSE}
+library("DT")
+
+datatable(arrange(.data = Aragon, desc(factor(Gravedad)), NumAcci))
+```
+
 
 ## **Realizar un dataframe conjunto**
 Realizamos un dataframe uniendo los datos sobre la gravedad de las enfermedades laborales en Aragón y la salud mental de los ciudadanos en Canarias.
@@ -368,9 +375,7 @@ df_Salu_Arag <- merge(Aragon, Salud, by = "Sexo")
 datatable(df_Salu_Arag)
 ```
 
-Realizamos un dataframe uniendo los datos sobre los accidentes laborales que suceden en Canarias y los datos sobre las enfermedades laborales que suceden en España. Como tenemos dos nombres de columnas diferentes aunque recoge el mismo tipo de valores vamos a utilizar un inner_join buscando coincidencias exactas entre el atributo Obs del conjunto de datos Espana y el atributo Valor del conjunto de datos canarias.
-Como existen valores iguales en ambos atributos eliminamos duplicados.
-
+Realizamos un dataframe uniendo los datos sobre los accidentes laborales que suceden en Canarias y los datos sobre las enfermedades mentales.
 ```{r,  warning=FALSE}
 library(DT)
 
@@ -382,9 +387,9 @@ Salud_dis <-
   Salud %>%
   distinct(Años, .keep_all = TRUE)
 
-df_cana_Esp <- 
+df_cana_Salud <- 
   canarias_dis %>%
-  inner_join(Espana_dis, by = c("Año" = "Años"))
+  inner_join(Salud_dis, by = c("Año" = "Años"))
 
 datatable(df_cana_Esp)
 ```
