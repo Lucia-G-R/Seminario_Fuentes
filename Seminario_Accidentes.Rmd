@@ -222,8 +222,8 @@ Aragon_df <- read_excel ("INPUT/DATA/070901-02_Por grado y sexo. Aragon.xlsx")
 print(Aragon_df)
 datatable(Aragon_df)
 ```
-
-## **Observar valores nulos**
+## **Trabajar con columnas**
+### **Observar valores nulos**
 Observamos los valores nulos del conjunto de datos sobre los accidentes laborales que suceden en Canarias. Con select observamos las columnas que poseen valores nulos..
 ```{r, warning=FALSE}
 library(dplyr)
@@ -232,7 +232,7 @@ canarias_df %>%
 select(where(~ all(is.na(.))))
 ```
 
-## **Cambiar nombre de las columnas**
+### **Cambiar nombre de las columnas**
 Vamos a cambiar los nombres de las distintas columnas de los datos extraídos.
 Cambiamos los nombres de las columnas del conjunto de datos sobre los accidentes laborales que suceden en Canarias.
 ```{r, warning=FALSE}
@@ -279,7 +279,7 @@ Salud <- rename(.data = Salud_df, Sexo = `sexos_grupos_edad`, EstadoAnsiedad = `
 datatable(Salud)
 ```
 
-## **Eliminar columnas**
+### **Eliminar columnas**
 Eliminamos las columnas que no nos va a interesar estudiar para ello, seleccionamos las columnas que nos interesan. 
 En el único conjunto de datos que no vamos a eliminar columnas es en los datos sobre la salud mental en los habitantes de Canarias.
 Primero vamos a eliminar las columnas del conjunto de datos de canarias. Nos vamos a quedar solo con las columnas Año, Sexo, Gravedad, TipoTrab y Obs.
@@ -309,8 +309,8 @@ Espana <-
   select(Nombre, id, Valor)
 datatable(Espana)
 ```
-
-## **Eliminar filas**
+## **Trabajar con filas**
+### **Eliminar filas**
 Eliminamos las filas que no nos va a interesar estudiar.
 ```{r, warning=FALSE, error = TRUE}
 #ELIMINAR FILAS
