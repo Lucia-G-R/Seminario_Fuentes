@@ -338,15 +338,15 @@ library(DT)
 
 canarias_dis <-
   canarias %>%
-  distinct(Obs, .keep_all = TRUE)
+  distinct(Año, .keep_all = TRUE)
 
-Espana_dis <-
-  Espana %>%
-  distinct(Valor, .keep_all = TRUE)
+Salud_dis <-
+  Salud %>%
+  distinct(Años, .keep_all = TRUE)
 
 df_cana_Esp <- 
   canarias_dis %>%
-  inner_join(Espana_dis, by = c("Obs" = "Valor"))
+  inner_join(Espana_dis, by = c("Año" = "Años"))
 
 datatable(df_cana_Esp)
 ```
