@@ -222,6 +222,7 @@ Aragon_df <- read_excel ("INPUT/DATA/070901-02_Por grado y sexo. Aragon.xlsx")
 print(Aragon_df)
 datatable(Aragon_df)
 ```
+
 ## **Trabajar con columnas**
 ### **Observar valores nulos**
 Observamos los valores nulos del conjunto de datos sobre los accidentes laborales que suceden en Canarias. Con select observamos las columnas que poseen valores nulos..
@@ -300,7 +301,7 @@ Aragon <-
   select(Año, Sexo, NumAcci, Gravedad)
 datatable(Aragon)
 ```
-En tercer lugar, eiminamos las columnas del conjunto de datos de Espana. Nos vamos a quedar solo con las columnas Nombre, id y Valor.
+En tercer lugar, eliminamos las columnas del conjunto de datos de Espana. Nos vamos a quedar solo con las columnas Nombre, id y Valor.
 ```{r, warning=FALSE} 
 library(dplyr)
 
@@ -308,6 +309,36 @@ Espana <-
   Espana%>%
   select(Nombre, id, Valor)
 datatable(Espana)
+```
+
+## **Realizar un dataframe conjunto**
+Realizamos un dataframe uniendo los datos sobre la gravedad de las enfermedades laborales en Aragón y la salud mental de los ciudadanos en Canarias.
+```{r, warning=FALSE}
+library(DT)
+
+# Unimos por una columna común "Sexo"
+df_Salu_Arag <- merge(Aragon, Salud, by = "Sexo")
+
+datatable(df_Salu_Arag)
+```
+
+Realizamos un dataframe uniendo los datos sobre los accidentes laborales que suceden en Canarias y los datos sobre las enfermedades mentales.
+```{r,  warning=FALSE}
+library(DT)
+
+canarias_dis <-
+  canarias %>%
+  distinct(Año, .keep_all = TRUE)
+
+Salud_dis <-
+  Salud %>%
+  distinct(Años, .keep_all = TRUE)
+
+df_cana_Salud <- 
+  canarias_dis %>%
+  inner_join(Salud_dis, by = c("Año" = "Años"))
+
+datatable(df_cana_Esp)
 ```
 
 ## **Pivotar**
@@ -363,35 +394,9 @@ library("DT")
 datatable(arrange(.data = Aragon, desc(factor(Gravedad)), NumAcci))
 ```
 
-
-## **Realizar un dataframe conjunto**
-Realizamos un dataframe uniendo los datos sobre la gravedad de las enfermedades laborales en Aragón y la salud mental de los ciudadanos en Canarias.
-```{r, warning=FALSE}
-library(DT)
-
-# Unimos por una columna común "Sexo"
-df_Salu_Arag <- merge(Aragon, Salud, by = "Sexo")
-
-datatable(df_Salu_Arag)
-```
-
-Realizamos un dataframe uniendo los datos sobre los accidentes laborales que suceden en Canarias y los datos sobre las enfermedades mentales.
-```{r,  warning=FALSE}
-library(DT)
-
-canarias_dis <-
-  canarias %>%
-  distinct(Año, .keep_all = TRUE)
-
-Salud_dis <-
-  Salud %>%
-  distinct(Años, .keep_all = TRUE)
-
-df_cana_Salud <- 
-  canarias_dis %>%
-  inner_join(Salud_dis, by = c("Año" = "Años"))
-
-datatable(df_cana_Esp)
+### **Summariese**
+```{r}
+datatable(summarise(.data = ))
 ```
 
 ## **Función**
