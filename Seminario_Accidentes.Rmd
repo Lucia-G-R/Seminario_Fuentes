@@ -341,6 +341,18 @@ library("DT")
 
 datatable(slice_sample(.data = Espana, n = 10))
 ```
+#### **Slice_max y slice_min**
+```{r, warning=FALSE}
+library("DT")
+
+datatable(slice_max(.data = canarias))
+```
+
+```{r, warning=FALSE}
+library("DT")
+
+datatable(slice_min(.data = canarias))
+```
 
 ## **Realizar un dataframe conjunto**
 Realizamos un dataframe uniendo los datos sobre la gravedad de las enfermedades laborales en Aragón y la salud mental de los ciudadanos en Canarias.
