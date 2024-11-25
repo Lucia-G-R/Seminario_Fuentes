@@ -313,13 +313,30 @@ datatable(Espana)
 
 ### **Case_when**
 ```{r, warning=FALSE}
-starwars %>%
-  select(name:mass, gender, species) %>%
-  mutate(type = case_when(
-    height > 200 | mass > 200 ~ "large",
-    species == "Droid" ~ "robot",
-    .default = "other"
+library("DT")
+
+canarias_when <- 
+  canarias %>%
+  mutate(categoria = case_when(
+        # Alta gravedad con muchas observaciones
+    Gravedad == "Total" & Obs > 5000 ~ "Alta gravedad",
+    
+    # Baja gravedad con pocas observaciones
+    Gravedad == "Total" & Obs <= 5000 ~ "Baja gravedad",
+    
+    # Para el sexo y un número elevado de accidentes
+    Sexo == "Mujeres" & Obs > 1000 ~ "Accidentes Mujeres - Alto",
+    Sexo == "Hombres" & Obs > 1000 ~ "Accidentes Hombres - Alto",
+    
+    # Para el sexo con pocos accidentes
+    Sexo == "Mujeres" & Obs <= 1000 ~ "Accidentes Mujeres - Bajo",
+    Sexo == "Hombres" & Obs <= 1000 ~ "Accidentes Hombres - Bajo",
+    
+    # Cualquier otro caso general
+    .default = "Otro"
   ))
+
+datatable(canarias_when)
 ```
 
 ## **Realizar un dataframe conjunto**
@@ -405,7 +422,7 @@ library("DT")
 datatable(arrange(.data = Aragon, desc(factor(Gravedad)), NumAcci))
 ```
 
-### **Summariese**
+### **Summarise**
 Calculamos el número total, las observacione son los registros , el mínimo, el máximo y la medianda de accidentes laborales en los Años 2004 y 2009 con el dataframe conjunto del conjunto de datos de salud mental y el número de accidentes labotrales.
 ```{r, warning=FALSE}
 info_acci<- 
