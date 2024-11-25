@@ -311,6 +311,17 @@ Espana <-
 datatable(Espana)
 ```
 
+### **Case_when** HACEEEEER
+```{r, warning=FALSE}
+starwars %>%
+  select(name:mass, gender, species) %>%
+  mutate(type = case_when(
+    height > 200 | mass > 200 ~ "large",
+    species == "Droid" ~ "robot",
+    .default = "other"
+  ))
+```
+
 ## **Realizar un dataframe conjunto**
 Realizamos un dataframe uniendo los datos sobre la gravedad de las enfermedades laborales en Aragón y la salud mental de los ciudadanos en Canarias.
 ```{r, warning=FALSE}
@@ -396,8 +407,13 @@ datatable(arrange(.data = Aragon, desc(factor(Gravedad)), NumAcci))
 
 ### **Summariese**
 Calculamos la media de accidentes laborales en los Años 2004 y 2009 con el dataframe conjunto del conjunto de datos de salud mental y el número de accidentes labotrales.
-```{r}
-datatable(summarise(.data = df_Salu_Arag ))
+```{r, warning=FALSE}
+mediana_acci<- 
+  df_Salu_Arag%>%
+  group_by(Años)%>%
+  summarise(Mediana_Accidentes = median(NumAcci, na.rm = TRUE))
+
+datatable(mediana_acci)
 ```
 
 ## **Función**
@@ -496,7 +512,7 @@ Cantidad2 <- df_cana_Esp$Obs[df_cana_Esp$Sexo == "Total" & df_cana_Esp$Nombre ==
 print (sum(Cantidad2))
 ```
 
-## **Añdir columnas**
+## **Añadir columnas**
 Utilizamos mutate para sacar el porcentaje que representa cada observación respecto al conjunto de observaciones del conjunto de datos de canarias.
 Con options(scipen=999) evitamos la notación científica.
 ```{r, warning=FALSE}
