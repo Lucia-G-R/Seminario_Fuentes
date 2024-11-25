@@ -335,11 +335,12 @@ library("DT")
 datatable(slice_tail(.data = Aragon, n =5))
 ```
 #### **Slice_sample**
-Escogemos un conjunto de filas aleatorias del conjunto de datos de Espana
-```{r}
+Escogemos un conjunto de filas, exactamente 10 filas aleatorias del conjunto de datos de Espana
+```{r, warning=FALSE}
+library("DT")
 
+datatable(slice_sample(.data = Espana, n = 10))
 ```
-
 
 ## **Realizar un dataframe conjunto**
 Realizamos un dataframe uniendo los datos sobre la gravedad de las enfermedades laborales en Aragón y la salud mental de los ciudadanos en Canarias.
