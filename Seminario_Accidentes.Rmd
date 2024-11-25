@@ -467,10 +467,10 @@ df_resultado <- df_Salu_Arag %>%
   summarise(casos = n(), .groups = 'drop')
 
 # Crear el gráfico
-grafico <- ggplot(df_resultado, aes(x = Sexo, y = Gravedad, fill = Gravedad)) + 
+grafico <- ggplot(df_Salu_Arag, aes(x = Sexo, y = NumAcci, fill = Gravedad)) + 
   geom_bar(stat = "identity", position = "dodge") +
   labs(x = 'Sexo', 
-       y = 'Gravedad', 
+       y = 'Numero', 
        title = 'Niveles de gravedad segun el sexo',
        fill = 'Condición') + 
   theme_bw() +
@@ -478,8 +478,29 @@ grafico <- ggplot(df_resultado, aes(x = Sexo, y = Gravedad, fill = Gravedad)) +
 
 print(grafico)
 
+```
 
 
+
+
+```{r}
+
+grafico_f <- df_Salu_Arag %>%
+  filter(!(EstadoAnsiedad %in% c("No sabe/No contesta", "Total"))) %>%
+  group_by(Año, Sexo, EstadoAnsiedad) %>%
+  summarise (count = n(), .groups = "drop")
+
+grafico_f2 <- ggplot(grafico_f, aes(x = Año, y = count, fill = EstadoAnsiedad)) + 
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(x = 'Año', 
+       y = 'Personas', 
+       title = 'Ansiedad por año y sexo',
+       fill = 'Ansiedad') + 
+  facet_wrap(~Sexo) + 
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))  # Rotar las etiquetas en el eje X si es necesario
+
+print(grafico_f2)
 ```
 
 
