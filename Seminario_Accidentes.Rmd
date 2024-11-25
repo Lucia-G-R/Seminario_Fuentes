@@ -329,6 +329,13 @@ datatable(slice_head(.data = Salud, n =5))
 ```
 #### **Slice_tail**
 Seleccionamos las últimas 5 filas del conjunto de datos de Aragón que contiene el número de accidentes por años.
+```{r, warning=FALSE}
+library("DT")
+
+datatable(slice_tail(.data = Aragon, n =5))
+```
+#### **Slice_sample**
+Escogemos un conjunto de filas aleatorias del conjunto de datos de Espana
 ```{r}
 
 ```
