@@ -319,6 +319,21 @@ Salud <- subset(Salud, !Sexo %in% c("De 16 a 64 a\xf1os", "De 65 y m\xe1s a\xf1o
 
 ```
 
+### **Slices**
+#### **Slices_head**
+Seleccionamos las primeras 5 filas del conjunto de datos Salud que contiene los estados de ansiedad.
+```{r, warning=FALSE}
+library("DT")
+
+datatable(slice_head(.data = Salud, n =5))
+```
+#### **Slice_tail**
+Seleccionamos las últimas 5 filas del conjunto de datos de Aragón que contiene el número de accidentes por años.
+```{r}
+
+```
+
+
 ## **Realizar un dataframe conjunto**
 Realizamos un dataframe uniendo los datos sobre la gravedad de las enfermedades laborales en Aragón y la salud mental de los ciudadanos en Canarias.
 ```{r, warning=FALSE}
