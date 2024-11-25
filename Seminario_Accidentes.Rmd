@@ -309,6 +309,15 @@ Espana <-
   select(Nombre, id, Valor)
 datatable(Espana)
 ```
+
+## **Pivotar**
+Vamos a transponer la estructura de nuestra tabla ordenada Espana de la columna Nombre desde largo a ancho, es decir, los Valores presentes en la columna Espana pasan a formar tres columnas.
+```{r, warning=FALSE}
+Long_Espana <- pivot_wider(data = Espana, names_from = "Nombre", values_from = "Valor")
+
+datatable(Long_Espana)
+```
+
 ## **Trabajar con filas**
 ### **Eliminar filas**
 Eliminamos las filas que no nos va a interesar estudiar.
@@ -335,23 +344,17 @@ library("DT")
 datatable(slice_tail(.data = Aragon, n =5))
 ```
 #### **Slice_sample**
-Escogemos un conjunto de filas, exactamente 10 filas aleatorias del conjunto de datos de Espana
+Escogemos un conjunto de filas, exactamente 10 filas aleatorias del conjunto de datos de Long_Espana en el cual hemos pivotado los valores de una columna a formar tres columnas distintas.
 ```{r, warning=FALSE}
 library("DT")
 
-datatable(slice_sample(.data = Espana, n = 10))
+datatable(slice_sample(.data = Long_Espana, n = 10))
 ```
-#### **Slice_max y slice_min**
+#### **Slice_max**
 ```{r, warning=FALSE}
 library("DT")
 
-datatable(slice_max(.data = canarias))
-```
-
-```{r, warning=FALSE}
-library("DT")
-
-datatable(slice_min(.data = canarias))
+datatable(slice_max(.data = canarias, order_by = Año))
 ```
 
 ## **Realizar un dataframe conjunto**
@@ -480,14 +483,6 @@ print(Cantidad1)
 Cantidad2 <- df_cana_Esp$Obs[df_cana_Esp$Sexo == "Total" & df_cana_Esp$Nombre == "Problema óseo, articular o muscular que afecta principalmente al cuello, los hombros, los brazos o l"]
   
 print (sum(Cantidad2))
-```
-
-## **Pivotar**
-Vamos a transponer la estructura de nuestra tabla ordenada Espana desde largo a ancho.
-```{r, warning=FALSE}
-Long_Espana <- pivot_wider(data = Espana, names_from = "Nombre", values_from = "Valor")
-
-datatable(Long_Espana)
 ```
 
 ## **Añdir columnas**
