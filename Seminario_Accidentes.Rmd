@@ -317,7 +317,7 @@ Para ello, vamos a categorizar el nivel de gravedad según el número de acciden
 - Si la Gravedad es Total y las Obs mayorores que 5000 vamos a categorizarlo como Alta gravedad. 
 - Si la Gravedad es Total, pero las Obs son menores o iguales que 5000 vamos a categorizarlo como Baja gravedad.
 - También vamos a diferenciar las Obs de accidentes laborales por Sexo. Realizamos cuatro categorías dos si el Sexo es Mujer diferenciaremos entre Alta gravedad o Baja gravedad y lo mismo si el Sexo es Hombre. 
-- Si el Sexo esta categorizado como los dos sexos juntos 
+- Si el Sexo son los dos sexos juntos, es decir, Total se categoriza como Otro. Esta última condición succede cuando ninguna condición anterior cumple con los requisitos.
 ```{r, warning=FALSE}
 library("DT")
 
