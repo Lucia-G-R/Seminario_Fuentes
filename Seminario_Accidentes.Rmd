@@ -406,14 +406,20 @@ datatable(arrange(.data = Aragon, desc(factor(Gravedad)), NumAcci))
 ```
 
 ### **Summariese**
-Calculamos la media de accidentes laborales en los Años 2004 y 2009 con el dataframe conjunto del conjunto de datos de salud mental y el número de accidentes labotrales.
+Calculamos el número total, las observacione son los registros , el mínimo, el máximo y la medianda de accidentes laborales en los Años 2004 y 2009 con el dataframe conjunto del conjunto de datos de salud mental y el número de accidentes labotrales.
 ```{r, warning=FALSE}
-mediana_acci<- 
+info_acci<- 
   df_Salu_Arag%>%
   group_by(Años)%>%
-  summarise(Mediana_Accidentes = median(NumAcci, na.rm = TRUE))
+  summarise(
+    Acci_total = sum(NumAcci),
+    Acci_Obs = n(),
+    Min_Aci = min(NumAcci),
+    Max_Aci = max(NumAcci),
+    Mediana_Aci = median(NumAcci)
+    )
 
-datatable(mediana_acci)
+datatable(info_acci)
 ```
 
 ## **Función**
