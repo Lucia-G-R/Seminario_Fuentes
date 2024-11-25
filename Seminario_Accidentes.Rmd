@@ -312,27 +312,28 @@ datatable(Espana)
 ```
 
 ### **Case_when**
+Vamos a urilizar las columnas Año, Sexo, Gravedad y Obs para que en una nueva columna Categoria sea más doierenciada y representativa.
+Para ello, vamos a categorizar el nivel de gravedad según el número de accidentes. 
+- Si la Gravedad es Total y las Obs mayorores que 5000 vamos a categorizarlo como Alta gravedad. 
+- Si la Gravedad es Total, pero las Obs son menores o iguales que 5000 vamos a categorizarlo como Baja gravedad.
+- También vamos a diferenciar las Obs de accidentes laborales por Sexo. Realizamos cuatro categorías dos si el Sexo es Mujer diferenciaremos entre Alta gravedad o Baja gravedad y lo mismo si el Sexo es Hombre. 
+- Si el Sexo esta categorizado como los dos sexos juntos 
 ```{r, warning=FALSE}
 library("DT")
 
 canarias_when <- 
   canarias %>%
-  mutate(categoria = case_when(
-        # Alta gravedad con muchas observaciones
+  mutate(Categoria = case_when(
+      
     Gravedad == "Total" & Obs > 5000 ~ "Alta gravedad",
-    
-    # Baja gravedad con pocas observaciones
     Gravedad == "Total" & Obs <= 5000 ~ "Baja gravedad",
     
-    # Para el sexo y un número elevado de accidentes
     Sexo == "Mujeres" & Obs > 1000 ~ "Accidentes Mujeres - Alto",
     Sexo == "Hombres" & Obs > 1000 ~ "Accidentes Hombres - Alto",
     
-    # Para el sexo con pocos accidentes
     Sexo == "Mujeres" & Obs <= 1000 ~ "Accidentes Mujeres - Bajo",
     Sexo == "Hombres" & Obs <= 1000 ~ "Accidentes Hombres - Bajo",
     
-    # Cualquier otro caso general
     .default = "Otro"
   ))
 
