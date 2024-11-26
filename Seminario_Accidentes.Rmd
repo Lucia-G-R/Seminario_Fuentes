@@ -564,16 +564,16 @@ acci_trab_df <- data.frame(
 
 datatable(acci_trab_df)
 ```
+
 Con esta función pretendemos hallar la media de accidentes que existen según el sexo, además de la gravedad de estos que se  encuentran en nuestro conjunto de datos de Canarias.
 ```{r, warning=FALSE}
 library("DT")
 
 sexo_gravedad <- tapply(canarias$Obs, list(canarias$Sexo, canarias$Gravedad), mean, nar.rm = TRUE)
 
-sexo_gravedad_df <- as.data.frame(as.table(sexo_gravedad))
-
-datatable(rename(sexo_gravedad_df, Sexo = `Var1`, Gravedad = `Var2`, MedAcci = `Freq`))
+datatable(sexo_gravedad)
 ```
+
 Con esta función pretendemos hallar el total de accidentes que existen en cada una de las profesiones a lo largo de los años presentes en nuestro conjunto de datos de Canarias.
 ```{r, warning=FALSE}
 library("DT")
