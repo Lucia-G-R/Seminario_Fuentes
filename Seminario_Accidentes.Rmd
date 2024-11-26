@@ -551,11 +551,15 @@ print (sum(Cantidad2))
 
 ### **tapply**
 ```{r, warning = FALSE}
-library("DT")
+total_por_trabajo <- tapply(canarias$Obs, canarias$TipoTrab, sum, na.rm = TRUE)
 
-total_por_trabajo <- tapply(canarias$Obs, canarias$TipoTrab, sum)
-print("Número total de accidentes por tipo de trabajo:")
-datatable(total_por_trabajo)
+# Convertir el vector resultante a un data.frame
+total_por_trabajo_df <- data.frame(
+  TipoTrabajo = names(total_por_trabajo),
+  TotalAccidentes = as.numeric(total_por_trabajo)
+)
+
+datatable(total_por_trabajo_df)
 ```
 
 ```{r, warning=FALSE}
