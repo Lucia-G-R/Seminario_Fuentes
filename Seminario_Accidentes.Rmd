@@ -550,6 +550,7 @@ print (sum(Cantidad2))
 ```
 
 ### **tapply**
+En este apartado vamos a realizar diferentes funciones con tapply para poder hallar el número de accidentes u obserrvaciones según el año, el sexo por tipo de trabajo.
 Con esta función pretendemos hallar el total de accidentes que existen en cada una de las profesiones presentes en nuestro conjunto de datos de Canarias.
 ```{r, warning = FALSE}
 library("DT")
