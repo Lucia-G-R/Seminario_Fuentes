@@ -466,7 +466,7 @@ info_acci<-
 datatable(info_acci)
 ```
 
-## **Función**
+## **Funciones**
 Cantidad de hombres y mujeres del dataframe
 
 ```{r, warning=FALSE}
@@ -548,6 +548,11 @@ Cantidad2 <- df_cana_Esp$Obs[df_cana_Esp$Sexo == "Total" & df_cana_Esp$Nombre ==
   
 print (sum(Cantidad2))
 ```
+### **tapply**
+```{r, warning = FALSE}
+media_glucosa <- tapply(datos$glucosa, datos$imc_categoria, mean)
+```
+
 
 ## **Gráfico**
 Añadimos un gráfico de barras para observar el número de accidentes laborales sucedidos durante los difrentes años en Aragón. Para ello, utilizaremos el atributo de Año y NumAcci del conjunto de datos sobre los accidentes laborales en Aragón.
