@@ -440,20 +440,38 @@ info_acci<-
 datatable(info_acci)
 ```
 
-## **Función**
-Cantidad de hombres y mujeres del dataframe
+## **Funciones**
+Calcula de la media y el porcentaje de personas evaluadas
+
+En 2021 el numero de habitantes en Aragón fue de 1331938 , en 2011 hubo 1344501 personas y en 2001, 1204215.
+Se ha calculado la media de la población censada y se ha determinado el porcentaje de personas que se evaluaron según la población total.
 
 ```{r, warning=FALSE}
 hombres <- sum(df_Salu_Arag$Sexo == "Hombres")
 mujeres <- sum(df_Salu_Arag$Sexo == "Mujeres")
 
+print(paste("La cantidad dehombres y mujeres en el dataframe es", hombres, "y", mujeres, "respectivamente"))
 
-print(hombres)
-print (mujeres)
+suma_arag <- sum(hombres, mujeres)
+
+"2021" <- 1331938
+"2011" <- 1344501
+"2001" <- 1204215
+
+años <- c(`2021`, `2011`, `2001`)
+
+media <- mean(años)
+
+print(paste("La media de los habitantes en Aragón entre 2001 y 2021 es", media))
+
+porcentaje <- (suma_arag / media) * 100
+
+print(paste("El porcentaje de personas que han participado en la evaluación de accidentes laborales y sus consecuencias es", porcentaje, "%"))
 ```
+<img src='images/censo aragon.png' align="center" height="120" />
 
-
-
+Este gráfico muestra el numero de accidentes en el mundo de la construcción separados por sexos y según la gravedad del accidente.
+Podemos observar que en hombres hay mas accidentes que en el sexo contrario y en ambos casos estos son de gravedad leve.
 ```{r}
 library(ggplot2)
 library(dplyr)
@@ -463,26 +481,23 @@ df_resultado <- df_Salu_Arag %>%
   filter(Gravedad == "Leves" | 
          Gravedad == "Mortales" | 
         Gravedad == "Graves o muy graves") %>%
-  group_by(Sexo, Gravedad) %>%
+  group_by(Sexo, Gravedad, NumAcci) %>%
   summarise(casos = n(), .groups = 'drop')
 
-# Crear el gráfico
-grafico <- ggplot(df_Salu_Arag, aes(x = Sexo, y = NumAcci, fill = Gravedad)) + 
+grafico_f1 <- ggplot(df_resultado, aes(x = Gravedad, y = NumAcci, fill = Sexo)) + 
   geom_bar(stat = "identity", position = "dodge") +
-  labs(x = 'Sexo', 
-       y = 'Numero', 
-       title = 'Niveles de gravedad segun el sexo',
-       fill = 'Condición') + 
-  theme_bw() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))  # Rotar las etiquetas en el eje X si es necesario
-
-print(grafico)
-
+  labs(x = 'Gravedad accidentes', 
+       y = 'Numero de casos', 
+       title = 'Numero de accidentes según la gravedad y separados por sexos ',
+       fill = 'Sexo') + 
+  facet_wrap(~Sexo) 
+print (grafico_f1)
 ```
 
 
 
-
+Este gráfico muestra la diferencia de casos de ansiedad entre hombres y mujeres y el tipo de ansiedad.
+Hemos querido eliminar los indiviudos que no saben (o no contesta) o total ya que no daban información de valor y nos hemos quedado con la que realmente proporcionaba alguna conclusión. En este caso los hombres padecen mas ansiedad que las mujeres. Los niveles de ansiedad son iguales en todos los casos
 ```{r}
 
 grafico_f <- df_Salu_Arag %>%
@@ -494,11 +509,9 @@ grafico_f2 <- ggplot(grafico_f, aes(x = Año, y = count, fill = EstadoAnsiedad))
   geom_bar(stat = "identity", position = "dodge") +
   labs(x = 'Año', 
        y = 'Personas', 
-       title = 'Ansiedad por año y sexo',
+       title = 'Ansiedad según sexo y grado',
        fill = 'Ansiedad') + 
-  facet_wrap(~Sexo) + 
-  theme_bw() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))  # Rotar las etiquetas en el eje X si es necesario
+  facet_wrap(~Sexo)   
 
 print(grafico_f2)
 ```
@@ -595,3 +608,6 @@ Gómez, M. G., López, R. C., Ortiz, Z. H., & Soria, F. S. (s. f.). *Reconocimie
 *imagen daño muscular - Bing. (s. f.).* Bing. https://www.bing.com/images/search?view=detailV2&ccid=aV2FcEIh&id=D6AACCBEBEF450E1CBDF67C21D16BF507DF9DA43&thid=OIP.aV2FcEIhl45rkm4m6VFzRgHaD5&mediaurl=https%3a%2f%2frealidadfitness.com%2fwp-content%2fuploads%2f2019%2f05%2fentrenamiento-da%c3%b1o-muscular-1024x538.jpg&cdnurl=https%3a%2f%2fth.bing.com%2fth%2fid%2fR.695d85704221978e6b926e26e9517346%3frik%3dQ9r5fVC%252fFh3CZw%26pid%3dImgRaw%26r%3d0&exph=538&expw=1024&q=imagen+da%c3%b1o+muscular&FORM=IRPRST&ck=99E22962D1608D4D57756ACE0E6D4FE9&selectedIndex=1&itb=0&ajaxhist=0&ajaxserp=0
 
 *imagen daño articular - Bing. (s. f.).* Bing. https://www.bing.com/images/search?view=detailV2&ccid=KaDQGmnp&id=2E3760EF62FCCC59509810F95B6010E199FCE071&thid=OIP.KaDQGmnpM8DYGR0vUebPSAHaEM&mediaurl=https%3a%2f%2fvitalclinic.es%2fwp-content%2fuploads%2f2019%2f11%2fartrosis-reumatoide.jpg&cdnurl=https%3a%2f%2fth.bing.com%2fth%2fid%2fR.29a0d01a69e933c0d8191d2f51e6cf48%3frik%3dceD8meEQYFv5EA%26pid%3dImgRaw%26r%3d0&exph=680&expw=1200&q=imagen+da%c3%b1o+articular&FORM=IRPRST&ck=62865A1BF4CB8E9BA729F41897ADACED&selectedIndex=2&itb=0&ajaxhist=0&ajaxserp=0
+
+*imagen censo aragon*
+https://www.aragon.es/documents/20127/93712584/A02.pdf/aa2a23e9-276a-fd04-516b-31a57073aa52?t=1671191689721
