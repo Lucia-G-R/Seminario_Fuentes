@@ -549,7 +549,7 @@ Cantidad2 <- df_cana_Esp$Obs[df_cana_Esp$Sexo == "Total" & df_cana_Esp$Nombre ==
 print (sum(Cantidad2))
 ```
 
-### **tapply**
+### **Tapply**
 En este apartado vamos a realizar diferentes funciones con tapply para poder hallar el número de accidentes u obserrvaciones según el año, el sexo por tipo de trabajo.
 Con esta función pretendemos hallar el total de accidentes que existen en cada una de las profesiones presentes en nuestro conjunto de datos de Canarias.
 ```{r, warning = FALSE}
@@ -564,7 +564,7 @@ acci_trab_df <- data.frame(
 
 datatable(acci_trab_df)
 ```
-
+Con esta función pretendemos hallar la media de accidentes que existen según el sexo, además de la gravedad de estos que se  encuentran en nuestro conjunto de datos de Canarias.
 ```{r, warning=FALSE}
 library("DT")
 
@@ -572,11 +572,11 @@ sexo_gravedad <- tapply(canarias$Obs, list(canarias$Sexo, canarias$Gravedad), me
 
 print(sexo_gravedad)
 ```
-
+Con esta función pretendemos hallar el total de accidentes que existen en cada una de las profesiones a lo largo de los años presentes en nuestro conjunto de datos de Canarias.
 ```{r, warning=FALSE}
 library("DT")
 
-año_trabajo <- tapply(canarias$Obs, list(canarias$Año, canarias$TipoTrab), sum)
+año_trabajo <- tapply(canarias$Obs, list(canarias$Año, canarias$TipoTrab), sum, na.rm = TRUE)
 
 datatable(año_trabajo)
 ```
