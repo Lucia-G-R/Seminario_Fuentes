@@ -567,22 +567,17 @@ datatable(acci_trab_df)
 ```{r, warning=FALSE}
 library("DT")
 
-media_por_sexo_gravedad <- tapply(canarias$Obs, list(canarias$Sexo, canarias$Gravedad), mean)
+sexo_gravedad <- tapply(canarias$Obs, list(canarias$Sexo, canarias$Gravedad), mean)
 
-acci_trab_df <- data.frame(
-  TipoTrab = names(acci_trab),
-  TotalAcci = as.numeric(acci_trab)
-)
-
-datatable(media_por_sexo_gravedad)
+print(sexo_gravedad)
 ```
 
 ```{r, warning=FALSE}
 library("DT")
 
-suma_por_año_trabajo <- tapply(canarias$Obs, list(canarias$Año, canarias$TipoTrab), sum)
-print("Suma de accidentes por año y trabajo:")
-datatable(suma_por_año_trabajo)
+año_trabajo <- tapply(canarias$Obs, list(canarias$Año, canarias$TipoTrab), sum)
+
+datatable(año_trabajo)
 ```
 
 ## **Gráfico**
