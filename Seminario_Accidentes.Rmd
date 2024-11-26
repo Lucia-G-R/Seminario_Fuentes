@@ -340,7 +340,7 @@ canarias_when <-
 datatable(canarias_when)
 ```
 
-## **Añadir columnas**
+### **Añadir columnas**
 Utilizamos mutate para sacar el porcentaje que representa cada observación respecto al conjunto de observaciones del conjunto de datos de canarias.
 Con options(scipen=999) evitamos la notación científica.
 ```{r, warning=FALSE}
