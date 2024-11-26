@@ -550,23 +550,30 @@ print (sum(Cantidad2))
 ```
 
 ### **tapply**
+Con esta función pretendemos hallar el total de accidentes que existen en cada una de las profesiones presentes en nuestro conjunto de datos de Canarias.
 ```{r, warning = FALSE}
-total_por_trabajo <- tapply(canarias$Obs, canarias$TipoTrab, sum, na.rm = TRUE)
+library("DT")
 
-# Convertir el vector resultante a un data.frame
-total_por_trabajo_df <- data.frame(
-  TipoTrabajo = names(total_por_trabajo),
-  TotalAccidentes = as.numeric(total_por_trabajo)
+acci_trab <- tapply(canarias$Obs, canarias$TipoTrab, sum, na.rm = TRUE)
+
+acci_trab_df <- data.frame(
+  TipoTrab = names(acci_trab),
+  TotalAcci = as.numeric(acci_trab)
 )
 
-datatable(total_por_trabajo_df)
+datatable(acci_trab_df)
 ```
 
 ```{r, warning=FALSE}
 library("DT")
 
 media_por_sexo_gravedad <- tapply(canarias$Obs, list(canarias$Sexo, canarias$Gravedad), mean)
-print("Media de accidentes según sexo y gravedad:")
+
+acci_trab_df <- data.frame(
+  TipoTrab = names(acci_trab),
+  TotalAcci = as.numeric(acci_trab)
+)
+
 datatable(media_por_sexo_gravedad)
 ```
 
