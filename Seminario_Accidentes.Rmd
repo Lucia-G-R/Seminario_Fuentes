@@ -513,22 +513,25 @@ print (grafico_f1)
 
 
 
-Este gráfico muestra la diferencia de casos de ansiedad entre hombres y mujeres y el tipo de ansiedad.
-Hemos querido eliminar los indiviudos que no saben (o no contesta) o total ya que no daban información de valor y nos hemos quedado con la que realmente proporcionaba alguna conclusión. En este caso los hombres padecen mas ansiedad que las mujeres. Los niveles de ansiedad son iguales en todos los casos
+Este gráfico muestra la diferencia de casos de ansiedad en mujeres y el tipo de ansiedad.
+Hemos querido eliminar los indiviudos que no saben (o no contesta) o total ya que no daban información de valor y nos hemos quedado con la que realmente proporcionaba alguna conclusión. 
 ```{r}
 
-grafico_f <- df_Salu_Arag %>%
+mod_dt <- df_Salu_Arag %>%
   filter(!(Sexo %in% c("Hombres")), !(EstadoAnsiedad %in% c("No sabe/No contesta", "Total"))) %>%
   group_by(Año, Sexo, EstadoAnsiedad) %>%
-  summarise (count = n(), .groups = "drop")
+  summarise (count = n(), .groups = "drop") #contamos el numero de observaciobes
 
-grafico_f2 <- ggplot(grafico_f, aes(x = Año, y = count, fill = EstadoAnsiedad)) + 
+grafico_f2 <- ggplot(mod_dt, aes(x = Año, y = count, fill = EstadoAnsiedad)) + 
   geom_bar(stat = "identity", position = "dodge", ) +
   labs(x = 'Año', 
        y = 'Personas', 
        title = 'Ansiedad según el grado de ansiedad en mujeres',
        fill = 'Ansiedad') + 
-  facet_wrap(~Sexo) 
+  facet_wrap(~Sexo) +
+  scale_fill_manual(values = c("No está ansioso ni deprimido" = "red",  # Amarillo
+                               "Está moderadamente ansioso o deprimido" = "black",  # Negro
+                               "Está muy ansioso o deprimido" = "white"))
 
 print(grafico_f2)
 ```
