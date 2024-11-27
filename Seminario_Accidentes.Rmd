@@ -166,14 +166,6 @@ espana_df <-
   left_join(Data_df, by = "id") %>% # Unimos con Data_df usando 'id'
   mutate(Nombre = espana_json$Nombre) # Agregamos la columna "Nombre" del espana_json
 
-#attributes(MetaData_df)  
-#attributes(Data_df)
-#print(MetaData_df)
-#print(Data_df)
-#print(espana_json)
-#print(espana_df)
-
-
 datatable(espana_df)
 ```
 
