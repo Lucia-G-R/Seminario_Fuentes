@@ -5,12 +5,12 @@ author: "Lorena Nerín Grau y Lucía González Redondo"
 class: "3º Ingeniería de la Salud"
 date: "`r Sys.Date()`"
 output:
-  pdf_document: 
-    toc: true
   html_document:
     toc: true
     toc_depth: 5
     toc_float: true
+  pdf_document: 
+    toc: true
 ---
 <img src='images/imagen.png' align="right" height="80" />
 
@@ -112,7 +112,7 @@ download.file("https://datos.gob.es/es/catalogo/a05003423-poblacion-de-16-y-mas-
 ### **Carga de datos JSON**
 Queremos extraer los datos sobre las enfermedades laborales que suceden en España. 
 Como es un archivo con extensión .JSON con listas anidadas sin etiquetar, no podemos utilizar directamente un tibbe para ello, utilizaremos tidyjson.
-```{r, warning=FALSE} 
+``` {r load-packages, message=FALSE, warning=FALSE}
 library(rjson)
 library(tidyverse)
 library(tidyjson)
@@ -202,7 +202,7 @@ En conclusión con encoding = "ISO-8859-1" queremos que R interprete el archivo 
 library(readr)
 library(DT)
 
-Salud_df <- read_delim ("INPUT/DATA/Estados_de_salud_Canarias.csv.csv", delim = ";", locale = locale(encoding = "ISO-8859-1"))
+Salud_df <- read_delim ("INPUT/DATA/Estados_de_salud_Canarias.csv.csv", delim = ";", locale = locale(encoding = "ISO-8859-1"), show_col_types = FALSE)
 #class(Salud_df)
 
 datatable(Salud_df)
@@ -211,22 +211,20 @@ datatable(Salud_df)
 ### **Carga de datos XLSX**
 Queremos extraer los datos sobre la gravedad de las enfermedades laborales producidas en Aragón. 
 Como es un archivo con extensión .xlsx, utilizamos read_excel.
-```{r, warning=FALSE}
+```{r cargar-datos-aragon, warning=FALSE, message=FALSE}
 # Cargamos los archivos con extensión .xlsx
 library(readxl)
 library(DT)
 
 Aragon_df <- read_excel ("INPUT/DATA/070901-02_Por grado y sexo. Aragon.xlsx")
-#class(Aragon_df)
 
-print(Aragon_df)
 datatable(Aragon_df)
 ```
 
 ## **Trabajar con columnas**
 ### **Observar valores nulos**
 Observamos los valores nulos del conjunto de datos sobre los accidentes laborales que suceden en Canarias. Con select observamos las columnas que poseen valores nulos..
-```{r, warning=FALSE}
+```{r, warning=FALSE, results="hide"}
 library(dplyr)
 
 canarias_df %>%
@@ -467,20 +465,17 @@ datatable(info_acci)
 ```
 
 ## **Funciones**
-<<<<<<< HEAD
-Calcula de la media y el porcentaje de personas evaluadas
 
+Calcula de la media y el porcentaje de personas evaluadas
 En 2021 el numero de habitantes en Aragón fue de 1331938 , en 2011 hubo 1344501 personas y en 2001, 1204215.
 Se ha calculado la media de la población censada y se ha determinado el porcentaje de personas que se evaluaron según la población total.
-=======
 Cantidad de hombres y mujeres del dataframe
->>>>>>> 04afde52482a2798a1eb408c24d09d0f1cccb20e
 
 ```{r, warning=FALSE}
 hombres <- sum(df_Salu_Arag$Sexo == "Hombres")
 mujeres <- sum(df_Salu_Arag$Sexo == "Mujeres")
 
-print(paste("La cantidad dehombres y mujeres en el dataframe es", hombres, "y", mujeres, "respectivamente"))
+print(paste("La cantidad de hombres y mujeres en el dataframe es", hombres, "y", mujeres, "respectivamente"))
 
 suma_arag <- sum(hombres, mujeres)
 
@@ -496,7 +491,7 @@ print(paste("La media de los habitantes en Aragón entre 2001 y 2021 es", media)
 
 porcentaje <- (suma_arag / media) * 100
 
-print(paste("El porcentaje de personas que han participado en la evaluación de accidentes laborales y sus consecuencias es", porcentaje, "%"))
+print(paste("El porcentaje de personas que han participado en la evaluación de accidentes laborales y sus consecuencias es", porcentaje,"%"))
 ```
 <img src='images/censo aragon.png' align="center" height="120" />
 
@@ -531,17 +526,17 @@ Hemos querido eliminar los indiviudos que no saben (o no contesta) o total ya qu
 ```{r}
 
 grafico_f <- df_Salu_Arag %>%
-  filter(!(EstadoAnsiedad %in% c("No sabe/No contesta", "Total"))) %>%
+  filter(!(Sexo %in% c("Hombres")), !(EstadoAnsiedad %in% c("No sabe/No contesta", "Total"))) %>%
   group_by(Año, Sexo, EstadoAnsiedad) %>%
   summarise (count = n(), .groups = "drop")
 
 grafico_f2 <- ggplot(grafico_f, aes(x = Año, y = count, fill = EstadoAnsiedad)) + 
-  geom_bar(stat = "identity", position = "dodge") +
+  geom_bar(stat = "identity", position = "dodge", ) +
   labs(x = 'Año', 
        y = 'Personas', 
-       title = 'Ansiedad según sexo y grado',
+       title = 'Ansiedad según el grado de ansiedad en mujeres',
        fill = 'Ansiedad') + 
-  facet_wrap(~Sexo)   
+  facet_wrap(~Sexo) 
 
 print(grafico_f2)
 ```
