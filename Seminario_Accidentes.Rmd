@@ -87,7 +87,6 @@ En este apartado vamos a indicar y cargar los paquetes necesarios para el desarr
 ### **Descargar datos**
 Aunque a lo largo de este seminario utilizamos los archivos que hemos importado en una carpeta INPUT. Se podrían obtener estos archivos mediante su descarga. Por ejemplo, descargamos los datos de la población de 16 y más años según autovaloración del estado de salud en relación a situaciones de ansiedad o depresión, sexos o grupos de edad por añosen Canarias en formato .csv de la página web de la base de datos del gobierno de España.:
 ```{r, eval=FALSE, warning=FALSE}
-#install.packages("readxl")
 library(readxl)
 
 # URL del archivo Excel en GitHub
@@ -96,13 +95,13 @@ url <- "https://github.com/Lucia-G-R/Seminario_Fuentes/blob/main/INPUT/DATA/Enfe
 # Creamos un archivo temporal para almacenar el Excel
 temp <- tempfile(fileext = ".csv")
 
-# Descargamos el archivo desde GitHub
+# Descargamos el archivo desde la base de datos
 download.file("https://datos.gob.es/es/catalogo/a05003423-poblacion-de-16-y-mas-anos-segun-autovaloracion-del-estado-de-salud-en-relacion-a-situaciones-de-ansiedad-o-depresion-sexos-o-grupos-de-edad-por-anos-canarias-2004-2009", destfile = temp, mode = "wb")
 ```
 
 ### **Carga de datos JSON**
-Queremos extraer los datos sobre las enfermedades laborales que suceden en España. 
-Como es un archivo con extensión .JSON con listas anidadas sin etiquetar, no podemos utilizar directamente un tibbe para ello, utilizaremos tidyjson.
+En primer lugar, queremos extraer los datos sobre las enfermedades laborales que suceden en España. 
+Como es un archivo con extensión .JSON con listas anidadas sin etiquetar, no podemos utilizar directamente un tibble para ello, utilizaremos tidyjson.
 ``` {r load-packages, message=FALSE, warning=FALSE}
 library(rjson)
 library(tidyverse)
