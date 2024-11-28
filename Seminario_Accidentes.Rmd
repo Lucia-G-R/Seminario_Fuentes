@@ -19,26 +19,26 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 # **Introducción**
-El desarrollo de enfermedades laborales pueden ocasionar bajas laborales. Estas enfermedades se producen en el ámbito laboral según el trabajo realizado, queremos estudiar como el desarrollo de estas enfermedades se puede agravar por poseer una enfermedad mental, incluso si la gravedad de la enfermedad laboral es distinta entre géneros o debido a la profesión realizada.
+El desarrollo de enfermedades laborales pueden ocasionar bajas laborales. Estas enfermedades se producen en el ámbito laboral según el trabajo realizado, hemos querido estudiar como el desarrollo de estas enfermedades se puede agravar por poseer una enfermedad mental, incluso si la gravedad de la enfermedad laboral es distinta entre géneros o debido a la profesión realizada.
 
 # **Objetivo general**
 Evaluación del desarrollo de enfermedades laborales, respecto a la profesión y el estado de salud mental.
 
 # **Objetivo específico**
-- ¿Existe relación la profesión de movimiento de tierra respecto al desarrollo de enfermedades psicológicas?
+- ¿Existe relación entre la profesión de movimiento de tierra respecto al desarrollo de enfermedades psicológicas?
 - ¿Existe relación entre el desarrollo de enfermedades laborales respecto al sexo?
-- ¿Exsite relación entre la gravedad de una enfermedad psicológica respecto al desarrollo de una enfermedad laboral?
+- ¿Existe relación entre la gravedad de una enfermedad psicológica respecto al desarrollo de una enfermedad laboral?
 
 
-# **Relacion con otros artículos y estudios**
-Uno de ellos tambien estudia la incidencia de enfermedades segun la economia y el sexo de los encuestados.
+# **Relación con otros artículos y estudios**
+Uno de ellos tambien estudia la incidencia de enfermedades según la economía y el sexo de los encuestados.
 Segun el sexo hay diferencias significativas donde los hombres tienen mayor numero de enfermedades, ya que son estos los que ocupan los trabajos fisicos exigentes. En cuanto al tipo de trabajo el sector de la mineria, construcción y agricultura resultan los que mas enfermedades se tienen.
 
 Otro articulo que nos ha resultado interesante es el siguiente: en Reino Unido se estudio que el personal de construccion tiene mas probabilidad de suicidarse que el promedio nacional. Según los redactores comentan que se debe a que los trabajadores no quieren buscar ayuda terapeutica, y los contratos de largas jornadas y lejos de la familia tampoco ayudan. Por ello determinan que concienciar sobre este problema y quitar el estigma es importante.
 
 # **Metodología**
 ## **Materiales**
-Agregamos los URL de la base de datos `datos.gob.es` donde obtenemos los datos para el posterior estudio:
+Agregamos los URL de la base de datos `datos.gob.es` donde se obtienen los datos para el posterior estudio:
 
 - [Enfermedades laborales](https://datos.gob.es/es/catalogo/ea0010587-personas-de-16-a-74-ocupadas-anos-o-que-trabajaron-anteriormente-que-hayan-tenido-alguna-enfermedadlaboral-por-tipo-de-enfermedad-y-sexo-epa-identificador-api-t22-e308-meto_05-modulo-base_2011-2020-l0-02003-px1)
 
@@ -85,7 +85,7 @@ En este apartado vamos a indicar y cargar los paquetes necesarios para el desarr
 
 ## **Carga de datos**
 ### **Descargar datos**
-Aunque a lo largo de este seminario utilizamos los archivos que hemos importado en una carpeta INPUT. Se podrían obtener estos archivos mediante su descarga. Por ejemplo, descargamos los datos de la población de 16 y más años según autovaloración del estado de salud en relación a situaciones de ansiedad o depresión, sexos o grupos de edad por añosen Canarias en formato .csv de la página web de la base de datos del gobierno de España.:
+Aunque a lo largo de este seminario utilizamos los archivos que hemos importado en una carpeta INPUT. Se podrían obtener estos archivos mediante su descarga. Por ejemplo, descargamos los datos de la población de 16 y más años según autovaloración del estado de salud en relación a situaciones de ansiedad o depresión, sexos o grupos de edad por años en Canarias en formato ".csv" de la página web de la base de datos del gobierno de España:
 ```{r, eval=FALSE, warning=FALSE}
 library(readxl)
 
@@ -168,9 +168,7 @@ library(readxl)
 library(DT)
 
 canarias_df <- read_excel("INPUT/DATA/Accidentes_laborales_Canarias.xls")
-#class(canarias_df)
 
-#print(canarias_df)
 datatable(canarias_df)
 ```
 
@@ -185,7 +183,6 @@ library(readr)
 library(DT)
 
 Salud_df <- read_delim ("INPUT/DATA/Estados_de_salud_Canarias.csv.csv", delim = ";", locale = locale(encoding = "ISO-8859-1"), show_col_types = FALSE)
-#class(Salud_df)
 
 datatable(Salud_df)
 ```
@@ -207,6 +204,7 @@ datatable(Aragon_df)
 ### **Observar valores nulos**
 Observamos los valores nulos del conjunto de datos sobre los accidentes laborales que suceden en Canarias. Con select observamos las columnas que poseen valores nulos..
 ```{r, warning=FALSE, results="hide"}
+# Observamos que columnas tienen valores nulos con la función "select".
 library(dplyr)
 
 canarias_df %>%
@@ -216,55 +214,55 @@ select(where(~ all(is.na(.))))
 ### **Cambiar nombre de las columnas**
 Vamos a cambiar los nombres de las distintas columnas de los datos extraídos.
 Cambiamos los nombres de las columnas del conjunto de datos sobre los accidentes laborales que suceden en Canarias.
+Este renombre se realiza debido a tener mayor claridad a la hora de hacer un join sobre dos dataframes.
 ```{r, warning=FALSE}
+# Renombre las columnas del dataframe Canarias
 library(tidyverse)
 library(DT)
 
-#attributes(canarias_df)
 canarias <- rename(.data = canarias_df, Año = `TIME_PERIOD#es`, Año2 = `TIME_PERIOD_CODE`, Sexo = `SEXO#es`, SexoCod = `SEXO_CODE`, Gravedad = `ACCIDENTE_GRAVEDAD#es`, GravedadCod = `ACCIDENTE_GRAVEDAD_CODE`, TipoTrab = `TIPO_TRABAJO#es`, TipoTrabCod = `TIPO_TRABAJO_CODE`, TrabHabitual = `TRABAJO_HABITUAL#es`, TrabHabCod = `TRABAJO_HABITUAL_CODE`, Obs = `OBS_VALUE`, ConfeciObs = `CONFIDENCIALIDAD_OBSERVACION#es`, Notasobs = `NOTAS_OBSERVACION#es`, Estadosobs = `ESTADO_OBSERVACION#es`)
 
 datatable(canarias)
 ```
 Cambiamos los nombres de las columnas del conjunto de datos sobre la gravedad de las enfermedades laborales producidas en Aragón. 
 ```{r, warning=FALSE}
+# Renombre las columnas del dataframe Aragón
 library(tidyverse)
 library(DT)
 
-#attributes(Aragon_df)
 Aragon <- rename(.data = Aragon_df, NumAcci = `Nº Accidentes`, Gravedad = `Grupo Grado Código...4`, GravedadCod = `Grupo Grado Código...5`)
 
-#print(Aragon)
 datatable(Aragon)
 ```
 
 Cambiamos los nombres de las columnas del conjunto de datos sobre las enfermedades laborales que suceden en España. 
 ```{r, warning=FALSE}
+# Renombre las columnas del dataframe Enf. Laborales de España
 library(tidyverse)
 library(DT)
 
-#attributes(espana_df)
 Espana <- rename(.data = espana_df, TipoEnf = `T3_Variable`, Indicador = `Codigo`, Variable = `..JSON_jsonT3_Variable`, Nombre = `..JSON_jsonNombre`, Codigo = `..JSON_jsonCodigo`, jsonValor = `..JSON_jsonValor`)
 
-#print(Espana)
 datatable(Espana)
 ```
 Cambiamos los nombres de las columnas del conjunto de datos sobre la salud mental en los habitantes de Canarias.
 ```{r, warning=FALSE}
+# Renombre las columnas del dataframe habitantes Canarias
 library(tidyverse)
 library(DT)
 
-#attributes(Salud_df)
 Salud <- rename(.data = Salud_df, Sexo = `sexos_grupos_edad`, EstadoAnsiedad = `autovaloracion_estado_salud_relacion_situaciones_ansiedad`, Años = `anios`, Obs = `poblacion_16_mas_anios`)
 
-#print(Salud)
 datatable(Salud)
 ```
 
 ### **Eliminar columnas**
 Eliminamos las columnas que no nos va a interesar estudiar para ello, seleccionamos las columnas que nos interesan. 
 En el único conjunto de datos que no vamos a eliminar columnas es en los datos sobre la salud mental en los habitantes de Canarias.
-Primero vamos a eliminar las columnas del conjunto de datos de canarias. Nos vamos a quedar solo con las columnas Año, Sexo, Gravedad, TipoTrab y Obs.
+Primero vamos a eliminar las columnas del conjunto de datos de Canarias. Nos vamos a quedar solo con las columnas Año, Sexo, Gravedad, TipoTrab y Obs.
 ```{r, warning=FALSE} 
+# Selección de las columnas con las que nos interesa trabajar posteriormente. 
+# (Estamos trabajando con el dataframe Canarias)
 library(dplyr)
 
 canarias <- 
@@ -274,6 +272,8 @@ datatable(canarias)
 ```
 En segundo lugar, eiminamos las columnas del conjunto de datos de Aragon. Nos vamos a quedar solo con las columnas Año, Sexo, NumAcci y Gravedad.
 ```{r, warning=FALSE} 
+# Selección de las columnas con las que nos interesa trabajar posteriormente. 
+# (Estamos trabajando con el dataframe Aragon)
 library(dplyr)
 
 Aragon <- 
@@ -283,6 +283,8 @@ datatable(Aragon)
 ```
 En tercer lugar, eliminamos las columnas del conjunto de datos de Espana. Nos vamos a quedar solo con las columnas Nombre, id y Valor.
 ```{r, warning=FALSE} 
+# Selección de las columnas con las que nos interesa trabajar posteriormente. 
+# (Estamos trabajando con el dataframe España)
 library(dplyr)
 
 Espana <- 
@@ -292,22 +294,25 @@ datatable(Espana)
 ```
 
 ### **Case_when**
-Vamos a urilizar las columnas Año, Sexo, Gravedad y Obs para que en una nueva columna Categoria sea más doierenciada y representativa.
+Vamos a utilizar las columnas Año, Sexo, Gravedad y Obs para que en una nueva columna Categoria sea más diferenciada y representativa.
 Para ello, vamos a categorizar el nivel de gravedad según el número de accidentes. 
 - Si la Gravedad es Total y las Obs mayorores que 5000 vamos a categorizarlo como Alta gravedad. 
 - Si la Gravedad es Total, pero las Obs son menores o iguales que 5000 vamos a categorizarlo como Baja gravedad.
 - También vamos a diferenciar las Obs de accidentes laborales por Sexo. Realizamos cuatro categorías dos si el Sexo es Mujer diferenciaremos entre Alta gravedad o Baja gravedad y lo mismo si el Sexo es Hombre. 
 - Si el Sexo son los dos sexos juntos, es decir, Total se categoriza como Otro. Esta última condición succede cuando ninguna condición anterior cumple con los requisitos.
 ```{r, warning=FALSE}
+# Introducción de dos nuevas columnas donde en ambas hay dos variables categorizadas (alto y bajo), y en una de ellas diferenciada por el sexo
 library("DT")
 
 canarias_when <- 
   canarias %>%
   mutate(Categoria = case_when(
-      
+    
+# Nombramiento de una de las columnas en función de la gravedad y el número de observaciones (casos)    
     Gravedad == "Total" & Obs > 5000 ~ "Alta gravedad",
     Gravedad == "Total" & Obs <= 5000 ~ "Baja gravedad",
-    
+
+#  Nombramiento de la segunda columna en función del sexo y el número de observaciones  
     Sexo == "Mujeres" & Obs > 1000 ~ "Accidentes Mujeres - Alto",
     Sexo == "Hombres" & Obs > 1000 ~ "Accidentes Hombres - Alto",
     
@@ -324,17 +329,19 @@ datatable(canarias_when)
 Utilizamos mutate para sacar el porcentaje que representa cada observación respecto al conjunto de observaciones del conjunto de datos de canarias.
 Con options(scipen=999) evitamos la notación científica.
 ```{r, warning=FALSE}
+#Porcentaje de cada observación según el conjunto de observaciones del dataframe Canarias
 library(dplyr)
 library(DT)
 
-options(scipen = 999)
+options(scipen = 999) 
 datatable(mutate(.data = canarias, Porcentaje_Obs = (Obs / sum(Obs)) * 100))
 ```
 Observamos que existen valore nulos en la variable Valor del dataframe de España, por lo que para poder utilizar el mutate necesitamos eliminar aquellos valores vacíos. 
-En primer lugar, nos quedamos solo con los valores distintos de nulos, es decir, los valores de nuetros interés.
+En primer lugar, nos quedamos solo con los valores distintos de nulos, es decir, los valores de nuestro interés.
 En segundo lugar, utilizamos mutate para crear una nueva columna denominada Porcentaje_Valor que recoge el porcentaje que representa cada observación respecto al conjunto de observaciones del conjunto de datos de España denominado Espana.
 Con options(scipen=999) evitamos la notación científica.
 ```{r, warning=FALSE}
+#Se eliminan filas con valores nulos y se crea una nueva columna para saber el porcentaje de cada observacion segun las observaciones totales
 library(dplyr)
 library(DT)
 
@@ -349,6 +356,7 @@ datatable(mutate(.data = Espana, Porcentaje_Valor = (Valor / sum(Valor)) * 100))
 ## **Realizar un dataframe conjunto**
 Realizamos un dataframe uniendo los datos sobre la gravedad de las enfermedades laborales en Aragón y la salud mental de los ciudadanos en Canarias.
 ```{r, warning=FALSE}
+#Unión del dataframe Aragón y Salud por las claves (columnas) "Sexo"
 library(DT)
 
 # Unimos por una columna común "Sexo"
@@ -359,6 +367,7 @@ datatable(df_Salu_Arag)
 
 Realizamos un dataframe uniendo los datos sobre los accidentes laborales que suceden en Canarias y los datos sobre las enfermedades mentales.
 ```{r,  warning=FALSE}
+#Unión de los dataframe Canarias y Salud por la clave "Año" y "Años". También se eliminan las filas duplicadas
 library(DT)
 
 canarias_dis <-
@@ -377,8 +386,9 @@ datatable(df_cana_Salud)
 ```
 
 ## **Pivotar**
-Vamos a transponer la estructura de nuestra tabla ordenada Espana de la columna Nombre desde largo a ancho, es decir, los Valores presentes en la columna Espana pasan a formar tres columnas.
+Vamos a transponer la estructura de nuestra tabla ordenada España de la columna Nombre desde largo a ancho, es decir, los Valores presentes en la columna Espana pasan a formar tres columnas.
 ```{r, warning=FALSE}
+#Tranformación de la tabladesde largo a ancho
 Long_Espana <- pivot_wider(data = Espana, names_from = "Nombre", values_from = "Valor")
 
 datatable(Long_Espana)
@@ -388,7 +398,7 @@ datatable(Long_Espana)
 ### **Eliminar filas**
 Eliminamos las filas que no nos va a interesar estudiar.
 ```{r, warning=FALSE, error = TRUE}
-
+#eliminación de las filas que contengan un valor que no interese
 Salud <- subset(Salud, !Sexo %in% c("De 16 a 64 a\xf1os", "De 65 y m\xe1s a\xf1os"))
 
 ```
@@ -397,6 +407,7 @@ Salud <- subset(Salud, !Sexo %in% c("De 16 a 64 a\xf1os", "De 65 y m\xe1s a\xf1o
 #### **Slices_head**
 Seleccionamos las primeras 5 filas del conjunto de datos Salud que contiene los estados de ansiedad.
 ```{r, warning=FALSE}
+#Observación de las 5 primeras filas del dataframe Salud
 library("DT")
 
 datatable(slice_head(.data = Salud, n =5))
@@ -404,6 +415,7 @@ datatable(slice_head(.data = Salud, n =5))
 #### **Slice_tail**
 Seleccionamos las últimas 5 filas del conjunto de datos de Aragón que contiene el número de accidentes por años.
 ```{r, warning=FALSE}
+# Observación de las 5 últimas filas del dataframe Aragón
 library("DT")
 
 datatable(slice_tail(.data = Aragon, n =5))
@@ -411,12 +423,16 @@ datatable(slice_tail(.data = Aragon, n =5))
 #### **Slice_sample**
 Escogemos un conjunto de filas, exactamente 10 filas aleatorias del conjunto de datos de Long_Espana en el cual hemos pivotado los valores de una columna a formar tres columnas distintas.
 ```{r, warning=FALSE}
+#Observación de 10 filas aleatorias del dataframe España (una vez pivotado)
 library("DT")
 
 datatable(slice_sample(.data = Long_Espana, n = 10))
 ```
 #### **Slice_max**
+Seleccionamos las filas que contengan los valores más altos de una columna específica, en este caso Año
+
 ```{r, warning=FALSE}
+#Selección de valores mas altos según la columna Año
 library("DT")
 
 datatable(slice_max(.data = canarias, order_by = Año))
@@ -424,14 +440,16 @@ datatable(slice_max(.data = canarias, order_by = Año))
 ### **Arrange**
 Ordena las filas de manera descendente según los niveles de gravedad de accidentes del conjunto de datos de Aragón.
 ```{r, warning=FALSE}
+#Ordenación de las filas de la columna Gravedad (dt:Aragon) de fomra descendente
 library("DT")
 
 datatable(arrange(.data = Aragon, desc(factor(Gravedad)), NumAcci))
 ```
 
 ### **Summarise**
-Calculamos el número total, las observacione son los registros , el mínimo, el máximo y la medianda de accidentes laborales en los Años 2004 y 2009 con el dataframe conjunto del conjunto de datos de salud mental y el número de accidentes labotrales.
+Calculamos el número total, las observaciones son los registros , el mínimo, el máximo y la mediana de accidentes laborales en los Años 2004 y 2009 con el dataframe conjunto del conjunto de datos de salud mental y el número de accidentes labotrales.
 ```{r, warning=FALSE}
+# sumatorio total de las columnas en los años 2004 y 2009  del dt combinado Aragon y Salud
 info_acci<- 
   df_Salu_Arag%>%
   group_by(Años)%>%
@@ -454,6 +472,7 @@ Se ha calculado la media de la población censada y se ha determinado el porcent
 Cantidad de hombres y mujeres del dataframe
 
 ```{r, warning=FALSE}
+#
 hombres <- sum(df_Salu_Arag$Sexo == "Hombres")
 mujeres <- sum(df_Salu_Arag$Sexo == "Mujeres")
 
