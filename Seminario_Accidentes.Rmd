@@ -52,6 +52,7 @@ Agregamos el URL del repositorio:
 - [Repositorio](https://github.com/Lucia-G-R/Seminario_Fuentes.git)
 
 ### **Carga de paquetes**
+En este apartado vamos a indicar y cargar los paquetes necesarios para el desarrollo de nuestra práctica.
 Paquetes necesarios para JSON
 ```{r, warning=FALSE}
 # Paquetes necesarios para JSON 
