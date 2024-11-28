@@ -38,7 +38,7 @@ Otro articulo que nos ha resultado interesante es el siguiente: en Reino Unido s
 
 # **Metodología**
 ## **Materiales**
-Agregamos los URL del lugar de obtención de los datos:
+Agregamos los URL de la base de datos `datos.gob.es` donde obtenemos los datos para el posterior estudio:
 
 - [Enfermedades laborales](https://datos.gob.es/es/catalogo/ea0010587-personas-de-16-a-74-ocupadas-anos-o-que-trabajaron-anteriormente-que-hayan-tenido-alguna-enfermedadlaboral-por-tipo-de-enfermedad-y-sexo-epa-identificador-api-t22-e308-meto_05-modulo-base_2011-2020-l0-02003-px1)
 
@@ -85,7 +85,7 @@ En este apartado vamos a indicar y cargar los paquetes necesarios para el desarr
 
 ## **Carga de datos**
 ### **Descargar datos**
-Podemos descargar los datos de Canarias en formato .csv de la página web de datos del gobierno de España, desde R mediante este código:
+Aunque a lo largo de este seminario utilizamos los archivos que hemos importado en una carpeta INPUT. Se podrían obtener estos archivos mediante su descarga. Por ejemplo, descargamos los datos de la población de 16 y más años según autovaloración del estado de salud en relación a situaciones de ansiedad o depresión, sexos o grupos de edad por añosen Canarias en formato .csv de la página web de la base de datos del gobierno de España.:
 ```{r, eval=FALSE, warning=FALSE}
 #install.packages("readxl")
 library(readxl)
