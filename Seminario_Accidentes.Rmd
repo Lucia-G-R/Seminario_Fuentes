@@ -464,6 +464,46 @@ info_acci<-
 datatable(info_acci)
 ```
 
+
+
+### **Tapply**
+En este apartado vamos a realizar diferentes funciones con tapply para poder hallar el número de accidentes u obserrvaciones según el año, el sexo por tipo de trabajo.
+Con esta función pretendemos hallar el total de accidentes que existen en cada una de las profesiones presentes en nuestro conjunto de datos de Canarias.
+```{r, warning = FALSE}
+# Identificación del total de accidentes según la profesión o tipo de trabajo
+library("DT")
+
+acci_trab <- tapply(canarias$Obs, canarias$TipoTrab, sum, na.rm = TRUE)
+
+acci_trab_df <- data.frame(
+  TipoTrab = names(acci_trab),
+  TotalAcci = as.numeric(acci_trab)
+)
+
+datatable(acci_trab_df)
+```
+
+Con esta función pretendemos hallar la media de accidentes que existen según el sexo, además de la gravedad de estos que se  encuentran en nuestro conjunto de datos de Canarias.
+```{r, warning=FALSE}
+# Cálculo de la media de los accidentes según el género y la gravedad de estos
+library("DT")
+
+sexo_gravedad <- tapply(canarias$Obs, list(canarias$Sexo, canarias$Gravedad), mean, nar.rm = TRUE)
+
+datatable(sexo_gravedad)
+```
+
+Con esta función pretendemos hallar el total de accidentes que existen en cada una de las profesiones a lo largo de los años presentes en nuestro conjunto de datos de Canarias.
+
+```{r, warning=FALSE}
+# Conteo por años de las diferentes profesiones 
+library("DT")
+
+año_trabajo <- tapply(canarias$Obs, list(canarias$Año, canarias$TipoTrab), sum, na.rm = TRUE)
+
+datatable(año_trabajo)
+```
+
 ## **Funciones**
 
 Calcula de la media y el porcentaje de personas evaluadas
@@ -472,7 +512,9 @@ Se ha calculado la media de la población censada y se ha determinado el porcent
 Cantidad de hombres y mujeres del dataframe
 
 ```{r, warning=FALSE}
-#
+# Sumatorio de los generos del dt combinado Salud y Aragón.
+# Calculo del porcentaje de encuentados según la población media en Aragón entre 2001 y 2021
+
 hombres <- sum(df_Salu_Arag$Sexo == "Hombres")
 mujeres <- sum(df_Salu_Arag$Sexo == "Mujeres")
 
@@ -496,9 +538,12 @@ print(paste("El porcentaje de personas que han participado en la evaluación de 
 ```
 <img src='images/censo aragon.png' align="center" height="120" />
 
+
+## **Gráfico**
 Este gráfico muestra el numero de accidentes en el mundo de la construcción separados por sexos y según la gravedad del accidente.
 Podemos observar que en hombres hay mas accidentes que en el sexo contrario y en ambos casos estos son de gravedad leve.
 ```{r}
+# Observación del gráfico entre mujeres y hombres según la gravedad  y el número de accidentes
 library(ggplot2)
 library(dplyr)
 
@@ -519,13 +564,11 @@ grafico_f1 <- ggplot(df_resultado, aes(x = Gravedad, y = NumAcci, fill = Sexo)) 
   facet_wrap(~Sexo) 
 print (grafico_f1)
 ```
-
-
-
 Este gráfico muestra la diferencia de casos de ansiedad en mujeres y el tipo de ansiedad.
 Hemos querido eliminar los indiviudos que no saben (o no contesta) o total ya que no daban información de valor y nos hemos quedado con la que realmente proporcionaba alguna conclusión. 
 ```{r}
-
+# Observación del gráfico del género Mujeres según el grado de ansiedad y el numero de personas que la padecen
+# Se ha eliminado las filas donde se queria prescindir de la información
 mod_dt <- df_Salu_Arag %>%
   filter(!(Sexo %in% c("Hombres")), !(EstadoAnsiedad %in% c("No sabe/No contesta", "Total"))) %>%
   group_by(Año, Sexo, EstadoAnsiedad) %>%
@@ -555,45 +598,9 @@ Imágenes que muestran los daños que ocurren en los distintos casos:
 <img src='images/I3.jpg' align="center" height="120" />
 
 
-### **Tapply**
-En este apartado vamos a realizar diferentes funciones con tapply para poder hallar el número de accidentes u obserrvaciones según el año, el sexo por tipo de trabajo.
-Con esta función pretendemos hallar el total de accidentes que existen en cada una de las profesiones presentes en nuestro conjunto de datos de Canarias.
-```{r, warning = FALSE}
-library("DT")
-
-acci_trab <- tapply(canarias$Obs, canarias$TipoTrab, sum, na.rm = TRUE)
-
-acci_trab_df <- data.frame(
-  TipoTrab = names(acci_trab),
-  TotalAcci = as.numeric(acci_trab)
-)
-
-datatable(acci_trab_df)
-```
-
-Con esta función pretendemos hallar la media de accidentes que existen según el sexo, además de la gravedad de estos que se  encuentran en nuestro conjunto de datos de Canarias.
-```{r, warning=FALSE}
-library("DT")
-
-sexo_gravedad <- tapply(canarias$Obs, list(canarias$Sexo, canarias$Gravedad), mean, nar.rm = TRUE)
-
-datatable(sexo_gravedad)
-```
-
-Con esta función pretendemos hallar el total de accidentes que existen en cada una de las profesiones a lo largo de los años presentes en nuestro conjunto de datos de Canarias.
-```{r, warning=FALSE}
-library("DT")
-
-año_trabajo <- tapply(canarias$Obs, list(canarias$Año, canarias$TipoTrab), sum, na.rm = TRUE)
-
-datatable(año_trabajo)
-```
-
-## **Gráfico**
 Añadimos un gráfico de barras para observar el número de accidentes laborales sucedidos durante los difrentes años en Aragón. Para ello, utilizaremos el atributo de Año y NumAcci del conjunto de datos sobre los accidentes laborales en Aragón.
 ```{r, warning=FALSE}
-#library(tidyverse)
-#library(ggplot2) 
+# Observación del total de accidentes por año del incidente.
 grafico_barra <- ggplot(Aragon, aes(x = Año, y = NumAcci)) +
   geom_bar(stat = "identity", fill = "darkturquoise") +
   xlab("Año del suceso") +
@@ -604,8 +611,10 @@ print(grafico_barra)
 ```
 ## **Facetas**
 ```{r, warning=FALSE}
-library(tidyverse)
-library(ggplot2)
+# Observación del registro del estado de ansiedad por año
+
+#library(tidyverse)
+#library(ggplot2)
 
 facetas <- ggplot(Salud, aes(x = Obs, y = EstadoAnsiedad)) +
   geom_point(aes(colour = factor(Años), shape=factor(Sexo))) +
@@ -616,9 +625,53 @@ facetas <- ggplot(Salud, aes(x = Obs, y = EstadoAnsiedad)) +
 print(facetas)
 ```
 
+Convertimos el tapply anterior en dataframe, para así poder hacer un gráfico donde se pueda observar la evolución del número de accidentes según la profesión.
+
+
+```{r}
+
+
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+
+df_año_trabajo <- as.data.frame(as.table(año_trabajo))
+
+colnames(df_año_trabajo) <- c("Año", "TipoTrabajo", "Accidentes")
+
+df_año_trabajo <- drop_na(df_año_trabajo) # Las filas con valores nulos se van a eliminar ya que sino no dejan hacer el dt
+
+# Gráfico
+tpt <- ggplot(df_año_trabajo, aes(x = Año, y = Accidentes, color = TipoTrabajo, group = TipoTrabajo)) +
+  geom_line() +  geom_point() +  #lineas y puntos 
+  labs(title = "Número de accidentes por año y tipo de profesión",
+       x = "Año", 
+       y = "Accidentes",
+       color = "Profesión") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 50, hjust = 1)) # Visualización de los años con claridad
+
+# Mostrar el gráfico
+print(tpt)
+
+```
+
+
+
 # **Resultados**
+La profesión de movimiento de tierra y la incidencia de enfermedades psicológicas 
+
 
 # **Conclusiones**
+En conclusión hemos podido ver que hay mayor incidencia de enfermedades mentales de las que nos esperábamos, y estos han ido creciendo según los años. 
+En cuanto al género 
+
+
+
+- ¿Existe relación entre la profesión de movimiento de tierra respecto al desarrollo de enfermedades psicológicas?
+- ¿Existe relación entre el desarrollo de enfermedades laborales respecto al sexo?
+- ¿Existe relación entre la gravedad de una enfermedad psicológica respecto al desarrollo de una enfermedad laboral?
+
 añadir los dos url de los articulos
 https://www.omniamachinery.com/es/2022/05/mental-health-in-construction/
 
