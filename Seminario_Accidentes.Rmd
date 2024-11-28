@@ -53,42 +53,32 @@ Agregamos el URL del repositorio:
 
 ### **Carga de paquetes**
 En este apartado vamos a indicar y cargar los paquetes necesarios para el desarrollo de nuestra práctica.
-Paquetes necesarios para JSON
+
+- Paquete necesario para exportar el conjunto de datos en formato .JSON.
 ```{r, warning=FALSE}
-# Paquetes necesarios para JSON 
 #install.packages("tidyjson")
 ```
-Paquetes necesarios para xls
+- Paquete necesario para exportar los conjuntos de datos en formato .xls y .xlsx.
 ```{r, warning=FALSE}
-# Paquetes necesarios para xls
 #install.packages("readxl")
 ```
-Paquetes necesarios para csv
+- Paquete necesario para exportar el conjunto de datos en formato .csv.
 ```{r, warning=FALSE}
-# Paquetes necesarios para csv
 #install.packages("readr")
 ```
-Paquetes necesarios para xlsx
+- Paquete necesario para poder realizar la manipulación de dataframes.
 ```{r, warning=FALSE}
-# Paquetes necesarios para xlsx
-#install.packages("readxl")
-```
-Paquete necesario para la manipulación de dataframes
-```{r, warning=FALSE}
-# Paquete necesario para la manipulación de dataframes
 #install.packages("dplyr") 
 ```
-Paquete necesario para transformar las filas y columnas
+- Paquete necesario para transformar las filas y columnas.
 ```{r, warning=FALSE}
-# Paquete necesario para transformar las filas y columnas
 #install.packages("tidyverse")
 ```
-Paquete para mostrar las tablas formatedas
+- Paquete para poder mostrar las tablas formatedas.
 ```{r, warning=FALSE}
-#Paquete para mostrar tablas formatedas
 #install.packages("DT")
 ```
-Paquete necesario para la implementación de gráficos
+- Paquete necesario para la implementación de gráficos.
 ```{r}
 #install.packages("ggplot2")
 ```
