@@ -394,7 +394,8 @@ Con este dataframe pretendemos que de forma visual podamos observar como puede l
 ## **Pivotar**
 Como hemos comentado anteriormente la forma del dataframe de España no es del todo correcta. Vamos a transponer la estructura de la columna Nombre desde largo a ancho, es decir, los Valores presentes en la columna Espana pasan a formar tres columnas. Para esto, utilizaremos la función pivot_wider.
 ```{r, warning=FALSE}
-#Tranformación de la tabladesde largo a ancho
+library(DT)
+
 Long_Espana <- pivot_wider(data = Espana, names_from = "Nombre", values_from = "Valor")
 
 datatable(Long_Espana)
@@ -415,44 +416,45 @@ Salud <- subset(Salud, !Sexo %in% c("De 16 a 64 a\xf1os", "De 65 y m\xe1s a\xf1o
 #### **Slices_head**
 Seleccionamos las cinco primeras filas del conjunto de datos Salud que contiene los estados de ansiedad. Mediante la función slice_head.
 ```{r, warning=FALSE}
-library("DT")
+library(DT)
 
 datatable(slice_head(.data = Salud, n =5))
 ```
 #### **Slice_tail**
 Seleccionamos las cinco últimas filas del conjunto de datos de Aragón que contiene el número de accidentes por años. Mediante la función slice_tail.
 ```{r, warning=FALSE}
-library("DT")
+library(DT)
 
 datatable(slice_tail(.data = Aragon, n =5))
 ```
 #### **Slice_sample**
 Escogemos un conjunto de filas, exactamente 10 filas aleatorias del conjunto de datos de Long_Espana en el cual hemos pivotado los valores de una columna para formar tres columnas distintas.
 ```{r, warning=FALSE}
-library("DT")
+library(DT)
 
 datatable(slice_sample(.data = Long_Espana, n = 10))
 ```
 #### **Slice_max**
 Seleccionamos las filas que contengan los valores más altos de una columna específica, en este caso de la columna Año. Mediante la función slice_max.
 ```{r, warning=FALSE}
-library("DT")
+library(DT)
 
 datatable(slice_max(.data = canarias, order_by = Año))
 ```
 
 ### **Arrange**
-Ordenamos las filas de manera descendente según los niveles de gravedad de los accidentes en el conjunto de datos de Aragón. Mediante la función arrange.
+Ordenamos las filas de manera descendente, es decir, de mayor gravedad a menor gravedad en los accidentes del conjunto de datos de Aragón. Mediante la función arrange.
 ```{r, warning=FALSE}
-library("DT")
+library(DT)
 
 datatable(arrange(.data = Aragon, desc(factor(Gravedad)), NumAcci))
 ```
 
 ### **Summarise**
-Calculamos el número total, las observaciones son los registros , el mínimo, el máximo y la mediana de accidentes laborales en los Años 2004 y 2009 con el dataframe conjunto del conjunto de datos de salud mental y el número de accidentes labotrales.
+Calculamos el número total, las observaciones son los registros , el mínimo, el máximo y la mediana de accidentes laborales en los Años 2004 y 2009 con el dataframe conjunto del conjunto de datos de salud mental y el número de accidentes laborales. Utilizamos la función summarise.
 ```{r, warning=FALSE}
-# sumatorio total de las columnas en los años 2004 y 2009  del dt combinado Aragon y Salud
+library(DT)
+
 info_acci<- 
   df_Salu_Arag%>%
   group_by(Años)%>%
@@ -466,15 +468,14 @@ info_acci<-
 
 datatable(info_acci)
 ```
-
-
+Con este dataframe queríamos hacer una comparación en el número de accidentes entre los diferentes años, pero este resultado no ha sido como esperábamos, suponemos que los valores del dataframe no están del todo correctos.
 
 ### **Tapply**
-En este apartado vamos a realizar diferentes funciones con tapply para poder hallar el número de accidentes u obserrvaciones según el año, el sexo por tipo de trabajo.
-Con esta función pretendemos hallar el total de accidentes que existen en cada una de las profesiones presentes en nuestro conjunto de datos de Canarias.
+En este apartado vamos a realizar diferentes funciones con tapply para poder hallar el número de accidentes u observaciones según el año, el sexo por tipo de trabajo.
+
+Con esta función pretendemos hallar el total de accidentes que existen en cada una de las profesiones presentes en nuestro conjunto de datos de Canarias. Para este código utilizamos la función tapply, junto con la función de suma.
 ```{r, warning = FALSE}
-# Identificación del total de accidentes según la profesión o tipo de trabajo
-library("DT")
+library(DT)
 
 acci_trab <- tapply(canarias$Obs, canarias$TipoTrab, sum, na.rm = TRUE)
 
@@ -483,32 +484,36 @@ acci_trab_df <- data.frame(
   TotalAcci = as.numeric(acci_trab)
 )
 
-datatable(acci_trab_df)
+datatable(arrange(.data = acci_trab_df, desc(factor(TotalAcci))))
 ```
+Como resultado podemos ver que los trabajos relacionados con producción, transformación, tratamiento y almacenamiento, junto con la profesión de servicios a empresas/personas y trabajos intelectuales tiene el mayor número de accidentes. Sin embargo, los trabajos agrícolas, forestales, hortícola, piscícol y con animales vivos son los que menos accidentes presentan.
 
-Con esta función pretendemos hallar la media de accidentes que existen según el sexo, además de la gravedad de estos que se  encuentran en nuestro conjunto de datos de Canarias.
+Con esta función pretendemos hallar la media de accidentes que existen según el sexo, además de la gravedad de estos. Encontrados en nuestro conjunto de datos de Canarias. Para este código utilizamos la función tapply, junto con la función de la media
 ```{r, warning=FALSE}
-# Cálculo de la media de los accidentes según el género y la gravedad de estos
-library("DT")
+library(DT)
 
 sexo_gravedad <- tapply(canarias$Obs, list(canarias$Sexo, canarias$Gravedad), mean, nar.rm = TRUE)
 
 datatable(sexo_gravedad)
 ```
+Con estos resultados podemos observar que los hombres presentan de media mayor gravedad en las enfermedades mentales respecto a las mujeres.
 
-Con esta función pretendemos hallar el total de accidentes que existen en cada una de las profesiones a lo largo de los años presentes en nuestro conjunto de datos de Canarias.
-
+Con esta función pretendemos hallar el total de accidentes que existen en cada una de las profesiones a lo largo de los años presentes en nuestro conjunto de datos de Canarias. Para este código utilizamos la función tapply, junto con la función de suma.
 ```{r, warning=FALSE}
-# Conteo por años de las diferentes profesiones 
-library("DT")
+library(DT)
 
 año_trabajo <- tapply(canarias$Obs, list(canarias$Año, canarias$TipoTrab), sum, na.rm = TRUE)
 
-datatable(año_trabajo)
+año_trabajo_df <- as.data.frame(as.table(año_trabajo))
+
+año_trab <- rename(.data = año_trabajo_df, Año = `Var1`, TipoTrab = `Var2`, Total = `Freq`)
+
+datatable(slice_max(año_trabajo_df, order_by = Total, n = 5))
+#datatable(año_trabajo)
 ```
+Con estos resultados podemos observar 
 
 ## **Funciones**
-
 Calcula de la media y el porcentaje de personas evaluadas
 En 2021 el numero de habitantes en Aragón fue de 1331938 , en 2011 hubo 1344501 personas y en 2001, 1204215.
 Se ha calculado la media de la población censada y se ha determinado el porcentaje de personas que se evaluaron según la población total.
