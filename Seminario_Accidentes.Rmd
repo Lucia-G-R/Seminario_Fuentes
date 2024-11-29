@@ -539,7 +539,7 @@ print(paste("El porcentaje de personas que han participado en la evaluación de 
 <img src='images/censo aragon.png' align="center" height="120" />
 
 
-## **Gráfico**
+## **Gráficos**
 Este gráfico muestra el numero de accidentes en el mundo de la construcción separados por sexos y según la gravedad del accidente.
 Podemos observar que en hombres hay mas accidentes que en el sexo contrario y en ambos casos estos son de gravedad leve.
 ```{r}
@@ -609,7 +609,7 @@ grafico_barra <- ggplot(Aragon, aes(x = Año, y = NumAcci)) +
 
 print(grafico_barra)
 ```
-## **Facetas**
+### **Facetas**
 ```{r, warning=FALSE}
 # Observación del registro del estado de ansiedad por año
 
@@ -627,7 +627,7 @@ print(facetas)
 
 Convertimos el tapply anterior en dataframe, para así poder hacer un gráfico donde se pueda observar la evolución del número de accidentes según la profesión.
 
-
+### **Gráfico sobre la relación de los accidentes laboralesa a lo largo de los años**
 ```{r}
 
 
