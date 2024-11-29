@@ -260,63 +260,61 @@ datatable(Salud)
 ```
 
 ### **Eliminar columnas**
-Eliminamos las columnas que no nos van a interesar estudiar, es decir, seleccionaremos las columnas que nos interesan. 
+Eliminamos las columnas que no nos van a interesar estudiar, es decir, utilizaremos la función select que seleccionará las columnas deseadas. 
 En el único conjunto de datos que no vamos a eliminar columnas es en los datos sobre la salud mental en los habitantes de Canarias.
 
-Primero vamos a eliminar las columnas del conjunto de datos sobre los trabajos realizados en Canarias. Nos vamos a quedar solo con las columnas Año, Sexo, Gravedad, TipoTrab y Obs.
+Primero, vamos a eliminar las columnas del conjunto de datos sobre los trabajos realizados en Canarias. Nos vamos a centrar en las columnas Año, Sexo, Gravedad, TipoTrab y Obs.
 ```{r, warning=FALSE} 
-# Selección de las columnas con las que nos interesa trabajar posteriormente. 
-# (Estamos trabajando con el dataframe Canarias)
 library(dplyr)
 
 canarias <- 
   canarias%>% 
   select(Año, Sexo, Gravedad, TipoTrab, Obs)
+
 datatable(canarias)
 ```
-En segundo lugar, eiminamos las columnas del conjunto de datos de Aragon. Nos vamos a quedar solo con las columnas Año, Sexo, NumAcci y Gravedad.
+
+En segundo lugar, eliminamos las columnas del conjunto de datos de Aragón. Nos vamos a centrar en las columnas Año, Sexo, NumAcci y Gravedad.
 ```{r, warning=FALSE} 
-# Selección de las columnas con las que nos interesa trabajar posteriormente. 
-# (Estamos trabajando con el dataframe Aragon)
 library(dplyr)
 
 Aragon <- 
   Aragon%>%
   select(Año, Sexo, NumAcci, Gravedad)
+
 datatable(Aragon)
 ```
-En tercer lugar, eliminamos las columnas del conjunto de datos de Espana. Nos vamos a quedar solo con las columnas Nombre, id y Valor.
+
+En tercer lugar, eliminamos las columnas del conjunto de datos de España. Nos vamos a centrar en las columnas Nombre, id y Valor.
 ```{r, warning=FALSE} 
-# Selección de las columnas con las que nos interesa trabajar posteriormente. 
-# (Estamos trabajando con el dataframe España)
 library(dplyr)
 
 Espana <- 
   Espana%>%
   select(Nombre, id, Valor)
+
 datatable(Espana)
 ```
 
 ### **Case_when**
 Vamos a utilizar las columnas Año, Sexo, Gravedad y Obs para que en una nueva columna Categoria sea más diferenciada y representativa.
 Para ello, vamos a categorizar el nivel de gravedad según el número de accidentes. 
-- Si la Gravedad es Total y las Obs mayorores que 5000 vamos a categorizarlo como Alta gravedad. 
-- Si la Gravedad es Total, pero las Obs son menores o iguales que 5000 vamos a categorizarlo como Baja gravedad.
-- También vamos a diferenciar las Obs de accidentes laborales por Sexo. Realizamos cuatro categorías dos si el Sexo es Mujer diferenciaremos entre Alta gravedad o Baja gravedad y lo mismo si el Sexo es Hombre. 
+- Si la Gravedad es Total y las Obs mayores que 5000 vamos a categorizarlo como "Alta gravedad". 
+- Si la Gravedad es Total, pero las Obs son menores o iguales que 5000 vamos a categorizarlo como "Baja gravedad".
+- También vamos a diferenciar las Obs de accidentes laborales por Sexo. Realizamos cuatro categorías. Si el Sexo es Mujer diferenciaremos entre "Alta gravedad" o "Baja gravedad" y lo mismo si el Sexo es Hombre.
 - Si el Sexo son los dos sexos juntos, es decir, Total se categoriza como Otro. Esta última condición succede cuando ninguna condición anterior cumple con los requisitos.
+
+Para realizar esta categorización utilizaremos la función case_when.
 ```{r, warning=FALSE}
-# Introducción de dos nuevas columnas donde en ambas hay dos variables categorizadas (alto y bajo), y en una de ellas diferenciada por el sexo
 library("DT")
 
 canarias_when <- 
   canarias %>%
   mutate(Categoria = case_when(
     
-# Nombramiento de una de las columnas en función de la gravedad y el número de observaciones (casos)    
     Gravedad == "Total" & Obs > 5000 ~ "Alta gravedad",
     Gravedad == "Total" & Obs <= 5000 ~ "Baja gravedad",
-
-#  Nombramiento de la segunda columna en función del sexo y el número de observaciones  
+ 
     Sexo == "Mujeres" & Obs > 1000 ~ "Accidentes Mujeres - Alto",
     Sexo == "Hombres" & Obs > 1000 ~ "Accidentes Hombres - Alto",
     
