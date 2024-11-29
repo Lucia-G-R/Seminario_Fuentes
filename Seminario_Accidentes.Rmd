@@ -549,7 +549,6 @@ print(paste("El porcentaje de personas que han participado en la evaluación de 
 Este gráfico muestra el número de accidentes en el mundo de la construcción separados por sexos y según la gravedad del accidente.
 ```{r}
 # Observación del gráfico entre mujeres y hombres según la gravedad  y el número de accidentes
-# Gráfico 1
 library(ggplot2)
 library(dplyr)
 
@@ -564,8 +563,8 @@ df_resultado <- df_Salu_Arag %>%
 grafico_f1 <- ggplot(df_resultado, aes(x = Gravedad, y = NumAcci, fill = Sexo)) + 
   geom_bar(stat = "identity", position = "dodge") +
   labs(x = 'Gravedad accidentes', 
-       y = 'Numero de casos', 
-       title = 'Numero de accidentes según la gravedad y separados por sexos ',
+       y = 'Número de casos', 
+       title = 'Número de accidentes según la gravedad y los sexos ',
        fill = 'Sexo') + 
   facet_wrap(~Sexo) 
 print (grafico_f1)
@@ -574,24 +573,23 @@ Como resultado, podemos observar que en hombres hay más accidentes laborales qu
 
 ### **Gráfico sobre los nieveles de ansiedad en mujeres**
 Este gráfico muestra la diferencia de casos de ansiedad en mujeres y el grado de ansiedad.
-Hemos querido eliminar los indiviudos que no saben (o no contesta) o total ya que no daban información de valor y nos hemos quedado con la que realmente proporcionaba alguna conclusión. 
+Hemos querido eliminar los indiviudos que no saben (o no contesta) junto con el total ya que no daban información de valor. Nos hemos quedado con las muejres ya que realmente proporcionan alguna conclusión. 
 ```{r}
-# Observación del gráfico del género Mujeres según el grado de ansiedad y el numero de personas que la padecen
-# Se ha eliminado las filas donde se queria prescindir de la información
+# Observación del gráfico del género Mujeres según el grado de ansiedad y el número de personas que la padecen
 mod_dt <- df_Salu_Arag %>%
   filter(!(Sexo %in% c("Hombres")), !(EstadoAnsiedad %in% c("No sabe/No contesta", "Total"))) %>%
   group_by(Año, Sexo, EstadoAnsiedad) %>%
-  summarise (count = n(), .groups = "drop") #contamos el numero de observaciobes
+  summarise (count = n(), .groups = "drop") 
 
 grafico_f2 <- ggplot(mod_dt, aes(x = Año, y = count, fill = EstadoAnsiedad)) + 
   geom_bar(stat = "identity", position = "dodge", ) +
-  labs(x = 'Año', 
-       y = 'Personas', 
-       title = 'Ansiedad según el grado de ansiedad en mujeres',
+  labs(x = 'Años', 
+       y = 'Número de participantes, 
+       title = 'Ansiedad según el grado en mujeres',
        fill = 'Ansiedad') + 
   facet_wrap(~Sexo) +
-  scale_fill_manual(values = c("No está ansioso ni deprimido" = "red",  # Amarillo
-                               "Está moderadamente ansioso o deprimido" = "black",  # Negro
+  scale_fill_manual(values = c("No está ansioso ni deprimido" = "red",  
+                               "Está moderadamente ansioso o deprimido" = "black", 
                                "Está muy ansioso o deprimido" = "white"))
 
 print(grafico_f2)
