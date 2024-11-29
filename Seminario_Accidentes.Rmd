@@ -546,10 +546,11 @@ print(paste("El porcentaje de personas que han participado en la evaluación de 
 
 
 ## **Gráficos**
-Este gráfico muestra el numero de accidentes en el mundo de la construcción separados por sexos y según la gravedad del accidente.
+Este gráfico muestra el número de accidentes en el mundo de la construcción separados por sexos y según la gravedad del accidente.
 Podemos observar que en hombres hay mas accidentes que en el sexo contrario y en ambos casos estos son de gravedad leve.
 ```{r}
 # Observación del gráfico entre mujeres y hombres según la gravedad  y el número de accidentes
+# Gráfico 1
 library(ggplot2)
 library(dplyr)
 
@@ -606,7 +607,8 @@ Imágenes que muestran los daños que ocurren en los distintos casos:
 
 Añadimos un gráfico de barras para observar el número de accidentes laborales sucedidos durante los difrentes años en Aragón. Para ello, utilizaremos el atributo de Año y NumAcci del conjunto de datos sobre los accidentes laborales en Aragón.
 ```{r, warning=FALSE}
-# Observación del total de accidentes por año del incidente.
+# Observación del total de accidentes por año del incidente. 
+# Gráfico 2
 grafico_barra <- ggplot(Aragon, aes(x = Año, y = NumAcci)) +
   geom_bar(stat = "identity", fill = "darkturquoise") +
   xlab("Año del suceso") +
@@ -636,7 +638,7 @@ Convertimos el tapply anterior en dataframe, para así poder hacer un gráfico d
 ### **Gráfico sobre la relación de los accidentes laboralesa a lo largo de los años**
 ```{r}
 
-
+# GRÁFICO 3
 library(ggplot2)
 library(dplyr)
 library(tidyr)
@@ -645,8 +647,9 @@ df_año_trabajo <- as.data.frame(as.table(año_trabajo))
 
 colnames(df_año_trabajo) <- c("Año", "TipoTrabajo", "Accidentes")
 
-df_año_trabajo <- drop_na(df_año_trabajo) # Las filas con valores nulos se van a eliminar ya que sino no dejan hacer el dt
-
+df_año_trabajo <- drop_na(df_año_trabajo) %>% # Las filas con valores nulos se van a eliminar ya que sino no dejan hacer el dt
+  filter(!(TipoTrabajo %in% c("Total")), !(TipoTrabajo %in% c("Trabajos relacionados con alguna de las tareas anteriores")))
+ 
 # Gráfico
 tpt <- ggplot(df_año_trabajo, aes(x = Año, y = Accidentes, color = TipoTrabajo, group = TipoTrabajo)) +
   geom_line() +  geom_point() +  #lineas y puntos 
@@ -665,7 +668,15 @@ print(tpt)
 
 
 # **Resultados**
-La profesión de movimiento de tierra y la incidencia de enfermedades psicológicas 
+Como se ha observado en los gráficos presentados anteriormente, el género masculino muestra mayor indicencia de de accidentes en la profesión relacionada con el movimiento de tierra. Este fenómeno se puede explicar a que este grupo representa la mayoria en esta actividad laboral.
+
+En cuanto a la evolución del número de accidentes laborales, contrariamente a la creencia popular, no ha aumentado significativamente. Sino que ha habido una tendencia a la baja desde principios de los 2000s. Cabe mencionar que tras la época COVID se ha producido un ligero repunte en las cifras, reflejando un ascenso en la curva del diagrama.
+
+Por otro lado, cabe señalar que esta profesión no se encuentra entre las mas afectadas por los siniestros laborales. La mayoria de incidentes se han registrado en el sector vinculado con la "producción, transformación, tratamiento y almacenamiento de materiales". 
+Destacar que estos útimos años, se ha presentado un aumento en las bajas laborales en el ámbitorelacionado con los "servicios a empresas y trabajos intelectuales"
+
+En conclusión, la profesión objeto de este estudio ha experimentado un elevado numero de daños en el ámbito laboral a principios del siglo XXI.
+Sin embargo, las cifras han ido disminuyendo progresivamente y manteniendose estables en la actualidad
 
 
 # **Conclusiones**
@@ -674,9 +685,11 @@ En cuanto al género
 
 
 
-- ¿Existe relación entre la profesión de movimiento de tierra respecto al desarrollo de enfermedades psicológicas?
-- ¿Existe relación entre el desarrollo de enfermedades laborales respecto al sexo?
-- ¿Existe relación entre la gravedad de una enfermedad psicológica respecto al desarrollo de una enfermedad laboral?
+- ¿Existe relación entre la profesión de movimiento de tierra respecto al género? *Grafico 1
+- ¿Ha aumentado el número de accidentes laborales? *Grafico 2
+- ¿Existe relación entre la profesión de movimiento de tierra respecto a la indicencia de accidentes? *Grafico 3
+
+
 
 añadir los dos url de los articulos
 https://www.omniamachinery.com/es/2022/05/mental-health-in-construction/
