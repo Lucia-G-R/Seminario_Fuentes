@@ -516,11 +516,10 @@ datatable(slice_max(año_trab, order_by = Total, n = 5))
 
 Con estos resultados podemos observar que los años en el que han existido menos accidentes laborales han sido el 2018 y el 2016. Sin embrago, los años con mayores números de accidentes han sido el 2003 y el 2005.
 
-## **Funciones**
+## **Función**
 Calculamos la media y el porcentaje de personas evaluadas.
 En 2021 el número de habitantes en Aragón fue de 1331938 , en 2011 hubo 1344501 personas y en 2001, 1204215.
 Se ha calculado la media de la población censada y se ha determinado el porcentaje de personas que se evaluaron según la población total.
-Cantidad de hombres y mujeres del dataframe
 ```{r, warning=FALSE}
 hombres <- sum(df_Salu_Arag$Sexo == "Hombres")
 mujeres <- sum(df_Salu_Arag$Sexo == "Mujeres")
@@ -545,10 +544,9 @@ print(paste("El porcentaje de personas que han participado en la evaluación de 
 ```
 <img src='images/censo aragon.png' align="center" height="120" />
 
-
 ## **Gráficos**
+### **Gráfico sobre el número de accidentes según el sexo y la gravedad**
 Este gráfico muestra el número de accidentes en el mundo de la construcción separados por sexos y según la gravedad del accidente.
-Podemos observar que en hombres hay mas accidentes que en el sexo contrario y en ambos casos estos son de gravedad leve.
 ```{r}
 # Observación del gráfico entre mujeres y hombres según la gravedad  y el número de accidentes
 # Gráfico 1
@@ -572,7 +570,10 @@ grafico_f1 <- ggplot(df_resultado, aes(x = Gravedad, y = NumAcci, fill = Sexo)) 
   facet_wrap(~Sexo) 
 print (grafico_f1)
 ```
-Este gráfico muestra la diferencia de casos de ansiedad en mujeres y el tipo de ansiedad.
+Como resultado, podemos observar que en hombres hay más accidentes laborales que en el sexo contrario y en ambos casos estos son de gravedad leve.
+
+### **Gráfico sobre los nieveles de ansiedad en mujeres**
+Este gráfico muestra la diferencia de casos de ansiedad en mujeres y el grado de ansiedad.
 Hemos querido eliminar los indiviudos que no saben (o no contesta) o total ya que no daban información de valor y nos hemos quedado con la que realmente proporcionaba alguna conclusión. 
 ```{r}
 # Observación del gráfico del género Mujeres según el grado de ansiedad y el numero de personas que la padecen
