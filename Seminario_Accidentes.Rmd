@@ -429,24 +429,21 @@ datatable(slice_tail(.data = Aragon, n =5))
 #### **Slice_sample**
 Escogemos un conjunto de filas, exactamente 10 filas aleatorias del conjunto de datos de Long_Espana en el cual hemos pivotado los valores de una columna para formar tres columnas distintas.
 ```{r, warning=FALSE}
-#Observación de 10 filas aleatorias del dataframe España (una vez pivotado)
 library("DT")
 
 datatable(slice_sample(.data = Long_Espana, n = 10))
 ```
 #### **Slice_max**
-Seleccionamos las filas que contengan los valores más altos de una columna específica, en este caso Año
-
+Seleccionamos las filas que contengan los valores más altos de una columna específica, en este caso de la columna Año. Mediante la función slice_max.
 ```{r, warning=FALSE}
-#Selección de valores mas altos según la columna Año
 library("DT")
 
 datatable(slice_max(.data = canarias, order_by = Año))
 ```
+
 ### **Arrange**
-Ordena las filas de manera descendente según los niveles de gravedad de accidentes del conjunto de datos de Aragón.
+Ordenamos las filas de manera descendente según los niveles de gravedad de los accidentes en el conjunto de datos de Aragón. Mediante la función arrange.
 ```{r, warning=FALSE}
-#Ordenación de las filas de la columna Gravedad (dt:Aragon) de fomra descendente
 library("DT")
 
 datatable(arrange(.data = Aragon, desc(factor(Gravedad)), NumAcci))
