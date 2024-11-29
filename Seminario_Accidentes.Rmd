@@ -584,7 +584,7 @@ mod_dt <- df_Salu_Arag %>%
 grafico_f2 <- ggplot(mod_dt, aes(x = Año, y = count, fill = EstadoAnsiedad)) + 
   geom_bar(stat = "identity", position = "dodge", ) +
   labs(x = 'Años', 
-       y = 'Número de participantes, 
+       y = 'Número de participantes', 
        title = 'Ansiedad según el grado en mujeres',
        fill = 'Ansiedad') + 
   facet_wrap(~Sexo) +
@@ -594,7 +594,7 @@ grafico_f2 <- ggplot(mod_dt, aes(x = Año, y = count, fill = EstadoAnsiedad)) +
 
 print(grafico_f2)
 ```
-
+Como resultado, podemos observar que los años donde las mujeres han presentado menor ansiedad han sido en 2009, 2017, 2018 y 2019. Sin embargo el resto de los años estudiados presentan un incremento en el dearrollo de esta enfermedad.
 
 Imágenes que muestran los daños que ocurren en los distintos casos: 
 
@@ -604,11 +604,9 @@ Imágenes que muestran los daños que ocurren en los distintos casos:
 
 <img src='images/I3.jpg' align="center" height="120" />
 
-
+### **Gráfico sobre el número de accidentes según el año**
 Añadimos un gráfico de barras para observar el número de accidentes laborales sucedidos durante los difrentes años en Aragón. Para ello, utilizaremos el atributo de Año y NumAcci del conjunto de datos sobre los accidentes laborales en Aragón.
 ```{r, warning=FALSE}
-# Observación del total de accidentes por año del incidente. 
-# Gráfico 2
 grafico_barra <- ggplot(Aragon, aes(x = Año, y = NumAcci)) +
   geom_bar(stat = "identity", fill = "darkturquoise") +
   xlab("Año del suceso") +
@@ -617,7 +615,9 @@ grafico_barra <- ggplot(Aragon, aes(x = Año, y = NumAcci)) +
 
 print(grafico_barra)
 ```
-### **Facetas**
+Como resultado podemos observar que en los años de 2003 hasta 2008 los accdientes laborales eran muchísimo mayores debido a la presencia de mayor precariedad laboral. Sin embargo, en los años posteriores ha disminuido, siendo registrados alrededror de 10.000 accidentes en el año 2013. Aunque los años psoteriores el número de accidentes ha aumentado un poco, no han llegado a alcanzar valores como los primeros años nombrados.
+
+### **Faceta**
 ```{r, warning=FALSE}
 # Observación del registro del estado de ansiedad por año
 
