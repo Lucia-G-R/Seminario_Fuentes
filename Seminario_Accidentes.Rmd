@@ -159,6 +159,7 @@ espana_df <-
 
 datatable(espana_df)
 ```
+Este dataframe va a recoger el número de incidencias por tipo de enfermedades laborales según el año del suceso y el sexo.
 
 ### **Carga de datos XLS**
 En segundo lugar, queremos extraer los datos sobre los accidentes laborales que suceden en Canarias. 
@@ -172,6 +173,7 @@ canarias_df <- read_excel("INPUT/DATA/Accidentes_laborales_Canarias.xls")
 
 datatable(canarias_df)
 ```
+Este dataframe va a recoger las distintas indicencias por gravedad según los diferentes tipos de profesiones laborales, el sexo y el año del suceso.
 
 ### **Carga de datos CSV**
 En tercer lugar, queremos extraer los datos sobre la salud mental en los habitantes de Canarias. 
@@ -191,13 +193,12 @@ datatable(Salud_df)
 ```
 
 ### **Carga de datos XLSX**
-Queremos extraer los datos sobre la gravedad de las enfermedades laborales producidas en Aragón. 
-Como es un archivo con extensión .xlsx, utilizamos read_excel.
+En cuarto lugar, queremos extraer los datos sobre la gravedad de las enfermedades laborales producidas en Aragón. Como es un archivo con extensión .xlsx, utilizamos read_excel.
 ```{r cargar-datos-aragon, warning=FALSE, message=FALSE}
-# Cargamos los archivos con extensión .xlsx
 library(readxl)
 library(DT)
 
+# Cargamos el archivo con extensión .xlsx
 Aragon_df <- read_excel ("INPUT/DATA/070901-02_Por grado y sexo. Aragon.xlsx")
 
 datatable(Aragon_df)
