@@ -506,23 +506,22 @@ año_trabajo <- tapply(canarias$Obs, list(canarias$Año, canarias$TipoTrab), sum
 
 año_trabajo_df <- as.data.frame(as.table(año_trabajo))
 
-año_trab <- rename(.data = año_trabajo_df, Año = `Var1`, TipoTrab = `Var2`, Total = `Freq`)
+año_trab <- rename(.data = año_trabajo_df, Año = Var1, TipoTrab = Var2, Total = Freq)
 
-datatable(slice_max(año_trabajo_df, order_by = Total, n = 5))
-#datatable(año_trabajo)
+datatable(slice_min(año_trab, order_by = Total, n = 5))
 ```
-Con estos resultados podemos observar 
+```{r, warning = FALSE}
+datatable(slice_max(año_trab, order_by = Total, n = 5))
+```
+
+Con estos resultados podemos observar que los años en el que han existido menos accidentes laborales han sido el 2018 y el 2016. Sin embrago, los años con mayores números de accidentes han sido el 2003 y el 2005.
 
 ## **Funciones**
-Calcula de la media y el porcentaje de personas evaluadas
-En 2021 el numero de habitantes en Aragón fue de 1331938 , en 2011 hubo 1344501 personas y en 2001, 1204215.
+Calculamos la media y el porcentaje de personas evaluadas.
+En 2021 el número de habitantes en Aragón fue de 1331938 , en 2011 hubo 1344501 personas y en 2001, 1204215.
 Se ha calculado la media de la población censada y se ha determinado el porcentaje de personas que se evaluaron según la población total.
 Cantidad de hombres y mujeres del dataframe
-
 ```{r, warning=FALSE}
-# Sumatorio de los generos del dt combinado Salud y Aragón.
-# Calculo del porcentaje de encuentados según la población media en Aragón entre 2001 y 2021
-
 hombres <- sum(df_Salu_Arag$Sexo == "Hombres")
 mujeres <- sum(df_Salu_Arag$Sexo == "Mujeres")
 
