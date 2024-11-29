@@ -8,7 +8,7 @@
 ## Introducción
 El desarrollo de una enfermedad laboral es aquella contraída a consecuencia del trabajo ejecutado por cuenta ajena o por cuenta propia.
 
-Incluso hablamos de las enfermedades mentales o trastornos mentales se caracteriza por una alteración clínicamente significativa de la cognición, la regulación de las emociones o el comportamiento de un individuo. Por lo general, va asociado a angustia o discapacidad funcional en otras áreas importantes. 
+Hablamos de las enfermedades mentales o trastornos mentales que se caracterizan por una alteración clínicamente significativa de la cognición, la regulación de las emociones o el comportamiento de un individuo. Por lo general, va asociado a angustia o discapacidad funcional en otras áreas importantes. 
 
 En este repositorio de GitHub analizamos el posible desarrollo de enfermedades dependiendo del oficio que realicen, el género y el estado mental.
 
