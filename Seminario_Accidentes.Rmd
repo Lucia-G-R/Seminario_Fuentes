@@ -408,8 +408,15 @@ Eliminamos las filas que no nos va a interesar estudiar.En este caso, solo modif
 
 En primer lugar, vamos a eliminar en el dataframe Salud, el sexo que indica las edades ya que es una información no correcta para esta variable. Utilizamos la función subset.
 ```{r, warning=FALSE, error = TRUE}
-Salud <- subset(Salud, !Sexo %in% c("De 16 a 64 a\xf1os", "De 65 y m\xe1s a\xf1os"))
+library(DT)
 
+# Normalizamos los valores y eliminamos los espacios
+Salud$Sexo <- trimws(Salud$Sexo)
+Salud$Sexo <- tolower(Salud$Sexo)
+
+Salud_eli <- subset(Salud, !Sexo %in% c("De 16 a 64 a\xf1os", "De 65 y m\xe1s a\xf1os"))
+
+datatable(Salud_eli)
 ```
 
 ### **Slices**
@@ -618,13 +625,14 @@ print(grafico_barra)
 Como resultado podemos observar que en los años de 2003 hasta 2008 los accdientes laborales eran muchísimo mayores debido a la presencia de mayor precariedad laboral. Sin embargo, en los años posteriores ha disminuido, siendo registrados alrededror de 10.000 accidentes en el año 2013. Aunque los años psoteriores el número de accidentes ha aumentado un poco, no han llegado a alcanzar valores como los primeros años nombrados.
 
 ### **Faceta**
+Con este tipo de gráfico pretendemos estudiar el estado de ansiedad, según los años 2004 y 2009, además del sexo.
 ```{r, warning=FALSE}
 # Observación del registro del estado de ansiedad por año
 
 #library(tidyverse)
 #library(ggplot2)
 
-facetas <- ggplot(Salud, aes(x = Obs, y = EstadoAnsiedad)) +
+facetas <- ggplot(Salud_eli, aes(x = Obs, y = EstadoAnsiedad)) +
   geom_point(aes(colour = factor(Años), shape=factor(Sexo))) +
   xlab("Observaciones") +
   ylab("Tipos de estados de ansiedad") +
