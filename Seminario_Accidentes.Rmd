@@ -101,7 +101,8 @@ download.file("https://datos.gob.es/es/catalogo/a05003423-poblacion-de-16-y-mas-
 
 ### **Carga de datos JSON**
 En primer lugar, queremos extraer los datos sobre las enfermedades laborales que suceden en España. 
-Como es un archivo con extensión .JSON con listas anidadas sin etiquetar, no podemos utilizar directamente un tibble para ello, utilizaremos tidyjson.
+Como es un archivo con extensión .JSON con listas anidadas, no podemos utilizar directamente un tibble . 
+Para ello, debemos de convertir las listas anidadas, en este caso la lista MetaData y la lista Data, en dataframes. Finalemente, unimos ambos dataframes anteriores junto con el resto de columnas del archivo .JSON que no son listas anidadas.
 ``` {r load-packages, message=FALSE, warning=FALSE}
 library(rjson)
 library(tidyverse)
@@ -109,30 +110,30 @@ library(tidyjson)
 library(dplyr)
 library(DT)
 
-# Cargamos el archivo JSON, pero está en formato de lista.
+# Cargamos el archivo JSON..
 espana_json <- fromJSON(file = "INPUT/DATA/Enfermedades_laborales_España.json")
 
 # Observamos la estructura, nos damos cuenta que posee listas anidadas
 #str(espana_json)
 
-# Convertimos la lista de la varable MetaData en un dataframe
+# Convertimos la lista de la variable MetaData en un dataframe
 MetaData_df<-
   espana_json%>%
-  enter_object("MetaData")%>% # Extreamos la infromación dentro de "MetaData"
-  gather_array() %>% # Convierte los elementos de un array en filas
+  enter_object("MetaData")%>% # Extraemos la información dentro de "MetaData"
+  gather_array() %>% # Convertimos los elementos de un array en filas
   spread_all()%>% # Esta función distribuye cualquier objeto JSON que sea escalar en nuevas columnas
   select(T3_Variable, Nombre, Codigo) # Seleccionamos las tres variables que posee 
 
 # Convertimos la lista de la variable Data en un dataframe
 Data_df<-
   espana_json%>%
-  enter_object("Data")%>% # Extreamos la infromación dentro de "Data"
+  enter_object("Data")%>% # Extraemos la información dentro de "Data"
   gather_array() %>% 
   spread_all()%>%
   select(Valor) # Seleccionamos la variable que posee 
 
 # Unimos MetaData_df y Data_df usando "..JSON". Extraemos la columna "..JSON" como identificador 
-# Expandimos la columna "..JSON" con prefijo para evitar conflictos de nombres
+# Expandimos la columna "..JSON" con prefijo para evitar conflictos de nombres.
 MetaData_df <- 
   MetaData_df %>%
   unnest_wider(..JSON, names_sep = "_json")
@@ -150,7 +151,7 @@ Data_df <-
   Data_df %>%
   mutate(id = row_number())
 
-# Hacemos la unión de los df por la columna id que hemos creado con la variable lista "..JSON"
+# Hacemos la unión de los data frames por la columna id que hemos creado con la variable lista "..JSON"
 espana_df <- 
   MetaData_df %>%
   left_join(Data_df, by = "id") %>% # Unimos con Data_df usando 'id'
