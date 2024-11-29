@@ -399,35 +399,35 @@ Long_Espana <- pivot_wider(data = Espana, names_from = "Nombre", values_from = "
 
 datatable(Long_Espana)
 ```
+Aunque aparezcan filas sin valores, no las vamos a eliminar ya que es simplemente porque el ciudadano solo ha desarrollado una enfremedad laboral o en base al sexo.
 
 ## **Trabajar con filas**
 ### **Eliminar filas**
-Eliminamos las filas que no nos va a interesar estudiar.
+Eliminamos las filas que no nos va a interesar estudiar.En este caso, solo modificaremos el dataframe de la salud mental en Canarias. 
+
+En primer lugar, vamos a eliminar en el dataframe Salud, el sexo que indica las edades ya que es una información no correcta para esta variable. Utilizamos la función subset.
 ```{r, warning=FALSE, error = TRUE}
-#eliminación de las filas que contengan un valor que no interese
 Salud <- subset(Salud, !Sexo %in% c("De 16 a 64 a\xf1os", "De 65 y m\xe1s a\xf1os"))
 
 ```
 
 ### **Slices**
 #### **Slices_head**
-Seleccionamos las primeras 5 filas del conjunto de datos Salud que contiene los estados de ansiedad.
+Seleccionamos las cinco primeras filas del conjunto de datos Salud que contiene los estados de ansiedad. Mediante la función slice_head.
 ```{r, warning=FALSE}
-#Observación de las 5 primeras filas del dataframe Salud
 library("DT")
 
 datatable(slice_head(.data = Salud, n =5))
 ```
 #### **Slice_tail**
-Seleccionamos las últimas 5 filas del conjunto de datos de Aragón que contiene el número de accidentes por años.
+Seleccionamos las cinco últimas filas del conjunto de datos de Aragón que contiene el número de accidentes por años. Mediante la función slice_tail.
 ```{r, warning=FALSE}
-# Observación de las 5 últimas filas del dataframe Aragón
 library("DT")
 
 datatable(slice_tail(.data = Aragon, n =5))
 ```
 #### **Slice_sample**
-Escogemos un conjunto de filas, exactamente 10 filas aleatorias del conjunto de datos de Long_Espana en el cual hemos pivotado los valores de una columna a formar tres columnas distintas.
+Escogemos un conjunto de filas, exactamente 10 filas aleatorias del conjunto de datos de Long_Espana en el cual hemos pivotado los valores de una columna para formar tres columnas distintas.
 ```{r, warning=FALSE}
 #Observación de 10 filas aleatorias del dataframe España (una vez pivotado)
 library("DT")
