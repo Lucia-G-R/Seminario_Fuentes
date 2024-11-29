@@ -328,7 +328,9 @@ datatable(canarias_when)
 ```
 
 ### **Añadir columnas**
-Utilizamos mutate para sacar el porcentaje que representa cada observación respecto al conjunto de observaciones del conjunto de datos de canarias.
+Con este código pretendemos obtener una nueva columna en la cual hallaremos el procentaje de observaciones.
+
+Utilizamos mutate para sacar el porcentaje que representa cada observación respecto al conjunto de observaciones del conjunto de datos de Canarias.
 Con options(scipen=999) evitamos la notación científica.
 ```{r, warning=FALSE}
 #Porcentaje de cada observación según el conjunto de observaciones del dataframe Canarias
@@ -338,12 +340,12 @@ library(DT)
 options(scipen = 999) 
 datatable(mutate(.data = canarias, Porcentaje_Obs = (Obs / sum(Obs)) * 100))
 ```
-Observamos que existen valore nulos en la variable Valor del dataframe de España, por lo que para poder utilizar el mutate necesitamos eliminar aquellos valores vacíos. 
-En primer lugar, nos quedamos solo con los valores distintos de nulos, es decir, los valores de nuestro interés.
-En segundo lugar, utilizamos mutate para crear una nueva columna denominada Porcentaje_Valor que recoge el porcentaje que representa cada observación respecto al conjunto de observaciones del conjunto de datos de España denominado Espana.
+
+Observamos que existen valores nulos en la variable Valor del dataframe de España, por lo que para poder utilizar el mutate necesitamos eliminar aquellos valores vacíos. 
+En primer lugar, filtramos solo con los valores distintos de nulos, es decir, los valores de nuestro interés.
+En segundo lugar, utilizamos mutate para crear una nueva columna denominada Porcentaje_Valor que recoge el porcentaje que representa cada observación respecto al conjunto de observaciones del conjunto de datos de España.
 Con options(scipen=999) evitamos la notación científica.
 ```{r, warning=FALSE}
-#Se eliminan filas con valores nulos y se crea una nueva columna para saber el porcentaje de cada observacion segun las observaciones totales
 library(dplyr)
 library(DT)
 
@@ -354,18 +356,19 @@ Espana <-
 options(scipen = 999)
 datatable(mutate(.data = Espana, Porcentaje_Valor = (Valor / sum(Valor)) * 100))
 ```
+Como se puede observar este dataframe contiene una columna denominada Nombre con valores repetidos. Posteriormente, pivotaremos este dataframe.
 
 ## **Realizar un dataframe conjunto**
-Realizamos un dataframe uniendo los datos sobre la gravedad de las enfermedades laborales en Aragón y la salud mental de los ciudadanos en Canarias.
+Realizamos un dataframe uniendo los datos sobre la gravedad de las enfermedades laborales en Aragón y la salud mental de los ciudadanos en Canarias. Para ello, utilizamos la función merge.
 ```{r, warning=FALSE}
-#Unión del dataframe Aragón y Salud por las claves (columnas) "Sexo"
 library(DT)
 
-# Unimos por una columna común "Sexo"
+# Unimos el dataframe Aragón y Salud por una columna común "Sexo"
 df_Salu_Arag <- merge(Aragon, Salud, by = "Sexo")
 
 datatable(df_Salu_Arag)
 ```
+Con este dataframe pretendemos que 
 
 Realizamos un dataframe uniendo los datos sobre los accidentes laborales que suceden en Canarias y los datos sobre las enfermedades mentales.
 ```{r,  warning=FALSE}
