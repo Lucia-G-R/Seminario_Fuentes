@@ -368,7 +368,7 @@ df_Salu_Arag <- merge(Aragon, Salud, by = "Sexo")
 
 datatable(df_Salu_Arag)
 ```
-Con este dataframe pretendemos que 
+Con este dataframe pretendemos que de forma visual podamos observar como puede llegar a afectar el padecimiento de una enfermedad mental en el aumento de accidentes laborales.
 
 Realizamos un dataframe uniendo los datos sobre los accidentes laborales que suceden en Canarias y los datos sobre las enfermedades mentales.
 ```{r,  warning=FALSE}
@@ -389,9 +389,10 @@ df_cana_Salud <-
 
 datatable(df_cana_Salud)
 ```
+Con este dataframe pretendemos que de forma visual podamos observar como puede llegar a afectar el padecimiento de una enfermedad mental en el desarrollo de enfermedades laborales por cada profesión estudiada.
 
 ## **Pivotar**
-Vamos a transponer la estructura de nuestra tabla ordenada España de la columna Nombre desde largo a ancho, es decir, los Valores presentes en la columna Espana pasan a formar tres columnas.
+Como hemos comentado anteriormente la forma del dataframe de España no es del todo correcta. Vamos a transponer la estructura de la columna Nombre desde largo a ancho, es decir, los Valores presentes en la columna Espana pasan a formar tres columnas. Para esto, utilizaremos la función pivot_wider.
 ```{r, warning=FALSE}
 #Tranformación de la tabladesde largo a ancho
 Long_Espana <- pivot_wider(data = Espana, names_from = "Nombre", values_from = "Valor")
