@@ -668,7 +668,18 @@ print(tpt)
 
 
 # **Resultados**
-Como se ha observado en los gráficos presentados anteriormente, el género masculino muestra mayor indicencia de de accidentes en la profesión relacionada con el movimiento de tierra. Este fenómeno se puede explicar a que este grupo representa la mayoria en esta actividad laboral.
+Mostrar graficos de las respuestas.
+
+
+Las resùestas estan respondidas abajo
+
+- ¿Existe relación entre la profesión de movimiento de tierra respecto al género? *Grafico 1
+- ¿Ha aumentado el número de accidentes laborales? *Grafico 2
+- ¿Existe relación entre la profesión de movimiento de tierra respecto a la indicencia de accidentes? *Grafico 3
+
+# **Conclusiones**
+
+Como se ha observado en los gráficos presentados anteriormente, el género masculino muestra mayor indicencia de de accidentes en la profesión relacionada con el movimiento de tierra. Este fenómeno se puede explicar a que este grupo representa la mayoria en esta actividad laboral (articulo1)
 
 En cuanto a la evolución del número de accidentes laborales, contrariamente a la creencia popular, no ha aumentado significativamente. Sino que ha habido una tendencia a la baja desde principios de los 2000s. Cabe mencionar que tras la época COVID se ha producido un ligero repunte en las cifras, reflejando un ascenso en la curva del diagrama.
 
@@ -676,18 +687,9 @@ Por otro lado, cabe señalar que esta profesión no se encuentra entre las mas a
 Destacar que estos útimos años, se ha presentado un aumento en las bajas laborales en el ámbitorelacionado con los "servicios a empresas y trabajos intelectuales"
 
 En conclusión, la profesión objeto de este estudio ha experimentado un elevado numero de daños en el ámbito laboral a principios del siglo XXI.
-Sin embargo, las cifras han ido disminuyendo progresivamente y manteniendose estables en la actualidad
+Sin embargo, las cifras han ido disminuyendo progresivamente y manteniendose estables en la actualidad.
 
 
-# **Conclusiones**
-En conclusión hemos podido ver que hay mayor incidencia de enfermedades mentales de las que nos esperábamos, y estos han ido creciendo según los años. 
-En cuanto al género 
-
-
-
-- ¿Existe relación entre la profesión de movimiento de tierra respecto al género? *Grafico 1
-- ¿Ha aumentado el número de accidentes laborales? *Grafico 2
-- ¿Existe relación entre la profesión de movimiento de tierra respecto a la indicencia de accidentes? *Grafico 3
 
 
 
@@ -709,5 +711,9 @@ Gómez, M. G., López, R. C., Ortiz, Z. H., & Soria, F. S. (s. f.). *Reconocimie
 
 *imagen daño articular - Bing. (s. f.).* Bing. https://www.bing.com/images/search?view=detailV2&ccid=KaDQGmnp&id=2E3760EF62FCCC59509810F95B6010E199FCE071&thid=OIP.KaDQGmnpM8DYGR0vUebPSAHaEM&mediaurl=https%3a%2f%2fvitalclinic.es%2fwp-content%2fuploads%2f2019%2f11%2fartrosis-reumatoide.jpg&cdnurl=https%3a%2f%2fth.bing.com%2fth%2fid%2fR.29a0d01a69e933c0d8191d2f51e6cf48%3frik%3dceD8meEQYFv5EA%26pid%3dImgRaw%26r%3d0&exph=680&expw=1200&q=imagen+da%c3%b1o+articular&FORM=IRPRST&ck=62865A1BF4CB8E9BA729F41897ADACED&selectedIndex=2&itb=0&ajaxhist=0&ajaxserp=0
 
-*imagen censo aragon*
+*imagen censo Aragón*
 https://www.aragon.es/documents/20127/93712584/A02.pdf/aa2a23e9-276a-fd04-516b-31a57073aa52?t=1671191689721
+Fuente: Censos de población y vivienda. INE. Elaboración Instituto Aragonés de Estadística (IAEST).
+
+*Articulo trabajadores construcción (1)*
+Sólo el 9% de los trabajadores de la construcción son mujeres, según los últimos datos de la EPA. (2019, 3 junio). Fundación Laboral de la Construcción. https://www.fundacionlaboral.org/actualidad/noticias/sector/solo-el-9-de-los-trabajadores-de-la-construccion-son-mujeres-segun-los-ultimos-datos-de-la-epa
