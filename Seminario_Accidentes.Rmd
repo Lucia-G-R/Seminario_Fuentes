@@ -110,7 +110,7 @@ library(tidyjson)
 library(dplyr)
 library(DT)
 
-# Cargamos el archivo JSON..
+# Cargamos el archivo con extensión .JSON.
 espana_json <- fromJSON(file = "INPUT/DATA/Enfermedades_laborales_España.json")
 
 # Observamos la estructura, nos damos cuenta que posee listas anidadas
@@ -161,28 +161,30 @@ datatable(espana_df)
 ```
 
 ### **Carga de datos XLS**
-Queremos extraer los datos sobre los accidentes laborales que suceden en Canarias. 
+En segundo lugar, queremos extraer los datos sobre los accidentes laborales que suceden en Canarias. 
 Como es un archivo con extensión .xls, utilizamos read_excel.
 ```{r, warning=FALSE}
-# Cargamos los archivos con extensión .xls
 library(readxl)
 library(DT)
 
+# Cargamos el archivo con extensión .xls
 canarias_df <- read_excel("INPUT/DATA/Accidentes_laborales_Canarias.xls")
 
 datatable(canarias_df)
 ```
 
 ### **Carga de datos CSV**
-Queremos extraer los datos sobre la salud mental en los habitantes de Canarias. 
+En tercer lugar, queremos extraer los datos sobre la salud mental en los habitantes de Canarias. 
 Como es un archivo con extensión .csv, utilizamos read_delim e indicamos que el delimitador es ;
-Al imprimirlo como tabla con la función datatable nos da un error con el formato, es decir, indica que hay un problema con la codificación del archivo CSV. En este caso, el error nos indica que los archivos están codificados en UTF-8, pero revisando la tabla incluye caracteres como acentos. Por eso, utilizamos locale que es una forma de configurar la codificación de caracteres que define cómo se representan los caracteres de texto en bytes.
+
+Al imprimirlo como tabla con la función datatable nos da un error con el formato, es decir, indica que hay un problema con la codificación del archivo CSV. En este caso, el error nos indica que los archivos están codificados en UTF-8, pero revisando la tabla incluye caracteres como acentos. Por eso, utilizamos locale, siendo una forma de configurar la codificación de caracteres que define cómo se representan los caracteres de texto en bytes.
+
 En conclusión con encoding = "ISO-8859-1" queremos que R interprete el archivo usando la codificación Latin-1, esta configuración asegura que los caracteres especiales se lean e interpreten de forma adecuada, evitando caracteres raros.
 ```{r, warning=FALSE}
-# Cargamos los archivos con extensión .csv
 library(readr)
 library(DT)
 
+# Cargamos el archivo con extensión .csv
 Salud_df <- read_delim ("INPUT/DATA/Estados_de_salud_Canarias.csv.csv", delim = ";", locale = locale(encoding = "ISO-8859-1"), show_col_types = FALSE)
 
 datatable(Salud_df)
