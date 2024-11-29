@@ -406,15 +406,14 @@ Aunque aparezcan filas sin valores, no las vamos a eliminar ya que es simplement
 ### **Eliminar filas**
 Eliminamos las filas que no nos va a interesar estudiar.En este caso, solo modificaremos el dataframe de la salud mental en Canarias. 
 
-En primer lugar, vamos a eliminar en el dataframe Salud, el sexo que indica las edades ya que es una información no correcta para esta variable. Utilizamos la función subset.
+En primer lugar, vamos a eliminar en el dataframe Salud, el sexo que indica las edades ya que es una información no correcta para esta variable tenemos que normalizar los valores de la variable Sexo eliminando los espacios en blanco y pasando a minúsculas. Después, utilizamos la función subset.
 ```{r, warning=FALSE, error = TRUE}
 library(DT)
 
-# Normalizamos los valores y eliminamos los espacios
 Salud$Sexo <- trimws(Salud$Sexo)
 Salud$Sexo <- tolower(Salud$Sexo)
 
-Salud_eli <- subset(Salud, !Sexo %in% c("De 16 a 64 a\xf1os", "De 65 y m\xe1s a\xf1os"))
+Salud_eli <- subset(Salud, !Sexo %in% c("de 16 a 64 años", "de 65 y más años"))
 
 datatable(Salud_eli)
 ```
@@ -625,12 +624,10 @@ print(grafico_barra)
 Como resultado podemos observar que en los años de 2003 hasta 2008 los accdientes laborales eran muchísimo mayores debido a la presencia de mayor precariedad laboral. Sin embargo, en los años posteriores ha disminuido, siendo registrados alrededror de 10.000 accidentes en el año 2013. Aunque los años psoteriores el número de accidentes ha aumentado un poco, no han llegado a alcanzar valores como los primeros años nombrados.
 
 ### **Faceta**
-Con este tipo de gráfico pretendemos estudiar el estado de ansiedad, según los años 2004 y 2009, además del sexo.
+Con este tipo de gráfico pretendemos estudiar el estado de ansiedad, según los años 2004 y 2009, además de según el sexo.
 ```{r, warning=FALSE}
-# Observación del registro del estado de ansiedad por año
-
-#library(tidyverse)
-#library(ggplot2)
+library(tidyverse)
+library(ggplot2)
 
 facetas <- ggplot(Salud_eli, aes(x = Obs, y = EstadoAnsiedad)) +
   geom_point(aes(colour = factor(Años), shape=factor(Sexo))) +
@@ -640,13 +637,11 @@ facetas <- ggplot(Salud_eli, aes(x = Obs, y = EstadoAnsiedad)) +
 
 print(facetas)
 ```
-
-Convertimos el tapply anterior en dataframe, para así poder hacer un gráfico donde se pueda observar la evolución del número de accidentes según la profesión.
+Como resultado podemos ver que destacan más las observaciones del año 2004 respecto al año 2009. Además que la destacan más los ciudadanos con bajo nivel de ansiedad respecto a los de mayor ansiedad.
 
 ### **Gráfico sobre la relación de los accidentes laboralesa a lo largo de los años**
+Convertimos el tapply anterior en dataframe, para así poder hacer un gráfico donde se pueda observar la evolución del número de accidentes según la profesión.
 ```{r}
-
-# GRÁFICO 3
 library(ggplot2)
 library(dplyr)
 library(tidyr)
@@ -672,8 +667,7 @@ tpt <- ggplot(df_año_trabajo, aes(x = Año, y = Accidentes, color = TipoTrabajo
 print(tpt)
 
 ```
-
-
+Como resultado se puede observar que existen mayores regsitros de accidentes laborales en profesiones como la producción, tranformación, tratamiento y almacenamiento. Además algo destacable es que las labores de movimientos de tierra, construcción, mantenimiento, demolición a lo largo de los años han bajado las inicidencias considerablemente.
 
 # **Resultados**
 Mostrar graficos de las respuestas.
@@ -686,16 +680,15 @@ Las resùestas estan respondidas abajo
 - ¿Existe relación entre la profesión de movimiento de tierra respecto a la indicencia de accidentes? *Grafico 3
 
 # **Conclusiones**
-
-Como se ha observado en los gráficos presentados anteriormente, el género masculino muestra mayor indicencia de de accidentes en la profesión relacionada con el movimiento de tierra. Este fenómeno se puede explicar a que este grupo representa la mayoria en esta actividad laboral (articulo1)
+Como se ha observado en los gráficos presentados anteriormente, el género masculino muestra mayor indicencia de accidentes en la profesión relacionada con el movimiento de tierra. Este fenómeno se puede explicar a que este grupo representa la mayoria en esta actividad laboral (artículo 1)
 
 En cuanto a la evolución del número de accidentes laborales, contrariamente a la creencia popular, no ha aumentado significativamente. Sino que ha habido una tendencia a la baja desde principios de los 2000s. Cabe mencionar que tras la época COVID se ha producido un ligero repunte en las cifras, reflejando un ascenso en la curva del diagrama.
 
-Por otro lado, cabe señalar que esta profesión no se encuentra entre las mas afectadas por los siniestros laborales. La mayoria de incidentes se han registrado en el sector vinculado con la "producción, transformación, tratamiento y almacenamiento de materiales". 
-Destacar que estos útimos años, se ha presentado un aumento en las bajas laborales en el ámbitorelacionado con los "servicios a empresas y trabajos intelectuales"
+Por otro lado, cabe señalar que esta profesión no se encuentra entre las más afectadas por los siniestros laborales. La mayoría de incidentes se han registrado en el sector vinculado con la "producción, transformación, tratamiento y almacenamiento de materiales". 
+Destacando que estos útimos años, se ha presentado un aumento en las bajas laborales en el ámbito relacionado con los "servicios a empresas y trabajos intelectuales".
 
 En conclusión, la profesión objeto de este estudio ha experimentado un elevado numero de daños en el ámbito laboral a principios del siglo XXI.
-Sin embargo, las cifras han ido disminuyendo progresivamente y manteniendose estables en la actualidad.
+Sin embargo, las cifras han ido disminuyendo progresivamente y manteniéndose estables en la actualidad.
 
 
 
