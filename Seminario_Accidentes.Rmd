@@ -30,12 +30,11 @@ Evaluación del desarrollo de enfermedades laborales, respecto a la profesión y
 - ¿Existe relación entre el desarrollo de enfermedades laborales respecto al sexo?
 - ¿Existe relación entre la gravedad de una enfermedad psicológica respecto al desarrollo de una enfermedad laboral?
 
-
 # **Relación con otros artículos y estudios**
-Uno de ellos tambien estudia la incidencia de enfermedades según la economía y el sexo de los encuestados.
-Segun el sexo hay diferencias significativas donde los hombres tienen mayor numero de enfermedades, ya que son estos los que ocupan los trabajos fisicos exigentes. En cuanto al tipo de trabajo el sector de la mineria, construcción y agricultura resultan los que mas enfermedades se tienen.
+Tras haber leído varios artículos. En uno de ellos destacamos que se estudia también la incidencia de enfermedades según la economía y el sexo de los encuestados.
+Según el sexo hay diferencias significativas donde los hombres desarrollan mayor número de enfermedades, ya que son estos los que ocupan los trabajos exigentes físicamente. En cuanto al tipo de trabajo el sector de la minería, construcción y agricultura dan lugar al mayor desarrollo de enfermadades en el ámbito profesional.
 
-Otro articulo que nos ha resultado interesante es el siguiente: en Reino Unido se estudio que el personal de construccion tiene mas probabilidad de suicidarse que el promedio nacional. Según los redactores comentan que se debe a que los trabajadores no quieren buscar ayuda terapeutica, y los contratos de largas jornadas y lejos de la familia tampoco ayudan. Por ello determinan que concienciar sobre este problema y quitar el estigma es importante.
+Otro artículo que nos ha resultado interesante es el siguiente: en Reino Unido se estudió que el personal de construcción tiene más probabilidad de suicidarse que el promedio nacional. Según los redactores exponen que se debe a que los trabajadores no quieren buscar ayuda terapeútica, además los contratos de largas jornadas y lejos de la familia tampoco ayudan. Por ello, determinan que concienciar sobre este problema y quitar el estigma es importante.
 
 # **Metodología**
 ## **Materiales**
@@ -209,9 +208,8 @@ Este dataframe va a recoger los distintos valores de incidencias laborales segú
 
 ## **Trabajar con columnas**
 ### **Observar valores nulos**
-Observamos los valores nulos del conjunto de datos sobre los accidentes laborales que suceden en Canarias. Con select observamos las columnas que poseen valores nulos..
+Observamos los valores nulos del conjunto de datos sobre los accidentes laborales que suceden en Canarias. Con select observamos las columnas que poseen valores nulos, ya que no nos van a interesar para nuestro estudio.
 ```{r, warning=FALSE, results="hide"}
-# Observamos que columnas tienen valores nulos con la función "select".
 library(dplyr)
 
 canarias_df %>%
