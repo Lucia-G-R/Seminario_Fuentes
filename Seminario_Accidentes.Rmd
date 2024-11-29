@@ -217,11 +217,10 @@ select(where(~ all(is.na(.))))
 ```
 
 ### **Cambiar nombre de las columnas**
-Vamos a cambiar los nombres de las distintas columnas de los datos extraídos.
-Cambiamos los nombres de las columnas del conjunto de datos sobre los accidentes laborales que suceden en Canarias.
-Este renombre se realiza debido a tener mayor claridad a la hora de hacer un join sobre dos dataframes.
+Vamos a cambiar los nombres de las distintas columnas de los datos extraídos para una mejor compresión.Utilizaremos la función rename para llevar a cabo esta acción.
+
+En primer lugar, cambiamos los nombres de las columnas del conjunto de datos sobre los accidentes laborales que suceden en Canarias.
 ```{r, warning=FALSE}
-# Renombre las columnas del dataframe Canarias
 library(tidyverse)
 library(DT)
 
@@ -229,9 +228,9 @@ canarias <- rename(.data = canarias_df, Año = `TIME_PERIOD#es`, Año2 = `TIME_P
 
 datatable(canarias)
 ```
+
 Cambiamos los nombres de las columnas del conjunto de datos sobre la gravedad de las enfermedades laborales producidas en Aragón. 
 ```{r, warning=FALSE}
-# Renombre las columnas del dataframe Aragón
 library(tidyverse)
 library(DT)
 
@@ -242,7 +241,6 @@ datatable(Aragon)
 
 Cambiamos los nombres de las columnas del conjunto de datos sobre las enfermedades laborales que suceden en España. 
 ```{r, warning=FALSE}
-# Renombre las columnas del dataframe Enf. Laborales de España
 library(tidyverse)
 library(DT)
 
@@ -250,9 +248,9 @@ Espana <- rename(.data = espana_df, TipoEnf = `T3_Variable`, Indicador = `Codigo
 
 datatable(Espana)
 ```
+
 Cambiamos los nombres de las columnas del conjunto de datos sobre la salud mental en los habitantes de Canarias.
 ```{r, warning=FALSE}
-# Renombre las columnas del dataframe habitantes Canarias
 library(tidyverse)
 library(DT)
 
@@ -262,9 +260,10 @@ datatable(Salud)
 ```
 
 ### **Eliminar columnas**
-Eliminamos las columnas que no nos va a interesar estudiar para ello, seleccionamos las columnas que nos interesan. 
+Eliminamos las columnas que no nos van a interesar estudiar, es decir, seleccionaremos las columnas que nos interesan. 
 En el único conjunto de datos que no vamos a eliminar columnas es en los datos sobre la salud mental en los habitantes de Canarias.
-Primero vamos a eliminar las columnas del conjunto de datos de Canarias. Nos vamos a quedar solo con las columnas Año, Sexo, Gravedad, TipoTrab y Obs.
+
+Primero vamos a eliminar las columnas del conjunto de datos sobre los trabajos realizados en Canarias. Nos vamos a quedar solo con las columnas Año, Sexo, Gravedad, TipoTrab y Obs.
 ```{r, warning=FALSE} 
 # Selección de las columnas con las que nos interesa trabajar posteriormente. 
 # (Estamos trabajando con el dataframe Canarias)
