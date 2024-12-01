@@ -17,6 +17,11 @@ Los datos presentados en este repositorio se han obtenido de la base de datos of
 ## Objetivo general
 Evaluación del desarrollo de enfermedades laborales, respecto a la profesión y el estado de salud mental.
 
+# **Objetivo específico**
+- ¿Existe relación entre la profesión de movimiento de tierra respecto al género? 
+- ¿Ha aumentado el número de accidentes laborales?
+- ¿Existe relación entre la profesión de movimiento de tierra respecto a la indicencia de accidentes?
+  
 # **Resultados**
 Como se ha observado en los gráficos presentados anteriormente, el género masculino muestra mayor indicencia de accidentes en la profesión relacionada con el movimiento de tierra. Este fenómeno se puede explicar a que este grupo representa la mayoria en esta actividad laboral (artículo 1)
 
