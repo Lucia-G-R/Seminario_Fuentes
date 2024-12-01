@@ -32,7 +32,8 @@ Destacando que estos útimos años, se ha presentado un aumento en las bajas lab
 
 En definitiva, la profesión objeto de este estudio ha experimentado un elevado numero de daños en el ámbito laboral a principios del siglo XXI.
 Sin embargo, las cifras han ido disminuyendo progresivamente y manteniéndose estables en la actualidad.
-Mostrar graficos de las respuestas.
+
+<img src='images/I1.jpg' align="center" height="120" /> <img src='images/I2.jpg' align="center" height="120" /> <img src='images/I3.jpg' align="center" height="120" />
 
 ## Conclusiones
 Las incidencias en el sector de la construcción o edificación se ha convertido en un tema de gran relevancia en la actualidad, ocupando una parte de los medios de comunicación, sobretodo en el caso de los varones, quien constituye la mayoria de la plantilla en este campo debido a la exigencia fisica que supone este tipo de trabajo.
