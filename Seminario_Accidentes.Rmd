@@ -28,7 +28,7 @@ Evaluación del desarrollo de enfermedades laborales, respecto a la profesión y
 # **Objetivo específico**
 - ¿Existe relación entre la profesión de movimiento de tierra respecto al género? 
 - ¿Ha aumentado el número de accidentes laborales? 
-- ¿Existe relación entre la profesión de movimiento de tierra respecto a la indicencia de accidentes? 
+- ¿Existe relación entre la profesión de movimiento de tierra respecto a la indicencia de accidentes?
 
 # **Relación con otros artículos y estudios**
 Tras haber leído varios artículos. En uno de ellos destacamos que se estudia también la incidencia de enfermedades según la economía y el sexo de los encuestados.
@@ -551,6 +551,48 @@ print(paste("El porcentaje de personas que han participado en la evaluación de 
 <img src='images/censo aragon.png' align="center" height="120" />
 
 ## **Gráficos**
+### **Gráfico sobre los nieveles de ansiedad en mujeres**
+Este gráfico muestra la diferencia de casos de ansiedad en mujeres y el grado de ansiedad.
+Hemos querido eliminar los indiviudos que no saben (o no contesta) junto con el total ya que no daban información de valor. Nos hemos quedado con las muejres ya que realmente proporcionan alguna conclusión. 
+```{r}
+# Observación del gráfico del género Mujeres según el grado de ansiedad y el número de personas que la padecen
+mod_dt <- df_Salu_Arag %>%
+  filter(!(Sexo %in% c("Hombres")), !(EstadoAnsiedad %in% c("No sabe/No contesta", "Total"))) %>%
+  group_by(Año, Sexo, EstadoAnsiedad) %>%
+  summarise (count = n(), .groups = "drop") 
+
+grafico_f2 <- ggplot(mod_dt, aes(x = Año, y = count, fill = EstadoAnsiedad)) + 
+  geom_bar(stat = "identity", position = "dodge", ) +
+  labs(x = 'Años', 
+       y = 'Número de participantes', 
+       title = 'Ansiedad según el grado en mujeres',
+       fill = 'Ansiedad') + 
+  facet_wrap(~Sexo) +
+  scale_fill_manual(values = c("No está ansioso ni deprimido" = "red",  
+                               "Está moderadamente ansioso o deprimido" = "black", 
+                               "Está muy ansioso o deprimido" = "white"))
+
+print(grafico_f2)
+```
+Como resultado, podemos observar que los años donde las mujeres han presentado menor ansiedad han sido en 2009, 2017, 2018 y 2019. Sin embargo el resto de los años estudiados presentan un incremento en el dearrollo de esta enfermedad.
+
+
+### **Faceta**
+Con este tipo de gráfico pretendemos estudiar el estado de ansiedad, según los años 2004 y 2009, además de según el sexo.
+```{r, warning=FALSE}
+library(tidyverse)
+library(ggplot2)
+
+facetas <- ggplot(Salud_eli, aes(x = Obs, y = EstadoAnsiedad)) +
+  geom_point(aes(colour = factor(Años), shape=factor(Sexo))) +
+  xlab("Observaciones") +
+  ylab("Tipos de estados de ansiedad") +
+  ggtitle(label = "Observaciones del estado de ansiedad según el año")
+
+print(facetas)
+```
+Como resultado podemos ver que destacan más las observaciones del año 2004 respecto al año 2009. Además que la destacan más los ciudadanos con bajo nivel de ansiedad respecto a los de mayor ansiedad.
+
 ### **Gráfico sobre el número de accidentes según el sexo y la gravedad**
 Este gráfico muestra el número de accidentes en el mundo de la construcción separados por sexos y según la gravedad del accidente.
 ```{r}
@@ -577,39 +619,6 @@ print (grafico_f1)
 ```
 Como resultado, podemos observar que en hombres hay más accidentes laborales que en el sexo contrario y en ambos casos estos son de gravedad leve.
 
-### **Gráfico sobre los nieveles de ansiedad en mujeres**
-Este gráfico muestra la diferencia de casos de ansiedad en mujeres y el grado de ansiedad.
-Hemos querido eliminar los indiviudos que no saben (o no contesta) junto con el total ya que no daban información de valor. Nos hemos quedado con las muejres ya que realmente proporcionan alguna conclusión. 
-```{r}
-# Observación del gráfico del género Mujeres según el grado de ansiedad y el número de personas que la padecen
-mod_dt <- df_Salu_Arag %>%
-  filter(!(Sexo %in% c("Hombres")), !(EstadoAnsiedad %in% c("No sabe/No contesta", "Total"))) %>%
-  group_by(Año, Sexo, EstadoAnsiedad) %>%
-  summarise (count = n(), .groups = "drop") 
-
-grafico_f2 <- ggplot(mod_dt, aes(x = Año, y = count, fill = EstadoAnsiedad)) + 
-  geom_bar(stat = "identity", position = "dodge", ) +
-  labs(x = 'Años', 
-       y = 'Número de participantes', 
-       title = 'Ansiedad según el grado en mujeres',
-       fill = 'Ansiedad') + 
-  facet_wrap(~Sexo) +
-  scale_fill_manual(values = c("No está ansioso ni deprimido" = "red",  
-                               "Está moderadamente ansioso o deprimido" = "black", 
-                               "Está muy ansioso o deprimido" = "white"))
-
-print(grafico_f2)
-```
-Como resultado, podemos observar que los años donde las mujeres han presentado menor ansiedad han sido en 2009, 2017, 2018 y 2019. Sin embargo el resto de los años estudiados presentan un incremento en el dearrollo de esta enfermedad.
-
-Imágenes que muestran los daños que ocurren en los distintos casos: 
-
-<img src='images/I1.jpg' align="center" height="120" />
-
-<img src='images/I2.jpg' align="center" height="120" />
-
-<img src='images/I3.jpg' align="center" height="120" />
-
 ### **Gráfico sobre el número de accidentes según el año**
 Añadimos un gráfico de barras para observar el número de accidentes laborales sucedidos durante los difrentes años en Aragón. Para ello, utilizaremos el atributo de Año y NumAcci del conjunto de datos sobre los accidentes laborales en Aragón.
 ```{r, warning=FALSE}
@@ -622,22 +631,6 @@ grafico_barra <- ggplot(Aragon, aes(x = Año, y = NumAcci)) +
 print(grafico_barra)
 ```
 Como resultado podemos observar que en los años de 2003 hasta 2008 los accdientes laborales eran muchísimo mayores debido a la presencia de mayor precariedad laboral. Sin embargo, en los años posteriores ha disminuido, siendo registrados alrededror de 10.000 accidentes en el año 2013. Aunque los años psoteriores el número de accidentes ha aumentado un poco, no han llegado a alcanzar valores como los primeros años nombrados.
-
-### **Faceta**
-Con este tipo de gráfico pretendemos estudiar el estado de ansiedad, según los años 2004 y 2009, además de según el sexo.
-```{r, warning=FALSE}
-library(tidyverse)
-library(ggplot2)
-
-facetas <- ggplot(Salud_eli, aes(x = Obs, y = EstadoAnsiedad)) +
-  geom_point(aes(colour = factor(Años), shape=factor(Sexo))) +
-  xlab("Observaciones") +
-  ylab("Tipos de estados de ansiedad") +
-  ggtitle(label = "Observaciones del estado de ansiedad según el año")
-
-print(facetas)
-```
-Como resultado podemos ver que destacan más las observaciones del año 2004 respecto al año 2009. Además que la destacan más los ciudadanos con bajo nivel de ansiedad respecto a los de mayor ansiedad.
 
 ### **Gráfico sobre la relación de los accidentes laboralesa a lo largo de los años**
 Convertimos el tapply anterior en dataframe, para así poder hacer un gráfico donde se pueda observar la evolución del número de accidentes según la profesión.
@@ -669,6 +662,14 @@ print(tpt)
 ```
 Como resultado se puede observar que existen mayores regsitros de accidentes laborales en profesiones como la producción, tranformación, tratamiento y almacenamiento. Además algo destacable es que las labores de movimientos de tierra, construcción, mantenimiento, demolición a lo largo de los años han bajado las inicidencias considerablemente.
 
+Imágenes que muestran los daños que ocurren en los distintos casos: 
+
+<img src='images/I1.jpg' align="center" height="120" />
+
+<img src='images/I2.jpg' align="center" height="120" />
+
+<img src='images/I3.jpg' align="center" height="120" />
+
 # **Resultados**
 Como se ha observado en los gráficos presentados anteriormente, el género masculino muestra mayor indicencia de accidentes en la profesión relacionada con el movimiento de tierra. Este fenómeno se puede explicar a que este grupo representa la mayoria en esta actividad laboral (artículo 1)
 
@@ -677,16 +678,10 @@ En cuanto a la evolución del número de accidentes laborales, contrariamente a 
 Por otro lado, cabe señalar que esta profesión no se encuentra entre las más afectadas por los siniestros laborales. La mayoría de incidentes se han registrado en el sector vinculado con la "producción, transformación, tratamiento y almacenamiento de materiales". 
 Destacando que estos útimos años, se ha presentado un aumento en las bajas laborales en el ámbito relacionado con los "servicios a empresas y trabajos intelectuales".
 
-En conclusión, la profesión objeto de este estudio ha experimentado un elevado numero de daños en el ámbito laboral a principios del siglo XXI.
+En definitiva, la profesión objeto de este estudio ha experimentado un elevado numero de daños en el ámbito laboral a principios del siglo XXI.
 Sin embargo, las cifras han ido disminuyendo progresivamente y manteniéndose estables en la actualidad.
 Mostrar graficos de las respuestas.
 
-
-Las resùestas estan respondidas abajo
-
-- ¿Existe relación entre la profesión de movimiento de tierra respecto al género? *Grafico 1
-- ¿Ha aumentado el número de accidentes laborales? *Grafico 2
-- ¿Existe relación entre la profesión de movimiento de tierra respecto a la indicencia de accidentes? *Grafico 3
 
 # **Conclusiones**
 Las incidencias en el sector de la construcción o edificación se ha convertido en un tema de gran relevancia en la actualidad, ocupando una parte de los medios de comunicación, sobretodo en el caso de los varones, quien constituye la mayoria de la plantilla en este campo debido a la exigencia fisica que supone este tipo de trabajo.
@@ -698,9 +693,6 @@ Cabe mencionar que persiste una falta de presencia femenina en el sector, debido
 
 En resumen, aunque se ha observado una breve disminución de incidencias en el sector, las enfermedades psicologicas siguen en aumento, por lo que es necesario implementar medias de prevención efectivas y proporcionar un apoyo emocional para mejorar la calidad de vida de los trabajadores.
 
-
-añadir los dos url de los articulos
-https://www.omniamachinery.com/es/2022/05/mental-health-in-construction/
 
 # **Referencias**
 *Enfermedades relacionadas con el trabajo.* (2024, 9 diciembre). Safety And Health At Work EU-OSHA. https://osha.europa.eu/es/themes/work-related-diseases
