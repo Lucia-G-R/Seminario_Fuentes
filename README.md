@@ -18,8 +18,16 @@ Los datos presentados en este repositorio se han obtenido de la base de datos of
 Evaluación del desarrollo de enfermedades laborales, respecto a la profesión y el estado de salud mental.
 
 ## Conclusiones
-En conclusión hemos podido ver que hay mayor incidencia de enfermedades mentales de las que nos esperábamos, y estos han ido creciendo según los años. 
-En cuanto al género 
-- ¿Existe relación entre la profesión de movimiento de tierra respecto al desarrollo de enfermedades psicológicas?
-- ¿Existe relación entre el desarrollo de enfermedades laborales respecto al sexo?
-- ¿Existe relación entre la gravedad de una enfermedad psicológica respecto al desarrollo de una enfermedad laboral?
+Gráfico 1:
+<div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+  <img src="./images/GRAFICO 1.png" alt="Gráfico centrado" style="width: 30%; height: auto;">
+</div>
+Gráfico 2:
+ <div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+  <img src="./images/GRAFICO 2.png" alt="Gráfico centrado" style="width: 30%; height: auto;">
+</div>
+Gráfico 3:
+<div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+  <img src="./images/GRAFICO 3.png" alt="Gráfico centrado" style="width: 30%; height: auto;">
+</div>
+
