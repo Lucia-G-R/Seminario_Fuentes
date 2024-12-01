@@ -17,12 +17,12 @@ Los datos presentados en este repositorio se han obtenido de la base de datos of
 ## Objetivo general
 Evaluación del desarrollo de enfermedades laborales, respecto a la profesión y el estado de salud mental.
 
-# **Objetivo específico**
+## Objetivo específico
 - ¿Existe relación entre la profesión de movimiento de tierra respecto al género? 
 - ¿Ha aumentado el número de accidentes laborales?
 - ¿Existe relación entre la profesión de movimiento de tierra respecto a la indicencia de accidentes?
   
-# **Resultados**
+## Resultados
 Como se ha observado en los gráficos presentados anteriormente, el género masculino muestra mayor indicencia de accidentes en la profesión relacionada con el movimiento de tierra. Este fenómeno se puede explicar a que este grupo representa la mayoria en esta actividad laboral (artículo 1)
 
 En cuanto a la evolución del número de accidentes laborales, contrariamente a la creencia popular, no ha aumentado significativamente. Sino que ha habido una tendencia a la baja desde principios de los 2000s. Cabe mencionar que tras la época COVID se ha producido un ligero repunte en las cifras, reflejando un ascenso en la curva del diagrama.
@@ -34,7 +34,7 @@ En definitiva, la profesión objeto de este estudio ha experimentado un elevado 
 Sin embargo, las cifras han ido disminuyendo progresivamente y manteniéndose estables en la actualidad.
 Mostrar graficos de las respuestas.
 
-# **Conclusiones**
+## Conclusiones
 Las incidencias en el sector de la construcción o edificación se ha convertido en un tema de gran relevancia en la actualidad, ocupando una parte de los medios de comunicación, sobretodo en el caso de los varones, quien constituye la mayoria de la plantilla en este campo debido a la exigencia fisica que supone este tipo de trabajo.
 Es importante destacar que, aunque los accidentes laborales han experimentado una disminución desde principios de la época de los 2000, en época COVID las cifras volvieron a repuntar.
 
