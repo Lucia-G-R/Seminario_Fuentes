@@ -574,7 +574,7 @@ grafico_f2 <- ggplot(mod_dt, aes(x = Año, y = count, fill = EstadoAnsiedad)) +
 
 print(grafico_f2)
 ```
-Como resultado, podemos observar que los años donde las mujeres han presentado menor ansiedad han sido en 2009, 2017, 2018 y 2019. Sin embargo el resto de los años estudiados presentan un incremento en el dearrollo de esta enfermedad.
+<br> Como resultado, podemos observar que los años donde las mujeres han presentado menor ansiedad han sido en 2009, 2017, 2018 y 2019. Sin embargo el resto de los años estudiados presentan un incremento en el dearrollo de esta enfermedad.
 
 
 ### **Faceta**
@@ -591,7 +591,7 @@ facetas <- ggplot(Salud_eli, aes(x = Obs, y = EstadoAnsiedad)) +
 
 print(facetas)
 ```
-Como resultado podemos ver que destacan más las observaciones del año 2004 respecto al año 2009. Además que la destacan más los ciudadanos con bajo nivel de ansiedad respecto a los de mayor ansiedad.
+<br> Como resultado podemos ver que destacan más las observaciones del año 2004 respecto al año 2009. Además que la destacan más los ciudadanos con bajo nivel de ansiedad respecto a los de mayor ansiedad.
 
 ### **Gráfico sobre el número de accidentes según el sexo y la gravedad**
 Este gráfico muestra el número de accidentes en el mundo de la construcción separados por sexos y según la gravedad del accidente.
@@ -617,7 +617,7 @@ grafico_f1 <- ggplot(df_resultado, aes(x = Gravedad, y = NumAcci, fill = Sexo)) 
   facet_wrap(~Sexo) 
 print (grafico_f1)
 ```
-Como resultado, podemos observar que en hombres hay más accidentes laborales que en el sexo contrario y en ambos casos estos son de gravedad leve.
+<br> Como resultado, podemos observar que en hombres hay más accidentes laborales que en el sexo contrario y en ambos casos estos son de gravedad leve.
 
 ### **Gráfico sobre el número de accidentes según el año**
 Añadimos un gráfico de barras para observar el número de accidentes laborales sucedidos durante los difrentes años en Aragón. Para ello, utilizaremos el atributo de Año y NumAcci del conjunto de datos sobre los accidentes laborales en Aragón.
@@ -630,7 +630,7 @@ grafico_barra <- ggplot(Aragon, aes(x = Año, y = NumAcci)) +
 
 print(grafico_barra)
 ```
-Como resultado podemos observar que en los años de 2003 hasta 2008 los accdientes laborales eran muchísimo mayores debido a la presencia de mayor precariedad laboral. Sin embargo, en los años posteriores ha disminuido, siendo registrados alrededror de 10.000 accidentes en el año 2013. Aunque los años psoteriores el número de accidentes ha aumentado un poco, no han llegado a alcanzar valores como los primeros años nombrados.
+<br> Como resultado podemos observar que en los años de 2003 hasta 2008 los accdientes laborales eran muchísimo mayores debido a la presencia de mayor precariedad laboral. Sin embargo, en los años posteriores ha disminuido, siendo registrados alrededror de 10.000 accidentes en el año 2013. Aunque los años psoteriores el número de accidentes ha aumentado un poco, no han llegado a alcanzar valores como los primeros años nombrados.
 
 ### **Gráfico sobre la relación de los accidentes laboralesa a lo largo de los años**
 Convertimos el tapply anterior en dataframe, para así poder hacer un gráfico donde se pueda observar la evolución del número de accidentes según la profesión.
@@ -660,15 +660,10 @@ tpt <- ggplot(df_año_trabajo, aes(x = Año, y = Accidentes, color = TipoTrabajo
 print(tpt)
 
 ```
-Como resultado se puede observar que existen mayores regsitros de accidentes laborales en profesiones como la producción, tranformación, tratamiento y almacenamiento. Además algo destacable es que las labores de movimientos de tierra, construcción, mantenimiento, demolición a lo largo de los años han bajado las inicidencias considerablemente.
+<br> Como resultado se puede observar que existen mayores regsitros de accidentes laborales en profesiones como la producción, tranformación, tratamiento y almacenamiento. Además algo destacable es que las labores de movimientos de tierra, construcción, mantenimiento, demolición a lo largo de los años han bajado las inicidencias considerablemente.
 
-Imágenes que muestran los daños que ocurren en los distintos casos: 
 
-<img src='images/I1.jpg' align="center" height="120" />
 
-<img src='images/I2.jpg' align="center" height="120" />
-
-<img src='images/I3.jpg' align="center" height="120" />
 
 # **Resultados**
 Como se ha observado en los gráficos presentados anteriormente, el género masculino muestra mayor indicencia de accidentes en la profesión relacionada con el movimiento de tierra. Este fenómeno se puede explicar a que este grupo representa la mayoria en esta actividad laboral (artículo 1)
@@ -680,8 +675,8 @@ Destacando que estos útimos años, se ha presentado un aumento en las bajas lab
 
 En definitiva, la profesión objeto de este estudio ha experimentado un elevado numero de daños en el ámbito laboral a principios del siglo XXI.
 Sin embargo, las cifras han ido disminuyendo progresivamente y manteniéndose estables en la actualidad.
-Mostrar graficos de las respuestas.
 
+<img src='images/I1.jpg' align="center" height="120" /> <img src='images/I2.jpg' align="center" height="120" /> <img src='images/I3.jpg' align="center" height="120" />
 
 # **Conclusiones**
 Las incidencias en el sector de la construcción o edificación se ha convertido en un tema de gran relevancia en la actualidad, ocupando una parte de los medios de comunicación, sobretodo en el caso de los varones, quien constituye la mayoria de la plantilla en este campo debido a la exigencia fisica que supone este tipo de trabajo.
