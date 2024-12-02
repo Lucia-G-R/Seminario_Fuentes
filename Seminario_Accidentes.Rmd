@@ -85,7 +85,7 @@ En este apartado vamos a indicar y cargar los paquetes necesarios para el desarr
 
 ## **Carga de datos**
 ### **Descargar datos**
-Aunque a lo largo de este seminario utilizamos los archivos que hemos importado en una carpeta INPUT. Se podrían obtener estos archivos mediante su descarga. Por ejemplo, descargamos los datos de la población de 16 y más años según autovaloración del estado de salud en relación a situaciones de ansiedad o depresión, sexos o grupos de edad por años en Canarias en formato ".csv" de la página web de la base de datos del gobierno de España:
+Aunque a lo largo de este seminario utilizamos los archivos que hemos importado en la carpeta INPUT de nuestro repositorio. Se podrían obtener estos archivos mediante su descarga. Por ejemplo, descargamos los datos de la población de 16 y más años según autovaloración del estado de salud en relación a situaciones de ansiedad o depresión, sexos o grupos de edad por años en Canarias en formato ".csv" de la página web de la base de datos del gobierno de España:
 ```{r, eval=FALSE, warning=FALSE}
 library(readxl)
 
