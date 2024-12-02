@@ -26,9 +26,9 @@ Hemos querido estudiar como el desarrollo de estas enfermedades se puede agravar
 Evaluación del desarrollo de enfermedades laborales, respecto a la profesión y el estado de salud mental.
 
 # **Objetivo específico**
-- ¿Existe relación entre la profesión de movimiento de tierra respecto al desarrollo de enfermedades psicológicas?
-- ¿Existe relación entre el desarrollo de enfermedades laborales respecto al sexo?
-- ¿Existe relación entre la gravedad de una enfermedad psicológica respecto al desarrollo de una enfermedad laboral?
+- ¿Existe relación entre la profesión de movimiento de tierra respecto al género? 
+- ¿Ha aumentado el número de accidentes laborales? 
+- ¿Existe relación entre la profesión de movimiento de tierra respecto a la indicencia de accidentes?
 
 # **Relación con otros artículos y estudios**
 Tras haber leído varios artículos. En uno de ellos destacamos que se estudia también la incidencia de enfermedades según la economía y el sexo de los encuestados.
@@ -551,6 +551,48 @@ print(paste("El porcentaje de personas que han participado en la evaluación de 
 <img src='images/censo aragon.png' align="center" height="120" />
 
 ## **Gráficos**
+### **Gráfico sobre los nieveles de ansiedad en mujeres**
+Este gráfico muestra la diferencia de casos de ansiedad en mujeres y el grado de ansiedad.
+Hemos querido eliminar los indiviudos que no saben (o no contesta) junto con el total ya que no daban información de valor. Nos hemos quedado con las muejres ya que realmente proporcionan alguna conclusión. 
+```{r}
+# Observación del gráfico del género Mujeres según el grado de ansiedad y el número de personas que la padecen
+mod_dt <- df_Salu_Arag %>%
+  filter(!(Sexo %in% c("Hombres")), !(EstadoAnsiedad %in% c("No sabe/No contesta", "Total"))) %>%
+  group_by(Año, Sexo, EstadoAnsiedad) %>%
+  summarise (count = n(), .groups = "drop") 
+
+grafico_f2 <- ggplot(mod_dt, aes(x = Año, y = count, fill = EstadoAnsiedad)) + 
+  geom_bar(stat = "identity", position = "dodge", ) +
+  labs(x = 'Años', 
+       y = 'Número de participantes', 
+       title = 'Ansiedad según el grado en mujeres',
+       fill = 'Ansiedad') + 
+  facet_wrap(~Sexo) +
+  scale_fill_manual(values = c("No está ansioso ni deprimido" = "red",  
+                               "Está moderadamente ansioso o deprimido" = "black", 
+                               "Está muy ansioso o deprimido" = "white"))
+
+print(grafico_f2)
+```
+<br> Como resultado, podemos observar que los años donde las mujeres han presentado menor ansiedad han sido en 2009, 2017, 2018 y 2019. Sin embargo el resto de los años estudiados presentan un incremento en el dearrollo de esta enfermedad.
+
+
+### **Faceta**
+Con este tipo de gráfico pretendemos estudiar el estado de ansiedad, según los años 2004 y 2009, además de según el sexo.
+```{r, warning=FALSE}
+library(tidyverse)
+library(ggplot2)
+
+facetas <- ggplot(Salud_eli, aes(x = Obs, y = EstadoAnsiedad)) +
+  geom_point(aes(colour = factor(Años), shape=factor(Sexo))) +
+  xlab("Observaciones") +
+  ylab("Tipos de estados de ansiedad") +
+  ggtitle(label = "Observaciones del estado de ansiedad según el año")
+
+print(facetas)
+```
+<br> Como resultado podemos ver que destacan más las observaciones del año 2004 respecto al año 2009. Además que la destacan más los ciudadanos con bajo nivel de ansiedad respecto a los de mayor ansiedad.
+
 ### **Gráfico sobre el número de accidentes según el sexo y la gravedad**
 Este gráfico muestra el número de accidentes en el mundo de la construcción separados por sexos y según la gravedad del accidente.
 ```{r}
@@ -575,40 +617,7 @@ grafico_f1 <- ggplot(df_resultado, aes(x = Gravedad, y = NumAcci, fill = Sexo)) 
   facet_wrap(~Sexo) 
 print (grafico_f1)
 ```
-Como resultado, podemos observar que en hombres hay más accidentes laborales que en el sexo contrario y en ambos casos estos son de gravedad leve.
-
-### **Gráfico sobre los nieveles de ansiedad en mujeres**
-Este gráfico muestra la diferencia de casos de ansiedad en mujeres y el grado de ansiedad.
-Hemos querido eliminar los indiviudos que no saben (o no contesta) junto con el total ya que no daban información de valor. Nos hemos quedado con las muejres ya que realmente proporcionan alguna conclusión. 
-```{r}
-# Observación del gráfico del género Mujeres según el grado de ansiedad y el número de personas que la padecen
-mod_dt <- df_Salu_Arag %>%
-  filter(!(Sexo %in% c("Hombres")), !(EstadoAnsiedad %in% c("No sabe/No contesta", "Total"))) %>%
-  group_by(Año, Sexo, EstadoAnsiedad) %>%
-  summarise (count = n(), .groups = "drop") 
-
-grafico_f2 <- ggplot(mod_dt, aes(x = Año, y = count, fill = EstadoAnsiedad)) + 
-  geom_bar(stat = "identity", position = "dodge", ) +
-  labs(x = 'Años', 
-       y = 'Número de participantes', 
-       title = 'Ansiedad según el grado en mujeres',
-       fill = 'Ansiedad') + 
-  facet_wrap(~Sexo) +
-  scale_fill_manual(values = c("No está ansioso ni deprimido" = "red",  
-                               "Está moderadamente ansioso o deprimido" = "black", 
-                               "Está muy ansioso o deprimido" = "white"))
-
-print(grafico_f2)
-```
-Como resultado, podemos observar que los años donde las mujeres han presentado menor ansiedad han sido en 2009, 2017, 2018 y 2019. Sin embargo el resto de los años estudiados presentan un incremento en el dearrollo de esta enfermedad.
-
-Imágenes que muestran los daños que ocurren en los distintos casos: 
-
-<img src='images/I1.jpg' align="center" height="120" />
-
-<img src='images/I2.jpg' align="center" height="120" />
-
-<img src='images/I3.jpg' align="center" height="120" />
+<br> Como resultado, podemos observar que en hombres hay más accidentes laborales que en el sexo contrario y en ambos casos estos son de gravedad leve.
 
 ### **Gráfico sobre el número de accidentes según el año**
 Añadimos un gráfico de barras para observar el número de accidentes laborales sucedidos durante los difrentes años en Aragón. Para ello, utilizaremos el atributo de Año y NumAcci del conjunto de datos sobre los accidentes laborales en Aragón.
@@ -621,23 +630,7 @@ grafico_barra <- ggplot(Aragon, aes(x = Año, y = NumAcci)) +
 
 print(grafico_barra)
 ```
-Como resultado podemos observar que en los años de 2003 hasta 2008 los accdientes laborales eran muchísimo mayores debido a la presencia de mayor precariedad laboral. Sin embargo, en los años posteriores ha disminuido, siendo registrados alrededror de 10.000 accidentes en el año 2013. Aunque los años psoteriores el número de accidentes ha aumentado un poco, no han llegado a alcanzar valores como los primeros años nombrados.
-
-### **Faceta**
-Con este tipo de gráfico pretendemos estudiar el estado de ansiedad, según los años 2004 y 2009, además de según el sexo.
-```{r, warning=FALSE}
-library(tidyverse)
-library(ggplot2)
-
-facetas <- ggplot(Salud_eli, aes(x = Obs, y = EstadoAnsiedad)) +
-  geom_point(aes(colour = factor(Años), shape=factor(Sexo))) +
-  xlab("Observaciones") +
-  ylab("Tipos de estados de ansiedad") +
-  ggtitle(label = "Observaciones del estado de ansiedad según el año")
-
-print(facetas)
-```
-Como resultado podemos ver que destacan más las observaciones del año 2004 respecto al año 2009. Además que la destacan más los ciudadanos con bajo nivel de ansiedad respecto a los de mayor ansiedad.
+<br> Como resultado podemos observar que en los años de 2003 hasta 2008 los accdientes laborales eran muchísimo mayores debido a la presencia de mayor precariedad laboral. Sin embargo, en los años posteriores ha disminuido, siendo registrados alrededror de 10.000 accidentes en el año 2013. Aunque los años psoteriores el número de accidentes ha aumentado un poco, no han llegado a alcanzar valores como los primeros años nombrados.
 
 ### **Gráfico sobre la relación de los accidentes laboralesa a lo largo de los años**
 Convertimos el tapply anterior en dataframe, para así poder hacer un gráfico donde se pueda observar la evolución del número de accidentes según la profesión.
@@ -667,19 +660,12 @@ tpt <- ggplot(df_año_trabajo, aes(x = Año, y = Accidentes, color = TipoTrabajo
 print(tpt)
 
 ```
-Como resultado se puede observar que existen mayores regsitros de accidentes laborales en profesiones como la producción, tranformación, tratamiento y almacenamiento. Además algo destacable es que las labores de movimientos de tierra, construcción, mantenimiento, demolición a lo largo de los años han bajado las inicidencias considerablemente.
+<br> Como resultado se puede observar que existen mayores regsitros de accidentes laborales en profesiones como la producción, tranformación, tratamiento y almacenamiento. Además algo destacable es que las labores de movimientos de tierra, construcción, mantenimiento, demolición a lo largo de los años han bajado las inicidencias considerablemente.
+
+
+
 
 # **Resultados**
-Mostrar graficos de las respuestas.
-
-
-Las resùestas estan respondidas abajo
-
-- ¿Existe relación entre la profesión de movimiento de tierra respecto al género? *Grafico 1
-- ¿Ha aumentado el número de accidentes laborales? *Grafico 2
-- ¿Existe relación entre la profesión de movimiento de tierra respecto a la indicencia de accidentes? *Grafico 3
-
-# **Conclusiones**
 Como se ha observado en los gráficos presentados anteriormente, el género masculino muestra mayor indicencia de accidentes en la profesión relacionada con el movimiento de tierra. Este fenómeno se puede explicar a que este grupo representa la mayoria en esta actividad laboral (artículo 1)
 
 En cuanto a la evolución del número de accidentes laborales, contrariamente a la creencia popular, no ha aumentado significativamente. Sino que ha habido una tendencia a la baja desde principios de los 2000s. Cabe mencionar que tras la época COVID se ha producido un ligero repunte en las cifras, reflejando un ascenso en la curva del diagrama.
@@ -687,15 +673,21 @@ En cuanto a la evolución del número de accidentes laborales, contrariamente a 
 Por otro lado, cabe señalar que esta profesión no se encuentra entre las más afectadas por los siniestros laborales. La mayoría de incidentes se han registrado en el sector vinculado con la "producción, transformación, tratamiento y almacenamiento de materiales". 
 Destacando que estos útimos años, se ha presentado un aumento en las bajas laborales en el ámbito relacionado con los "servicios a empresas y trabajos intelectuales".
 
-En conclusión, la profesión objeto de este estudio ha experimentado un elevado numero de daños en el ámbito laboral a principios del siglo XXI.
+En definitiva, la profesión objeto de este estudio ha experimentado un elevado numero de daños en el ámbito laboral a principios del siglo XXI.
 Sin embargo, las cifras han ido disminuyendo progresivamente y manteniéndose estables en la actualidad.
 
+<img src='images/I1.jpg' align="center" height="120" /> <img src='images/I2.jpg' align="center" height="120" /> <img src='images/I3.jpg' align="center" height="120" />
 
+# **Conclusiones**
+Las incidencias en el sector de la construcción o edificación se ha convertido en un tema de gran relevancia en la actualidad, ocupando una parte de los medios de comunicación, sobretodo en el caso de los varones, quien constituye la mayoria de la plantilla en este campo debido a la exigencia fisica que supone este tipo de trabajo.
+Es importante destacar que, aunque los accidentes laborales han experimentado una disminución desde principios de la época de los 2000, en época COVID las cifras volvieron a repuntar.
 
+En cuanto a aspectos psicologicos, la prevencion de suicidios sigue siendo un desafio debido a las largas jornadas laborales, el aislamiento que genera el trabajo y la escasez de apoyo emocional en el sector.
 
+Cabe mencionar que persiste una falta de presencia femenina en el sector, debido al demandante esfuerzo fisico, falta de politicas inclusivas y falta de representacion femenina en la toma de decisiones.
 
-añadir los dos url de los articulos
-https://www.omniamachinery.com/es/2022/05/mental-health-in-construction/
+En resumen, aunque se ha observado una breve disminución de incidencias en el sector, las enfermedades psicologicas siguen en aumento, por lo que es necesario implementar medias de prevención efectivas y proporcionar un apoyo emocional para mejorar la calidad de vida de los trabajadores.
+
 
 # **Referencias**
 *Enfermedades relacionadas con el trabajo.* (2024, 9 diciembre). Safety And Health At Work EU-OSHA. https://osha.europa.eu/es/themes/work-related-diseases
@@ -705,6 +697,15 @@ https://www.omniamachinery.com/es/2022/05/mental-health-in-construction/
 World Health Organization: WHO. (2022b, junio 8). *Trastornos mentales*. https://www.who.int/es/news-room/fact-sheets/detail/mental-disorders
 
 Gómez, M. G., López, R. C., Ortiz, Z. H., & Soria, F. S. (s. f.). *Reconocimiento de enfermedades profesionales según sexo, ocupación y actividad de la empresa en España (1999-2009).* https://www.redalyc.org/journal/170/17049838011/html/#:~:text=Fundamentos%3A%20Seg%C3%BAn%20las%20estad%C3%ADsticas%20oficiales,participaci%C3%B3n%20en%20el%20mundo%20laboral.
+
+*Salud Mental en la Construcción*
+Rea, J., & Rea, J. (2022, 12 mayo). Mental Health in Construction - Omnia Machinery. Omnia Machinery | Source Plant For Sale Equipment Worldwide. https://www.omniamachinery.com/es/2022/05/mental-health-in-construction/git 
+
+*Reconocimiento de enfermedades profesionales según sexo, ocupación y actividad de la empresa en España*
+Gómez, M. G., López, R. C., Ortiz, Z. H., & Soria, F. S. (s. f.). Reconocimiento de enfermedades profesionales según sexo, ocupación y actividad de la empresa en España (1999-2009). https://www.redalyc.org/journal/170/17049838011/html/#:~:text=Fundamentos%3A%20Seg%C3%BAn%20las%20estad%C3%ADsticas%20oficiales,participaci%C3%B3n%20en%20el%20mundo%20laboral
+
+*Trabajadores construcción*
+Sólo el 9% de los trabajadores de la construcción son mujeres, según los últimos datos de la EPA. (2019, 3 junio). Fundación Laboral de la Construcción. https://www.fundacionlaboral.org/actualidad/noticias/sector/solo-el-9-de-los-trabajadores-de-la-construccion-son-mujeres-segun-los-ultimos-datos-de-la-epa
 
 *imagen daño oseo - Bing. (s. f.).* Bing. https://www.bing.com/images/search?view=detailV2&ccid=HIZKeiyE&id=8A29147F9411B08DEB7C49034609DD195464A548&thid=OIP.HIZKeiyEroiF0yAK1ajaLwHaD3&mediaurl=https%3a%2f%2fwww.comunidadmielomamultiple.com%2fwp-content%2fuploads%2fcemmp-dano-oseo.webp&cdnurl=https%3a%2f%2fth.bing.com%2fth%2fid%2fR.1c864a7a2c84ae8885d3200ad5a8da2f%3frik%3dSKVkVBndCUYDSQ%26pid%3dImgRaw%26r%3d0&exph=627&expw=1200&q=imagen+da%c3%b1o+oseo&FORM=IRPRST&ck=52479B4305056814AD24AB193C144909&selectedIndex=7&itb=0&ajaxhist=0&ajaxserp=0
 
@@ -716,5 +717,3 @@ Gómez, M. G., López, R. C., Ortiz, Z. H., & Soria, F. S. (s. f.). *Reconocimie
 https://www.aragon.es/documents/20127/93712584/A02.pdf/aa2a23e9-276a-fd04-516b-31a57073aa52?t=1671191689721
 Fuente: Censos de población y vivienda. INE. Elaboración Instituto Aragonés de Estadística (IAEST).
 
-*Articulo trabajadores construcción (1)*
-Sólo el 9% de los trabajadores de la construcción son mujeres, según los últimos datos de la EPA. (2019, 3 junio). Fundación Laboral de la Construcción. https://www.fundacionlaboral.org/actualidad/noticias/sector/solo-el-9-de-los-trabajadores-de-la-construccion-son-mujeres-segun-los-ultimos-datos-de-la-epa
