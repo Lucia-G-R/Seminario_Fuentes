@@ -551,9 +551,9 @@ print(paste("El porcentaje de personas que han participado en la evaluación de 
 <img src='images/censo aragon.png' align="center" height="220" />
 
 ## **Gráficos**
-### **Gráfico sobre los nieveles de ansiedad en mujeres**
+### **Gráfico sobre los niveles de ansiedad en mujeres**
 Este gráfico muestra la diferencia de casos de ansiedad en mujeres y el grado de ansiedad.
-Hemos querido eliminar los indiviudos que no saben (o no contesta) junto con el total ya que no daban información de valor. Nos hemos quedado con las muejres ya que realmente proporcionan alguna conclusión. 
+Hemos querido eliminar los indiviudos que no saben (o no contesta) junto con el total ya que no daban información de valor. Nos hemos quedado con las muejeres ya que realmente proporcionan alguna conclusión. 
 ```{r}
 # Observación del gráfico del género Mujeres según el grado de ansiedad y el número de personas que la padecen
 mod_dt <- df_Salu_Arag %>%
@@ -591,7 +591,7 @@ facetas <- ggplot(Salud_eli, aes(x = Obs, y = EstadoAnsiedad)) +
 
 print(facetas)
 ```
-<br> Como resultado podemos ver que destacan más las observaciones del año 2004 respecto al año 2009. Además que la destacan más los ciudadanos con bajo nivel de ansiedad respecto a los de mayor ansiedad.
+<br> Como resultado podemos ver que destacan más las observaciones del año 2004 respecto al año 2009. Además que destacan más los ciudadanos con bajo nivel de ansiedad respecto a los de mayor ansiedad.
 
 ### **Gráfico sobre el número de accidentes según el sexo y la gravedad**
 Este gráfico muestra el número de accidentes en el mundo de la construcción separados por sexos y según la gravedad del accidente.
@@ -673,7 +673,7 @@ En cuanto a la evolución del número de accidentes laborales, contrariamente a 
 Por otro lado, cabe señalar que esta profesión no se encuentra entre las más afectadas por los siniestros laborales. La mayoría de incidentes se han registrado en el sector vinculado con la "producción, transformación, tratamiento y almacenamiento de materiales". 
 Destacando que estos útimos años, se ha presentado un aumento en las bajas laborales en el ámbito relacionado con los "servicios a empresas y trabajos intelectuales".
 
-En definitiva, la profesión objeto de este estudio ha experimentado un elevado numero de daños en el ámbito laboral a principios del siglo XXI.
+En definitiva, la profesión objeto de este estudio ha experimentado un elevado número de daños en el ámbito laboral a principios del siglo XXI.
 Sin embargo, las cifras han ido disminuyendo progresivamente y manteniéndose estables en la actualidad.
 
 <img src='images/I1.jpg' align="center" height="120" /> <img src='images/I2.jpg' align="center" height="120" /> <img src='images/I3.jpg' align="center" height="120" />
@@ -682,11 +682,11 @@ Sin embargo, las cifras han ido disminuyendo progresivamente y manteniéndose es
 Las incidencias en el sector de la construcción o edificación se ha convertido en un tema de gran relevancia en la actualidad, ocupando una parte de los medios de comunicación, sobretodo en el caso de los varones, quien constituye la mayoria de la plantilla en este campo debido a la exigencia fisica que supone este tipo de trabajo.
 Es importante destacar que, aunque los accidentes laborales han experimentado una disminución desde principios de la época de los 2000, en época COVID las cifras volvieron a repuntar.
 
-En cuanto a aspectos psicologicos, la prevencion de suicidios sigue siendo un desafio debido a las largas jornadas laborales, el aislamiento que genera el trabajo y la escasez de apoyo emocional en el sector.
+En cuanto a aspectos psicológicos, la prevencion de suicidios sigue siendo un desafío debido a las largas jornadas laborales, el aislamiento que genera el trabajo y la escasez de apoyo emocional en el sector.
 
-Cabe mencionar que persiste una falta de presencia femenina en el sector, debido al demandante esfuerzo fisico, falta de politicas inclusivas y falta de representacion femenina en la toma de decisiones.
+Cabe mencionar que persiste una falta de presencia femenina en el sector, debido al demandante esfuerzo físico, falta de políticas inclusivas y falta de representación femenina en la toma de decisiones.
 
-En resumen, aunque se ha observado una breve disminución de incidencias en el sector, las enfermedades psicologicas siguen en aumento, por lo que es necesario implementar medias de prevención efectivas y proporcionar un apoyo emocional para mejorar la calidad de vida de los trabajadores.
+En resumen, aunque se ha observado una breve disminución de incidencias en el sector, las enfermedades psicológicas siguen en aumento, por lo que es necesario implementar medidas de prevención efectivas y proporcionar un apoyo emocional para mejorar la calidad de vida de los trabajadores.
 
 
 # **Referencias**
