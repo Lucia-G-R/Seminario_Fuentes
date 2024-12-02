@@ -666,7 +666,7 @@ print(tpt)
 
 
 # **Resultados**
-Como se ha observado en los gráficos presentados anteriormente, el género masculino muestra mayor indicencia de accidentes en la profesión relacionada con el movimiento de tierra. Este fenómeno se puede explicar a que este grupo representa la mayoria en esta actividad laboral (artículo 1)
+Como se ha observado en los gráficos presentados anteriormente, el género masculino muestra mayor indicencia de accidentes en la profesión relacionada con el movimiento de tierra. Este fenómeno se puede explicar a que este grupo representa la mayoria en esta actividad laboral.
 
 En cuanto a la evolución del número de accidentes laborales, contrariamente a la creencia popular, no ha aumentado significativamente. Sino que ha habido una tendencia a la baja desde principios de los 2000s. Cabe mencionar que tras la época COVID se ha producido un ligero repunte en las cifras, reflejando un ascenso en la curva del diagrama.
 
