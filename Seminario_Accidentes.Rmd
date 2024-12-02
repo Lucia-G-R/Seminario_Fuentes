@@ -102,7 +102,7 @@ download.file("https://datos.gob.es/es/catalogo/a05003423-poblacion-de-16-y-mas-
 ### **Carga de datos JSON**
 En primer lugar, queremos extraer los datos sobre las enfermedades laborales que suceden en España. 
 Como es un archivo con extensión .JSON con listas anidadas, no podemos utilizar directamente un tibble . 
-Para ello, debemos de convertir las listas anidadas, en este caso la lista MetaData y la lista Data, en dataframes. Finalemente, unimos ambos dataframes anteriores junto con el resto de columnas del archivo .JSON que no son listas anidadas.
+Para ello, debemos de convertir las listas anidadas, en este caso la lista MetaData y la lista Data, en dataframes. Finalmente, unimos ambos dataframes anteriores junto con el resto de columnas del archivo .JSON que no son listas anidadas.
 ``` {r load-packages, message=FALSE, warning=FALSE}
 library(rjson)
 library(tidyverse)
@@ -191,7 +191,7 @@ Salud_df <- read_delim ("INPUT/DATA/Estados_de_salud_Canarias.csv.csv", delim = 
 
 datatable(Salud_df)
 ```
-Este dataframe va a recoger los distintos estados de ánimo durante el año 2004 y 2009 de los ciudadnos de Canarias con más de 16 años, en ambos sexos.
+Este dataframe va a recoger los distintos estados de ánimo durante el año 2004 y 2009 de los ciudadanos de Canarias con más de 16 años, en ambos sexos.
 
 ### **Carga de datos XLSX**
 En cuarto lugar, queremos extraer los datos sobre la gravedad de las enfermedades laborales producidas en Aragón. Como es un archivo con extensión .xlsx, utilizamos read_excel.
@@ -315,11 +315,11 @@ canarias_when <-
     Gravedad == "Total" & Obs > 5000 ~ "Alta gravedad",
     Gravedad == "Total" & Obs <= 5000 ~ "Baja gravedad",
  
-    Sexo == "Mujeres" & Obs > 1000 ~ "Accidentes Mujeres - Alto",
-    Sexo == "Hombres" & Obs > 1000 ~ "Accidentes Hombres - Alto",
+    Sexo == "Mujeres" & Obs > 5000 ~ "Accidentes Mujeres - Alto",
+    Sexo == "Hombres" & Obs > 5000 ~ "Accidentes Hombres - Alto",
     
-    Sexo == "Mujeres" & Obs <= 1000 ~ "Accidentes Mujeres - Bajo",
-    Sexo == "Hombres" & Obs <= 1000 ~ "Accidentes Hombres - Bajo",
+    Sexo == "Mujeres" & Obs <= 5000 ~ "Accidentes Mujeres - Bajo",
+    Sexo == "Hombres" & Obs <= 5000 ~ "Accidentes Hombres - Bajo",
     
     .default = "Otro"
   ))
