@@ -315,11 +315,11 @@ canarias_when <-
     Gravedad == "Total" & Obs > 5000 ~ "Alta gravedad",
     Gravedad == "Total" & Obs <= 5000 ~ "Baja gravedad",
  
-    Sexo == "Mujeres" & Obs > 5000 ~ "Accidentes Mujeres - Alto",
-    Sexo == "Hombres" & Obs > 5000 ~ "Accidentes Hombres - Alto",
+    Sexo == "Mujeres" & Obs > 1000 ~ "Accidentes Mujeres - Alto",
+    Sexo == "Hombres" & Obs > 1000 ~ "Accidentes Hombres - Alto",
     
-    Sexo == "Mujeres" & Obs <= 5000 ~ "Accidentes Mujeres - Bajo",
-    Sexo == "Hombres" & Obs <= 5000 ~ "Accidentes Hombres - Bajo",
+    Sexo == "Mujeres" & Obs <= 1000 ~ "Accidentes Mujeres - Bajo",
+    Sexo == "Hombres" & Obs <= 1000 ~ "Accidentes Hombres - Bajo",
     
     .default = "Otro"
   ))
@@ -389,7 +389,7 @@ df_cana_Salud <-
 
 datatable(df_cana_Salud)
 ```
-Con este dataframe pretendemos que de forma visual podamos observar como puede llegar a afectar el padecimiento de una enfermedad mental en el desarrollo de enfermedades laborales por cada profesión estudiada.
+Con este dataframe pretendemos que de forma visual podamos observar como puede llegar a afectar el padecimiento de una enfermedad mental en las mujeres al desarrollo de enfermedades laborales debido a la profesión sobre construcción, labores de movimiento de tierras, demolición.
 
 ## **Pivotar**
 Como hemos comentado anteriormente la forma del dataframe de España no es del todo correcta. Vamos a transponer la estructura de la columna Nombre desde largo a ancho, es decir, los Valores presentes en la columna Espana pasan a formar tres columnas. Para esto, utilizaremos la función pivot_wider.
@@ -404,7 +404,7 @@ Aunque aparezcan filas sin valores, no las vamos a eliminar ya que es simplement
 
 ## **Trabajar con filas**
 ### **Eliminar filas**
-Eliminamos las filas que no nos va a interesar estudiar.En este caso, solo modificaremos el dataframe de la salud mental en Canarias. 
+Eliminamos las filas que no nos va a interesar estudiar. En este caso, solo modificaremos el dataframe de la salud mental en Canarias. 
 
 En primer lugar, vamos a eliminar en el dataframe Salud, el sexo que indica las edades ya que es una información no correcta para esta variable tenemos que normalizar los valores de la variable Sexo eliminando los espacios en blanco y pasando a minúsculas. Después, utilizamos la función subset.
 ```{r, warning=FALSE, error = TRUE}
@@ -424,7 +424,7 @@ Seleccionamos las cinco primeras filas del conjunto de datos Salud que contiene 
 ```{r, warning=FALSE}
 library(DT)
 
-datatable(slice_head(.data = Salud, n =5))
+datatable(slice_head(.data = Salud_eli, n =5))
 ```
 #### **Slice_tail**
 Seleccionamos las cinco últimas filas del conjunto de datos de Aragón que contiene el número de accidentes por años. Mediante la función slice_tail.
@@ -494,7 +494,7 @@ datatable(arrange(.data = acci_trab_df, desc(factor(TotalAcci))))
 ```
 Como resultado podemos ver que los trabajos relacionados con producción, transformación, tratamiento y almacenamiento, junto con la profesión de servicios a empresas/personas y trabajos intelectuales tiene el mayor número de accidentes. Sin embargo, los trabajos agrícolas, forestales, hortícola, piscícol y con animales vivos son los que menos accidentes presentan.
 
-Con esta función pretendemos hallar la media de accidentes que existen según el sexo, además de la gravedad de estos. Encontrados en nuestro conjunto de datos de Canarias. Para este código utilizamos la función tapply, junto con la función de la media
+Con esta función pretendemos hallar la media de accidentes que existen según el sexo, además de la gravedad de estos encontrados en nuestro conjunto de datos de Canarias. Para este código utilizamos la función tapply, junto con la función de la media
 ```{r, warning=FALSE}
 library(DT)
 
@@ -548,7 +548,7 @@ porcentaje <- (suma_arag / media) * 100
 
 print(paste("El porcentaje de personas que han participado en la evaluación de accidentes laborales y sus consecuencias es", porcentaje,"%"))
 ```
-<img src='images/censo aragon.png' align="center" height="120" />
+<img src='images/censo aragon.png' align="center" height="220" />
 
 ## **Gráficos**
 ### **Gráfico sobre los nieveles de ansiedad en mujeres**
